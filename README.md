@@ -1,4 +1,3 @@
-# Registry
-Registry tweaks
+# Scripts
 
 https://gorstak1979.github.io/Scripts/
