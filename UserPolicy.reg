@@ -1,5 +1,10 @@
 ﻿Windows Registry Editor Version 5.00
 
+[HKEY_CURRENT_USER\Software\microsoft\Windows\CurrentVersion\Internet Settings]
+"AutoConfigURL"="https://raw.githubusercontent.com/Gorstak1979/Scripts/refs/heads/main/BlockAds.pac"
+"MaxConnectionsPer1_0Server"=dword:0000000a
+"MaxConnectionsPerServer"=dword:0000000a
+
 [HKEY_CURRENT_USER\Control Panel]
 "EnableShareSettings"=dword:00000001
 
