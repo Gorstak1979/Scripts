@@ -4,51 +4,33 @@ var adRegex = new RegExp(
     "i"
 );
 
-// Define blocked URLs (exact matches)
-var blockedURLs = [
-    "discord.com/channels/889102180332732436",
-    "discord.com/channels/452237221840551938",
-    "discord.com/channels/1128414431085346897",
-    "discord.com/channels/567592181905489920",
-    "discord.com/channels/549448381613998103",
-    "discord.com/channels/150662382874525696",
-    "discord.com/channels/731641286389661727",
-    "discord.com/channels/246414844851519490",
-    "discord.com/channels/240880736851329024",
-    "reddit.com/r/croatia",
-    "reddit.com/r/hrvatska"
-];
-
-// Define blocked sites (exact domain matches)
-var blockedSites = [
-    "instrumenttactics.com",
-    "srce.unizg.hr",
-    "rtl.hr",
-    "hrt.hr",
-    "dnevnik.hr",
-    "novatv.dnevnik.hr",
-    "novavideo.dnevnik.hr",
-    "forum.hr",
-    "forum.pcekspert.com"
-];
-
 function FindProxyForURL(url, host) {
     // Normalize to lowercase for consistent comparisons
     url = url.toLowerCase();
     host = host.toLowerCase();
 
-    // Block explicit URLs
-    if (blockedURLs.includes(url)) {
-        return "PROXY 127.0.0.1";
-    }
-
-    // Block explicit domains
-    if (blockedSites.includes(host) || blockedSites.some(site => host.endsWith("." + site))) {
-        return "PROXY 127.0.0.1";
-    }
-
-    // Explicit blocks for Google Ad services
+    // Explicit blocks for each pattern
     if (
+        shExpMatch(url, "discord.com/channels/889102180332732436") ||
+        shExpMatch(url, "discord.com/channels/452237221840551938") ||
+        shExpMatch(url, "discord.com/channels/1128414431085346897") ||
+        shExpMatch(url, "discord.com/channels/567592181905489920") ||
+        shExpMatch(url, "discord.com/channels/549448381613998103") ||
+        shExpMatch(url, "discord.com/channels/150662382874525696") ||
+        shExpMatch(url, "discord.com/channels/731641286389661727") ||
+        shExpMatch(url, "discord.com/channels/246414844851519490") ||
+        shExpMatch(url, "discord.com/channels/240880736851329024") ||
+        shExpMatch(url, "reddit.com/r/croatia") ||
+        shExpMatch(url, "reddit.com/r/hrvatska") ||
+        shExpMatch(host, "instrumenttactics.com") ||
+        shExpMatch(host, "srce.unizg.hr") ||
+        shExpMatch(host, "rtl.hr") ||
+        shExpMatch(host, "hrt.hr") ||
+        shExpMatch(host, "dnevnik.hr") ||
+        shExpMatch(host, "novatv.dnevnik.hr") ||
+        shExpMatch(host, "novavideo.dnevnik.hr") ||
+        shExpMatch(host, "forum.hr") ||
+        shExpMatch(host, "forum.pcekspert.com") ||
         shExpMatch(host, "googleads.g.doubleclick.net") ||
         shExpMatch(host, "*.googleads.g.doubleclick.net") ||
         shExpMatch(host, "pagead2.googlesyndication.com") ||
@@ -61,7 +43,7 @@ function FindProxyForURL(url, host) {
         shExpMatch(host, "*.ad.doubleclick.net") ||
         shExpMatch(host, "ads.youtube.com") ||
         shExpMatch(host, "*.ads.youtube.com") ||
-        shExpMatch(host, "m.youtube.com") || // Block mobile YouTube ads
+        shExpMatch(host, "m.youtube.com") ||
         shExpMatch(host, "*.m.youtube.com")
     ) {
         return "PROXY 127.0.0.1";
@@ -75,3 +57,4 @@ function FindProxyForURL(url, host) {
     // If no ads or blocked sites/URLs are matched, connect directly
     return "DIRECT";
 }
+
