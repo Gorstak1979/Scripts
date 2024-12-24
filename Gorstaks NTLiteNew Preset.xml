@@ -233,10 +233,6 @@
 			<OptimizeAppX>false</OptimizeAppX>
 			<UpdateBootManager>false</UpdateBootManager>
 		</Options>
-		<File>D:\NTLite\Cache\Updates\11.24H2.x64\updateplatform.amd64fre_d3f6f8300855e56b8ed00da6dac55a3c4cbf8c20.exe</File>
-		<File>D:\NTLite\Cache\Updates\11.24H2.x64\mpam-fe.exe</File>
-		<File>D:\NTLite\Cache\Updates\11.24H2.x64\Microsoft.VCLibs.x64.14.00.Desktop.appx</File>
-		<File>D:\NTLite\Cache\Updates\11.24H2.x64\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle</File>
 	</Packages>
 	<Commands>
 		<PostUpdates>
@@ -524,10 +520,5 @@
 		<Change></Change>
 		<Add></Add>
 	</Execution>
-	<Registry>
-		<File>D:\Util\HKCR.reg</File>
-		<File>D:\Util\HKCU.reg</File>
-		<File>D:\Util\HKLM.reg</File>
-		<File>D:\Util\HKU.reg</File>
-	</Registry>
+	<Registry></Registry>
 </Preset>
