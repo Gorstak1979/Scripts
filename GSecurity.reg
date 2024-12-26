@@ -65,7 +65,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\denydeviceclasses]
 "1"="{d48179be-ec20-11d1-b6b8-00c04fa372a7}"
 
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeviceInstall\Restrictions\denydeviceids]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\denydeviceids]
 "1"="SCSI\\CdRom"
 "2"="root\\kdnic"
 "3"="ACPI\\PNP0501"
