@@ -76,18 +76,25 @@ def get_loaded_dlls(pid):
     return dlls
 
 def analyze_dll(dll_path):
+    try:
+        signer = Dispatch("Scripting.Signer")
+        is_signed = signer.Verify(dll_path)  # Returns True if signed
+        if not is_signed:
+            logger.warning(f"Unsigned DLL detected: {dll_path}")
+            return True
+    except Exception as e:
+        logger.warning(f"Could not verify signature for {dll_path}: {e}")
+        return True  # Treat as suspicious if verification fails
+
+    # Other suspicious conditions
     if any(dll_path.startswith(path) for path in WHITELIST_PATHS):
         return False
     if any(path in dll_path for path in SUSPICIOUS_PATHS):
         return True
     if any(driver in dll_path.lower() for driver in PROTECTED_DRIVERS):
         return False
-    try:
-        signer = Dispatch("Scripting.Signer")
-        return not signer.Verify(dll_path)
-    except Exception as e:
-        logger.warning(f"Could not verify signature for {dll_path}: {e}")
-        return True
+
+    return False
 
 def quarantine_item(item_path):
     try:
@@ -167,7 +174,7 @@ async def scan_file(session, file_path, cache):
 async def antivirus_scan():
     cache = load_cache()
     async with aiohttp.ClientSession() as session:
-        for root, _, files in os.walk("C:\\"):
+        for root, _, files in os.walk("C:\\\\"):
             for file in files:
                 await scan_file(session, os.path.join(root, file), cache)
     save_cache(cache)
