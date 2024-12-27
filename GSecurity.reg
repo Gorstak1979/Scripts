@@ -2,6 +2,1076 @@ Windows Registry Editor Version 5.00
 
 ; GSecurity 27.12.2024
 
+; Cleanup
+
+[HKEY_LOCAL_MACHINE\software\classes\cm_cellularentries\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\cm_proxyentries\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\Classes\cmdfile\shell\runasuser]
+"SuppressionPolicy"=dword:00001000
+
+[HKEY_LOCAL_MACHINE\software\classes\cmpolicy\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\cmpolicyenterprise\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\correngine.correlationengine.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\correngine.correlationengine\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\csplte\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\datasource.comappxdatasourcefactory class\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\datasource.comappxdatasourcefactory.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\defragengine.defragengine.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\defragengine.defragengine\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\enterpriseapn\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ercluaelevationhelper\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ercluasupport.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\Classes\exefile\shell\runasuser]
+"SuppressionPolicy"=dword:00001000
+
+[HKEY_LOCAL_MACHINE\software\classes\faxcommon.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\faxcontrol.faxcontrol.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\faxcontrol.faxcontrol\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\faxcover.document\defaulticon]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\faxcover.document\shell\open\command]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\fhsearchphlibrary.fhsearchprotocol.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\fhsearchphlibrary.fhsearchprotocol\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\fodhelper.fodhelperobj.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\fodhelper.fodhelperobj\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\fsloaderparser.definitionloader.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\fsloaderparser.definitionloader\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\fsloaderparser2.definitionparser.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\fsloaderparser2.definitionparser\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\functiondiscovery.umbusdriver.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\functiondiscovery.umbusdriver\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\functiondiscovery.wsdprintproxy.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\functiondiscovery.wsdprintproxy\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\hotspot\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\hyperv.apphealthmonitor\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ias.iasdatastorecomserver.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ias.iasdatastorecomserver\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jobobjectprov.jobobjectprov.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jobobjectprov.jobobjectprov\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jobobjioactginfoprov.jobobjioactginfoprov.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jobobjioactginfoprov.jobobjioactginfoprov\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jobobjlimitinfoprov.jobobjlimitinfoprov.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jobobjlimitinfoprov.jobobjlimitinfoprov\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jobobjseclimitinfoprov.jobobjseclimitinfoprov.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jobobjseclimitinfoprov.jobobjseclimitinfoprov\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jpnrankerds.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\jpnrankerds\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\krnlprov.kerneltraceprovider.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ksgenerator.keystrokegenerator.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ksgenerator.keystrokegenerator\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\mcsf\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\microsoft.appv.client.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\microsoft.syncshare.syncsharefactory.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\microsoft.syncshare.syncsharefactory\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\microsoft.waasmedic.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\microsoft.waasmedic\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\microsoft.windows.dataprotection.adapters.dpproviderfactory\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\microsoft.workfolders\defaulticon]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\Classes\mscfile\shell\runasuser]
+"SuppressionPolicy"=dword:00001000
+
+[HKEY_LOCAL_MACHINE\software\classes\msrdc.rdclibrary.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\msrdc.similarity.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\msrdc.similarityfileidtable.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\msrdc.similaritytraitstable.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\mssearch.ipspi.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\mssearch.ipspi\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ncprov.ncprovider.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ncprov.ncprovider\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ngcprocsp.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\ngcprocsp\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\piffile]
+"isshortcut"=-
+
+[HKEY_LOCAL_MACHINE\software\classes\playtoreceiverappmanager\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\printsys.cofilterpipeline.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\printsys.cofilterpipeline\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\printsys.coprintisolationhost.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\printsys.coprintisolationhost\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\rdpcorets.wrdsprotocolmanager.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\rdpcorets.wrdsprotocolmanager\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\rdsprofilehandler.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\rdsserver.datafactory.6.0\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\rdsserver.datafactory\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\roamingsecurity.roamingsecurity.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\rotmgr.rotationmanager.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\rotmgr.rotationmanager\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sapi_onecoreengine.ttsengine.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sapi_onecoreengine.ttsengine\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sapiengine.ttsengine.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sapiengine.ttsengine\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdbackupconfig.sdbackupconfig.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdbackupconfig.sdbackupconfig\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdengine.csdgitmanager.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdengine.csdgitmanager\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdengine.csdwhcnotifier.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdengine.csdwhcnotifier\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdengine.sdengine2.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdengine.sdengine2\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdrservice.sdcontroller.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdrservice.sdcontroller\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdrservice.sdrrestoreservice.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdrservice.sdrrestoreservice\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdshellextension.sdshellextension.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdshellextension.sdshellextension\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdsnapin.sdsnapin.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdsnapin.sdsnapin\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\sdsnapinabout.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\search.customwordbreaker.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\search.customwordbreaker\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\secproviders.syncmlsecprovider\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\secproviders.unauthsecprovider\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\secproviders.wapxmlsecprovider\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\shapecollector.shapecollector.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\skbmonitor.keystrokemonitor.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\skbmonitor.keystrokemonitor\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\speechux.configui.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\speechux.configui\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\speechux.speechuxhost.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\speechux.speechuxhost\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\srcontrol.srcontrol.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\srcontrol.srcontrol\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\srdrvwuhelper.srdrvwuhelper.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\srdrvwuhelper.srdrvwuhelper\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\statemodel.statecontroller.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\statemodel.statecontroller\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\tabips.inkitem.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\tabips.inkstore.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\tabips.roamdictionary.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\tabips.textcontributor.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{00025e01-0000-0000-c000-000000000046}\5.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{00f25ae8-3625-4e34-92d4-f0918cf010ee}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{03837500-098b-11d8-9414-505054503030}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{0a055c02-babe-4480-bb7b-a8ec723ce9c0}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{10e3a8c1-b46c-4b6c-b3ef-8e2f48d527d0}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{11a8b8ee-bf30-409a-8ef7-3a143ef70332}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{122f1bb4-2723-4ac2-a36a-16bb9e8b99a6}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{13199c00-7494-11d0-8816-00a0c903b83c}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{157702d8-b1c1-40b8-8b46-af2b40022085}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{15ae3a36-e53b-454d-a816-a7c61cbab8a4}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{1b8d8ae1-a595-4687-a7ad-9e3828e09b79}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{1fda955a-61ff-11da-978c-0008744faab7}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{204810b3-73b2-11d4-bf42-00b0d0118b56}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{32a11b9f-9c1d-46c2-b66f-6c05211135e1}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{353d638f-c81b-4476-8323-63a7ee274205}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{372fce32-4324-11d0-8810-00a0c903b83c}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{3d5905e0-523c-11d1-9fea-00600832db4a}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{3de641ef-0556-4d4a-98d5-7dbd8ad5d70f}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{3ff1aab8-f3d8-11d4-825d-00104b3646c0}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{43136eb0-d36c-11cf-adbc-00aa00a80033}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{438edb38-282c-435d-8be3-4ab90b83cef5}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{43e734ca-043d-4a70-9a2c-a8f254063d91}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{57dacae6-5313-4e27-b109-e6e3d415730c}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{662901fc-6951-4854-9eb2-d9a2570f2b2e}\5.1\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{680c64b0-8da2-4399-bf4b-e94c1e52983e}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{6a125bc2-f756-45c7-b82d-c68427c7716d}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{6caaaa3b-6502-40fe-97fc-72a290dc63cf}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{728ab348-217d-11da-b2a4-000e7bbb2b09}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{7444c709-39bf-11d1-8cd9-00c04fc29d45}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{7586b340-ec08-11d0-a466-00c04fc30df6}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{773f1b9a-35b9-4e95-83a0-a210f2de3b37}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{777ba810-2498-4875-933a-3067de883070}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{777ba8f1-2498-4875-933a-3067de883070}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{7988b57c-ec89-11cf-9c00-00aa00a14f56}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{7cdb4c42-d09d-4532-af9d-b941df2f3e24}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{85ab206a-be8c-4b5a-ab0e-5eaaa13e541d}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{87d5f036-fac3-4390-a1e8-dfa8a62c09e7}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{8e80422b-cac4-472b-b272-9635f1dfef3b}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{94a0e92d-43c0-494e-ac29-fd45948a5221}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{991705ae-217d-4aca-a0ff-07cf4fdc292d}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{9e175b60-f52a-11d8-b9a5-505054503030}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{9e175b61-f52a-11d8-b9a5-505054503030}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{a1b0de63-7454-4184-b5b6-6acfdac5c9a6}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{a47ededd-2921-4e5a-9b91-13c953ec7fe3}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{aeb84c80-95dc-11d0-b7fc-b61140119c4a}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{b25df0f7-46d8-4e0e-a4bf-a0912018bc40}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{b9c76e7b-d029-44eb-896f-f02fc6e9abd5}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{c0653e9c-db3b-4e9e-b3ab-b8e1df53972f}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{c866ca3a-32f7-11d2-9602-00c04f8ee628}\5.4\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{cb72a544-f75e-42cb-932e-eb06a7063a66}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{d0b7e02b-e1a3-11dc-81ff-001185ae5e76}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{d597deed-5b9f-11d1-8dd2-00aa004abd5e}\2.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{d76ee74a-fbcf-4032-8597-c4763f1db068}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{d808bd12-dd1e-4cbc-8a3a-0a35010f078a}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{dcb00d01-570f-4a9b-8d69-199fdba5723b}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{dcbbbab6-0001-4bbb-aaee-338e368af6fa}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{dd6f48d7-d5b2-4901-be88-d140d1c40a07}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{e6da930b-bba5-44df-ac6f-fe60c1eddec8}\5.4\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{ee574957-4077-4ad6-8658-327c2c86c5aa}\1.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\typelib\{f31091e5-b0a8-11d6-b6fc-005056c00008}\2.0\0\win32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\uev.printerprogid.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\uev.printerprogid\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\vaultroaming.synctaskhandler.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\vaultroaming.vaultsettingshandler.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\vsmgmt.vsssnapshotmgmt.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\vsmgmt.vsssnapshotmgmt\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\vss.vsscoordinator.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\vss.vsscoordinator\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\workspace.policyprocessor.1\clsid]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{03de7b30-9300-4fa9-af69-ba09497107a2}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{062584a6-f830-4bdc-a4d2-0a10ab062b1d}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{14654ca6-5711-491d-b89a-58e571679951}]
+"appid"=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{181a38f4-6ce6-4edc-8db0-6e5631963a1e}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{1965fea3-3896-438b-b789-f5981797e7e7}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{206fa6d0-a493-41fa-943d-3f655088f7b9}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{31337ec7-5767-11cf-beab-00aa006c3606}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{323CA680-C24D-4099-B94D-446DD2D7249E}\ShellFolder]
+"Attributes"=dword:a0c00100
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{363be3c0-ddd4-4b21-bc6d-7e9df8ce19cb}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{38e441fb-3d16-422f-8750-b2dacec5cefc}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{38fe8dfe-b129-452b-a215-119382b89e3d}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{3b68879a-2ce5-419d-bb70-f39e1f66b06f}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{3f052b8e-512b-419d-9e06-9b9addc7118c}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{4044e60c-7b01-4671-a97c-04e0210a07a5}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{58598185-cf77-4407-b011-0c8282ef681f}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{5de7918b-bfd7-4c1e-b4e0-b16d0a3ea76b}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{5eb699b3-9296-41ba-9258-de70f03b7d6c}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{679f85cb-0220-4080-b29b-5540cc05aab6}\ShellFolder]
+"Attributes"=dword:a0500000
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{786cdb70-1628-44a0-853c-5d340a499137}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{8685c4a9-d0e4-444c-87a0-d9fb858235a7}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{882bc1e4-c79e-475d-8cc7-cc8d112fdb17}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{890f18bf-7246-4827-bc78-387c6980182a}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{95bd18c1-d7fb-4bd3-839a-1c37c90131b1}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{9663c85f-3c7b-4e02-97ad-906e135500dc}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{994b3b2f-2880-4318-a583-15c38a01f571}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{a020fad9-d661-4857-aa43-e6a86ff1163e}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{a463fcb9-6b1c-4e0d-a80b-a2ca7999e25d}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{a82536d7-c8e6-4cef-aa66-11e97eddfc6d}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{B4FB3F98-C1EA-428d-A78A-D1F5659CBA93}\ShellFolder]
+"Attributes"=dword:b094010c
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{c52ff1fd-eb6c-42cf-9140-83defeca7e29}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{c82192ee-6cb5-4bc0-9ef0-fb818773790a}]
+"appid"=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{cdaeb70c-e686-4299-93eb-7d63d77b7f63}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{d7fd466d-f6cf-4c8e-86dd-12e9b0fdae48}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{d8e090a5-4149-467d-8103-bfb8f51e8bcb}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{e9a6ab1b-0c9c-44ac-966e-560c2771d1e8}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{eda59c23-fcb4-44af-bfe0-3708c08a212d}\localserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder]
+"Attributes"=dword:b0140064
+
+[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}\ShellFolder]
+"Attributes"=dword:b0100000
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{fa6c507d-a9af-4385-86c0-80115f0ae20b}\inprocserver32]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\interface\{152807bd-4d18-46c5-ae31-dd8d597d0559}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\interface\{36205546-1ab7-4714-a3e9-e874233670db}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\interface\{3d0423b1-bbd4-4c4a-8f20-da15228e0f3d}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\interface\{4ca52eee-1690-4f47-bf00-1ab34a25362b}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\interface\{5fbe70f3-2f8d-46bc-ba97-28e3e9d51f9c}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\interface\{76c23039-0d4b-4340-9a00-731cfe28d79e}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\interface\{77746361-335b-4217-9f7e-96ae01e96958}\typelib]
+@=-
+
+[HKEY_LOCAL_MACHINE\software\classes\wow6432node\interface\{d6100f3b-27c8-4132-afea-f0e4b1e00060}\typelib]
+@=-
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\00ea522c8a9c06aa3ecce0b4fa6cdc21d92e8099]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\016897e1a0b8f2c3b134665c20a727b7a158e28f]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\02faf3e291435468607857694df5e45b68851868]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\0409565b77da582e6495ac0060a72354e64b0192]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\0456f23d1e9c43aecb0d807f1c0647551a05f456]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\0483ed3399ac3608058722edbc5e4600e3bef9d7]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\06143151e02b45ddbadd5d8e56530daae328cf90]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\0747220199ce74b97cb03d79b264a2c855e933ff]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\086418e906cee89c2353b6e27fbd9e7439f76316]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\0cfd83dbae44b9a0c8f676f3b570650b94b69dbf]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\101dfa3fd50bcbbb9bb5600c1955a41af4733a04]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\11c5b5f75552b011669c2e9717de6d9bff5fa810]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\150332a58dc591fc42d4c873ff9f1f0f81d597c9]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\16d86635af1341cd34799445eb603e273702965d]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\1b4b396126276b6491a2686dd70243212d1f1d96]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\20cb594fb4edd895763fd5254e959a6674c6eeb2]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\216b2a29e62a00ce820146d8244141b92511b279]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\21fcbd8e7f6caf051bd1b343eca8e76147f20f8a]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\2388c9d371cc9e963dff7d3ca7cefcd625ec190d]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\23e594945195f2414803b4d564d2a3a3f5d88b8c]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\24ba6d6c8a5b5837a48db5fae919ea675c94d217]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\253f775b0e7797ab645f15915597c39e263631d1]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\27eed22afd58a2c64a855e3680af898bf36ce503]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\2964b686135b5dfddd3253a89bbc24d74b08c64d]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\2ac8d58b57cebf2f49aff2fc768f511462907a41]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\31e2c52ce1089beffddadb26dd7c782ebc4037bd]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\36b12b49f9819ed74c9ebc380fc6568f5dacb2f7]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\37f76de6077c90c5b13e931ab74110b4f2e49a27]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\39410bc2303748066069a72a664de4c743481296]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\394ff6850b06be52e51856cc10e180e882b385cc]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\3bc0380b33c3f6a60c86152293d9dff54b81c004]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\3db66dfebeb6712889e7c098b32805896b6218cc]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\3e42a18706bd0c9ccf594750d2e4d6ab0048fdc4]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\3f85f2bb4a62b0b58be1614abb0d4631b4bef8ba]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\4054da6f1c3f4074aced0feccddb79d153fb901d]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\409d4bd917b55c27b69b64cb9822440dcd09b889]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\42efdde6bff35ed0bae6acdd204c50ae86c4f4fa]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\43f9b110d5bafd48225231b0d0082b372fef9a54]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\4a058fdfd761db21b0c2ee48579be27f42a4da1c]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\4a3f8d6bdc0e1ecfcd72e377def2d7ff92c19bc7]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\4f555ce20dcd3364e0dc7c41efdd40f50356c122]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\4f65566336db6598581d584a596c87934d5f2ab4]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\51a44c28f313e3f9cb5e7c0a1e0e0dd2843758ae]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\51c6e70849066ef392d45ca00d6da3628fc35239]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\52412bd67b5a6c695282386026f0b053dd400efc]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\55c86f7414ac8bdd6814f4d86af15f3710e104d0]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\58119f0e128287ea50fdd987456f4f78dcfad6d4]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\59af82799186c7b47507cbcf035746eb04ddb716]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\5d989cdb159611365165641b560fdbea2ac23ef1]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\5f43e5b1bff8788cac1cc7ca4a9ac6222bcc34c6]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\5f4e1fcf31b7913b850b54f6e5ff501a2b6fc6cf]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\60d68974b5c2659e8a0fc1887c88d246691b182c]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\61573a11df0ed87ed5926522ead056d744b32371]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\627f8d7827656399d27d7f9044c9feb3f33efa9a]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\64902ad7277af3e32cd8cc1dc79de1fd7f8069ea]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\67248980de775d2c9b04e40307940badb351f395]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\679a4f81fc705ddec419778dd2ebd875f4c242c6]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\67eb337b684ceb0ec2b0760ab488278cdd9597dd]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\68ed18b309cd5291c0d3357c1d1141bf883866b1]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\6a174570a916fbe84453eed3d070a1d8da442829]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\6a6f2a8b6e2615088df59cd24c402418ae42a3f1]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\6ad23b9dc48e375f859ad9cab585325c23894071]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\6b81446a5cddf474a0f800ffbe69fd0db6287516]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\6dc5e562a9fd64d4bb2f631ccd041e9aa6ff60f1]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\70179b868c00a4fa609152223f9f3e32bde00562]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\7030aabf8432a800666cccc42a887e42b7553e2b]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\705d2b4565c7047a540694a79af7abb842bdc161]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\74207441729cdd92ec7931d823108dc28192e2bb]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\742cdf1594049cbf17a2046cc639bb3888e02e33]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\750251b2c632536f9d917279543c137cd721c6e0]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\75e0abb6138512271c04f85fddde38e4b7242efe]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\76e27ec14fdb82c1c0a675b505be3d29b4eddbbb]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\7998a308e14d6585e6c21e153a719fba5ad34ad9]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\7a74410fb0cd5c972a364b71bf031d88a6510e9e]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\7ac5fff8dcbc5583176877073bf751735e9bd358]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\7e784a101c8265cc2de1f16d47b440cad90a1945]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\7f8ab0cfd051876a66f3360f47c88d8cd335fc74]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\7fb9e2c995c97a939f9e81a07aea9b4d70463496]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\7fbb6acd7e0ab438daaf6fd50210d007c6c0829c]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\84429d9fe2e73a0dc8aa0ae0a902f2749933fe02]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\85a408c09c193e5d51587dcdd61330fd8cde37bf]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\879f4bee05df98583be360d633e70d3ffe9871af]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\89c32e6b524e4d65388b9ecedc637134ed4193a3]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\8b1a1106b8e26b232980fd652e6181376441fd11]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\8c96baebdd2b070748ee303266a0f3986e7cae58]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\8eb03fc3cf7bb292866268b751223db5103405cb]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\8efdcabc93e61e925d4d1ded181a4320a467a139]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\9078c5a28f9a4325c2a7c73813cdfe13c20f934e]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\90dece77f8c825340e62ebd635e1be20cf7327dd]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\9158c5ef987301a8903cfdab03d72da1d88909c9]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\924aea47f73cb690565e552cfcc6e8d63eee4242]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\93f7f48b1261943f6a78210c52e626dfbfbbe260]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\968338f113e36a7babdd08f7776391a68736582e]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\971d3486fc1e8e6315f7c6f2e12967c724342214]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\97226aae4a7a64a59bd16787f27f841c0a001fd0]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\97817950d81c9670cc34d809cf794431367ef474]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\97e2e99636a547554f838fba38b82e74f89a830a]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\99a69be61afe886b4d2b82007cb854fc317e1539]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\9c615c4d4d85103a5326c24dbaeae4a2d2d5cc97]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\9ed18028fb1e8a9701480a7890a59acd73dff871]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\9fad91a6ce6ac6c50047c44ec9d4a50d92d84979]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\a073e5c5bd43610d864c21130a855857cc9cea46]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\a0a1ab90c9fc847b3b1261e8977d5fd32261d3cc]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\a3e31e20b2e46a328520472d0cde9523e7260c6d]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\a59c9b10ec7357515abb660c4d94f73b9e6e9272]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\a7f8390ba57705096fd36941d42e7198c6d4d9d5]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\a9628f4b98a91b4835bad2c1463286bb66646a8c]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\a9822e6c6933c63c148c2dcaa44a5cf1aad2c42e]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\a9e9780814375888f20519b06d2b0d2b6016907d]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\ab16dd144ecdc0fc4baab62ecf0408896fde52b7]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\ab9d58c03f54b1dae3f7c2d4c6c1ec3694559c37]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\aced5f6553fd25ce015f1f7a483b6a749f6178c6]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\b172b1a56d95f91fe50287e14d37ea6a4463768a]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\b1eac3e5b82476e9d50b1ec67d2cc11e12e0b491]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\b435d4e1119d1c6690a749ebb394bd637ba782b7]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\b72fff92d2ce43de0a8d4c548c503726a81e2b93]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\b9cd0cf69835eabf3f137f2049e4c924878477db]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\bc7b3c6fef26b9f7ab10d7a1f6b67c5ed2a12d3d]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\be36a4562fb2ee05dbb3d32323adf445084ed656]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\bed525d1ac63a7fc6a660ba7a895818d5e8dd564]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\c09ab0c8ad7114714ed5e21a5a276adcd5e7efcb]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\c0db578157e9ee82b5917df0dd6d82ee9039c4e2]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\c4674ddc6ce2967ff9c92e072ef8e8a7fbd6a131]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\c73026e325fe21916b55c4b53a56b13dcaf3d625]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\c93c34ea90d9130c0f03004b98bd8b3570915611]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\cabb51672400588e6419f1d40878d0403aa20264]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\cea9890d85d80753a626286cdad78cb566d70cf2]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\cfdefe102fda05bbe4c78d2e4423589005b2571d]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\d23209ad23d314232174e40d7f9d62139786633a]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\d2441aa8c203aecaa96e501f124d52b68fe4c375]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\d2edf88b41b6fe01461d6e2834ec7c8f6c77721e]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\d3c063f219ed073e34ad5d750b327629ffd59af2]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\d6daa8208d09d2154d24b52fcb346eb258b28a58]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\da40188b9189a3edeeaeda97fe2f9df5b7d18a41]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\da8b6567ef3f6e1ea26ab146e36ccb5728041846]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\dac9024f54d8f6df94935fb1732638ca6ad77c13]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\dde1d2a901802e1d875e84b3807e4bb1fd994134]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\de28f4a4ffe5b92fa3c503d1a349a7f9962a8212]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\de3f40bd5093d39b6c60f6dabc076201008976c9]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e0925e18c7765e22dabd9427529da6af4e066428]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e098ecf355c19953274d84772a1cec96dc3356ca]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e0ab059420725493056062023670f7cd2efc6666]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e12dfb4b41d7d9c32b30514bac1d81d8385e2d46]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e392512f0acff505dff6de067f7537e165ea574b]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e3d73606996cdfef61fa04c335e98ea96104264a]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e619d25b380b7b13fda33e8a58cd82d8a88e0515]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e70715f6f728365b5190e271dee4c65ebeeacaf3]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\e7b4f69d61ec9069db7e90a7401a3cf47d4fe8ee]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\ec0c3716ea9edfadd35dfbd55608e60a05d3cbf3]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\f17f6fb631dc99e3a3c87ffe1cf1811088d96033]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\f44095c238ac73fc4f77bf8f98df70f8f091bc52]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\f5c27cf5fff3029acf1a1a4bec7ee1964c77d784]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\faa7d9fb31b746f200a85e65797613d816e063b5]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\faaa27b8caf5fdf5cda98ac3378572e04ce8f2e0]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\authroot\certificates\fd1ed1e2021b0b9f73e8eb75ce23436bbcc746eb]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\ca\certificates\109f1caed645bb78b3ea2b94c0697c740733031c]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\ca\certificates\d559a586669b08f46a30a133f8a9ed3d038e2ea8]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\0119e81be9a14cd8e22f40ac118c687ecba3f4d8]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\06f1aa330b927b753a40e68cdf22e34bcbef3352]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\109f1caed645bb78b3ea2b94c0697c740733031c]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\18f7c1fcc3090203fd5baa2f861a754976c8dd25]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\245c97df7514e7cf2df8be72ae957b9e04741e85]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\31f9fc8ba3805986b721ea7295c65b3a44534274]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\3679ca35668772304d30a5fb873b0fa77bb70d54]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\4eb6d578499b1ccf5f581ead56be3d9b6744a5e5]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\7f88cd7223f3c813818c994614a89c99fa3b5247]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\a43489159a520f0d93d032ccaf37e7fe20a8b419]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\be36a4562fb2ee05dbb3d32323adf445084ed656]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\cdd4eeae6000ac7f40c3802c171e30148030c072]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\d559a586669b08f46a30a133f8a9ed3d038e2ea8]
+
+[-HKEY_LOCAL_MACHINE\software\microsoft\systemcertificates\root\certificates\fee449ee0e3965a5246f000e87fde2a065fd89d4]
+
 ; SSRP
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control\Srp\Gp]
@@ -46,82 +1116,80 @@ Windows Registry Editor Version 5.00
   4e,00,4e,00,45,00,43,00,54,00,4f,00,52,00,2d,00,4d,00,53,00,00,00,53,00,45,\
   00,41,00,00,00,53,00,43,00,54,00,00,00,53,00,43,00,46,00,00,00,52,00,54,00,\
   46,00,00,00,52,00,51,00,59,00,00,00,52,00,50,00,59,00,00,00,52,00,45,00,56,\
-  00,00,00,52,00,45,00,47,00,00,00,52,00,42,00,00,00,52,00,41,00,52,00,00,00,\
-  52,00,30,00,39,00,00,00,52,00,30,00,38,00,00,00,52,00,30,00,37,00,00,00,52,\
-  00,30,00,36,00,00,00,52,00,30,00,35,00,00,00,52,00,30,00,34,00,00,00,52,00,\
-  30,00,33,00,00,00,52,00,30,00,32,00,00,00,52,00,30,00,31,00,00,00,52,00,30,\
-  00,30,00,00,00,50,00,59,00,5a,00,57,00,00,00,50,00,59,00,5a,00,00,00,50,00,\
-  59,00,58,00,00,00,50,00,59,00,57,00,5a,00,00,00,50,00,59,00,57,00,00,00,50,\
-  00,59,00,54,00,00,00,50,00,59,00,50,00,00,00,50,00,59,00,4f,00,00,00,50,00,\
-  59,00,49,00,00,00,50,00,59,00,44,00,45,00,00,00,50,00,59,00,44,00,00,00,50,\
-  00,59,00,43,00,00,00,50,00,59,00,33,00,00,00,50,00,59,00,00,00,50,00,58,00,\
-  44,00,00,00,50,00,53,00,54,00,52,00,45,00,47,00,00,00,50,00,53,00,54,00,00,\
-  00,50,00,53,00,44,00,4d,00,31,00,00,00,50,00,53,00,44,00,31,00,00,00,50,00,\
-  52,00,4e,00,00,00,50,00,52,00,49,00,4e,00,54,00,45,00,52,00,45,00,58,00,50,\
-  00,4f,00,52,00,54,00,00,00,50,00,52,00,47,00,00,00,50,00,52,00,46,00,00,00,\
-  50,00,50,00,54,00,58,00,00,00,50,00,50,00,54,00,4d,00,00,00,50,00,50,00,54,\
-  00,00,00,50,00,50,00,53,00,58,00,00,00,50,00,50,00,53,00,4d,00,00,00,50,00,\
-  50,00,53,00,00,00,50,00,50,00,41,00,4d,00,00,00,50,00,50,00,41,00,00,00,50,\
-  00,4f,00,54,00,58,00,00,00,50,00,4f,00,54,00,4d,00,00,00,50,00,4f,00,54,00,\
-  00,00,50,00,4c,00,47,00,00,00,50,00,4c,00,00,00,50,00,4b,00,47,00,00,00,50,\
-  00,49,00,46,00,00,00,50,00,49,00,00,00,50,00,45,00,52,00,4c,00,00,00,50,00,\
-  43,00,44,00,00,00,50,00,41,00,00,00,4f,00,53,00,44,00,00,00,4f,00,51,00,59,\
-  00,00,00,4f,00,50,00,53,00,00,00,4f,00,4e,00,45,00,00,00,4f,00,44,00,53,00,\
-  00,00,4e,00,54,00,46,00,53,00,00,00,4e,00,53,00,48,00,00,00,4e,00,4c,00,53,\
-  00,00,00,4d,00,59,00,44,00,4f,00,43,00,53,00,00,00,4d,00,55,00,49,00,00,00,\
-  4d,00,53,00,55,00,00,00,4d,00,53,00,54,00,00,00,4d,00,53,00,50,00,00,00,4d,\
-  00,53,00,48,00,58,00,4d,00,4c,00,00,00,4d,00,53,00,48,00,32,00,58,00,4d,00,\
-  4c,00,00,00,4d,00,53,00,48,00,32,00,00,00,4d,00,53,00,48,00,31,00,58,00,4d,\
-  00,4c,00,00,00,4d,00,53,00,48,00,31,00,00,00,4d,00,53,00,48,00,00,00,4d,00,\
-  4f,00,46,00,00,00,4d,00,4d,00,43,00,00,00,4d,00,48,00,54,00,4d,00,4c,00,00,\
-  00,4d,00,48,00,54,00,00,00,4d,00,44,00,5a,00,00,00,4d,00,44,00,57,00,00,00,\
-  4d,00,44,00,54,00,00,00,4d,00,44,00,4e,00,00,00,4d,00,44,00,46,00,00,00,4d,\
-  00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,4d,00,44,00,41,00,00,00,4d,00,\
-  43,00,4c,00,00,00,4d,00,43,00,46,00,00,00,4d,00,41,00,59,00,00,00,4d,00,41,\
-  00,57,00,00,00,4d,00,41,00,56,00,00,00,4d,00,41,00,55,00,00,00,4d,00,41,00,\
-  54,00,00,00,4d,00,41,00,53,00,00,00,4d,00,41,00,52,00,00,00,4d,00,41,00,51,\
-  00,00,00,4d,00,41,00,50,00,49,00,4d,00,41,00,49,00,4c,00,00,00,4d,00,41,00,\
-  4e,00,49,00,46,00,45,00,53,00,54,00,00,00,4d,00,41,00,4d,00,00,00,4d,00,41,\
-  00,47,00,00,00,4d,00,41,00,46,00,00,00,4d,00,41,00,44,00,00,00,4c,00,5a,00,\
-  48,00,00,00,4c,00,4f,00,43,00,41,00,4c,00,00,00,4c,00,49,00,42,00,52,00,41,\
-  00,52,00,59,00,2d,00,4d,00,53,00,00,00,4c,00,48,00,41,00,00,00,4c,00,44,00,\
-  42,00,00,00,4c,00,41,00,43,00,43,00,44,00,42,00,00,00,4b,00,53,00,48,00,00,\
-  00,4a,00,4f,00,42,00,00,00,4a,00,4e,00,4c,00,50,00,00,00,4a,00,41,00,52,00,\
-  00,00,49,00,54,00,53,00,00,00,49,00,53,00,50,00,00,00,49,00,53,00,4f,00,00,\
-  00,49,00,51,00,59,00,00,00,49,00,4e,00,53,00,00,00,49,00,4e,00,49,00,00,00,\
-  49,00,4d,00,47,00,00,00,49,00,4d,00,45,00,00,00,49,00,45,00,00,00,48,00,57,\
-  00,50,00,00,00,48,00,54,00,54,00,00,00,48,00,54,00,4d,00,00,00,48,00,54,00,\
-  43,00,00,00,48,00,54,00,41,00,00,00,48,00,51,00,58,00,00,00,48,00,50,00,4a,\
-  00,00,00,48,00,4c,00,50,00,00,00,48,00,45,00,58,00,00,00,47,00,5a,00,00,00,\
-  47,00,52,00,50,00,00,00,47,00,4c,00,4b,00,00,00,47,00,41,00,44,00,47,00,45,\
-  00,54,00,00,00,46,00,58,00,50,00,00,00,46,00,4f,00,4e,00,00,00,46,00,41,00,\
-  54,00,00,00,45,00,4c,00,46,00,00,00,45,00,43,00,46,00,00,00,44,00,52,00,56,\
-  00,00,00,44,00,51,00,59,00,00,00,44,00,4f,00,54,00,58,00,00,00,44,00,4f,00,\
-  54,00,4d,00,00,00,44,00,4f,00,54,00,00,00,44,00,4f,00,43,00,4d,00,00,00,44,\
-  00,4f,00,43,00,42,00,00,00,44,00,4f,00,43,00,00,00,44,00,4d,00,47,00,00,00,\
-  44,00,4c,00,4c,00,00,00,44,00,49,00,52,00,00,00,44,00,49,00,46,00,00,00,44,\
-  00,49,00,41,00,47,00,43,00,41,00,42,00,00,00,44,00,45,00,53,00,4b,00,54,00,\
-  4f,00,50,00,00,00,44,00,45,00,53,00,4b,00,4c,00,49,00,4e,00,4b,00,00,00,44,\
-  00,45,00,52,00,00,00,44,00,43,00,52,00,00,00,44,00,42,00,00,00,43,00,53,00,\
-  56,00,00,00,43,00,53,00,48,00,00,00,43,00,52,00,58,00,00,00,43,00,52,00,54,\
-  00,00,00,43,00,52,00,41,00,5a,00,59,00,00,00,43,00,50,00,58,00,00,00,43,00,\
-  4f,00,4d,00,4d,00,41,00,4e,00,44,00,00,00,43,00,4e,00,56,00,00,00,43,00,4e,\
-  00,54,00,00,00,43,00,4c,00,42,00,00,00,43,00,4c,00,41,00,53,00,53,00,00,00,\
-  43,00,4c,00,41,00,00,00,43,00,48,00,4d,00,00,00,43,00,48,00,49,00,00,00,43,\
-  00,46,00,47,00,00,00,43,00,45,00,52,00,00,00,43,00,44,00,42,00,00,00,43,00,\
-  41,00,42,00,00,00,42,00,5a,00,49,00,50,00,32,00,00,00,42,00,5a,00,49,00,50,\
-  00,00,00,42,00,5a,00,32,00,00,00,42,00,5a,00,00,00,42,00,41,00,53,00,00,00,\
-  41,00,58,00,00,00,41,00,53,00,58,00,00,00,41,00,53,00,50,00,58,00,00,00,41,\
-  00,53,00,50,00,00,00,41,00,53,00,41,00,00,00,41,00,52,00,4a,00,00,00,41,00,\
-  52,00,43,00,00,00,41,00,50,00,50,00,52,00,45,00,46,00,2d,00,4d,00,53,00,00,\
-  00,41,00,50,00,50,00,4c,00,49,00,43,00,41,00,54,00,49,00,4f,00,4e,00,00,00,\
-  41,00,50,00,50,00,00,00,41,00,49,00,52,00,00,00,41,00,44,00,50,00,00,00,41,\
-  00,44,00,4e,00,00,00,41,00,44,00,45,00,00,00,41,00,44,00,00,00,41,00,43,00,\
-  4d,00,00,00,41,00,43,00,43,00,44,00,55,00,00,00,41,00,43,00,43,00,44,00,54,\
-  00,00,00,41,00,43,00,43,00,44,00,52,00,00,00,41,00,43,00,43,00,44,00,45,00,\
-  00,00,41,00,43,00,43,00,44,00,41,00,00,00,49,00,4e,00,46,00,00,00,4d,00,53,\
-  00,43,00,00,00,4d,00,53,00,49,00,00,00,50,00,53,00,31,00,00,00,57,00,50,00,\
-  43,00,00,00,00,00
+  00,00,00,52,00,42,00,00,00,52,00,41,00,52,00,00,00,52,00,30,00,39,00,00,00,\
+  52,00,30,00,38,00,00,00,52,00,30,00,37,00,00,00,52,00,30,00,36,00,00,00,52,\
+  00,30,00,35,00,00,00,52,00,30,00,34,00,00,00,52,00,30,00,33,00,00,00,52,00,\
+  30,00,32,00,00,00,52,00,30,00,31,00,00,00,52,00,30,00,30,00,00,00,50,00,59,\
+  00,5a,00,57,00,00,00,50,00,59,00,5a,00,00,00,50,00,59,00,58,00,00,00,50,00,\
+  59,00,57,00,5a,00,00,00,50,00,59,00,57,00,00,00,50,00,59,00,54,00,00,00,50,\
+  00,59,00,50,00,00,00,50,00,59,00,4f,00,00,00,50,00,59,00,49,00,00,00,50,00,\
+  59,00,44,00,45,00,00,00,50,00,59,00,44,00,00,00,50,00,59,00,43,00,00,00,50,\
+  00,59,00,33,00,00,00,50,00,59,00,00,00,50,00,58,00,44,00,00,00,50,00,53,00,\
+  54,00,52,00,45,00,47,00,00,00,50,00,53,00,54,00,00,00,50,00,53,00,44,00,4d,\
+  00,31,00,00,00,50,00,53,00,44,00,31,00,00,00,50,00,52,00,4e,00,00,00,50,00,\
+  52,00,49,00,4e,00,54,00,45,00,52,00,45,00,58,00,50,00,4f,00,52,00,54,00,00,\
+  00,50,00,52,00,47,00,00,00,50,00,52,00,46,00,00,00,50,00,50,00,54,00,58,00,\
+  00,00,50,00,50,00,54,00,4d,00,00,00,50,00,50,00,54,00,00,00,50,00,50,00,53,\
+  00,58,00,00,00,50,00,50,00,53,00,4d,00,00,00,50,00,50,00,53,00,00,00,50,00,\
+  50,00,41,00,4d,00,00,00,50,00,50,00,41,00,00,00,50,00,4f,00,54,00,58,00,00,\
+  00,50,00,4f,00,54,00,4d,00,00,00,50,00,4f,00,54,00,00,00,50,00,4c,00,47,00,\
+  00,00,50,00,4c,00,00,00,50,00,4b,00,47,00,00,00,50,00,49,00,46,00,00,00,50,\
+  00,49,00,00,00,50,00,45,00,52,00,4c,00,00,00,50,00,43,00,44,00,00,00,50,00,\
+  41,00,00,00,4f,00,53,00,44,00,00,00,4f,00,51,00,59,00,00,00,4f,00,50,00,53,\
+  00,00,00,4f,00,4e,00,45,00,00,00,4f,00,44,00,53,00,00,00,4e,00,54,00,46,00,\
+  53,00,00,00,4e,00,53,00,48,00,00,00,4e,00,4c,00,53,00,00,00,4d,00,59,00,44,\
+  00,4f,00,43,00,53,00,00,00,4d,00,55,00,49,00,00,00,4d,00,53,00,55,00,00,00,\
+  4d,00,53,00,54,00,00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,48,00,58,00,4d,\
+  00,4c,00,00,00,4d,00,53,00,48,00,32,00,58,00,4d,00,4c,00,00,00,4d,00,53,00,\
+  48,00,32,00,00,00,4d,00,53,00,48,00,31,00,58,00,4d,00,4c,00,00,00,4d,00,53,\
+  00,48,00,31,00,00,00,4d,00,53,00,48,00,00,00,4d,00,4f,00,46,00,00,00,4d,00,\
+  4d,00,43,00,00,00,4d,00,48,00,54,00,4d,00,4c,00,00,00,4d,00,48,00,54,00,00,\
+  00,4d,00,44,00,5a,00,00,00,4d,00,44,00,57,00,00,00,4d,00,44,00,54,00,00,00,\
+  4d,00,44,00,4e,00,00,00,4d,00,44,00,46,00,00,00,4d,00,44,00,45,00,00,00,4d,\
+  00,44,00,42,00,00,00,4d,00,44,00,41,00,00,00,4d,00,43,00,4c,00,00,00,4d,00,\
+  43,00,46,00,00,00,4d,00,41,00,59,00,00,00,4d,00,41,00,57,00,00,00,4d,00,41,\
+  00,56,00,00,00,4d,00,41,00,55,00,00,00,4d,00,41,00,54,00,00,00,4d,00,41,00,\
+  53,00,00,00,4d,00,41,00,52,00,00,00,4d,00,41,00,51,00,00,00,4d,00,41,00,50,\
+  00,49,00,4d,00,41,00,49,00,4c,00,00,00,4d,00,41,00,4e,00,49,00,46,00,45,00,\
+  53,00,54,00,00,00,4d,00,41,00,4d,00,00,00,4d,00,41,00,47,00,00,00,4d,00,41,\
+  00,46,00,00,00,4d,00,41,00,44,00,00,00,4c,00,5a,00,48,00,00,00,4c,00,4f,00,\
+  43,00,41,00,4c,00,00,00,4c,00,49,00,42,00,52,00,41,00,52,00,59,00,2d,00,4d,\
+  00,53,00,00,00,4c,00,48,00,41,00,00,00,4c,00,44,00,42,00,00,00,4c,00,41,00,\
+  43,00,43,00,44,00,42,00,00,00,4b,00,53,00,48,00,00,00,4a,00,4f,00,42,00,00,\
+  00,4a,00,4e,00,4c,00,50,00,00,00,4a,00,41,00,52,00,00,00,49,00,54,00,53,00,\
+  00,00,49,00,53,00,50,00,00,00,49,00,53,00,4f,00,00,00,49,00,51,00,59,00,00,\
+  00,49,00,4e,00,53,00,00,00,49,00,4e,00,49,00,00,00,49,00,4d,00,47,00,00,00,\
+  49,00,4d,00,45,00,00,00,49,00,45,00,00,00,48,00,57,00,50,00,00,00,48,00,54,\
+  00,54,00,00,00,48,00,54,00,4d,00,00,00,48,00,54,00,43,00,00,00,48,00,54,00,\
+  41,00,00,00,48,00,51,00,58,00,00,00,48,00,50,00,4a,00,00,00,48,00,4c,00,50,\
+  00,00,00,48,00,45,00,58,00,00,00,47,00,5a,00,00,00,47,00,52,00,50,00,00,00,\
+  47,00,4c,00,4b,00,00,00,47,00,41,00,44,00,47,00,45,00,54,00,00,00,46,00,58,\
+  00,50,00,00,00,46,00,4f,00,4e,00,00,00,46,00,41,00,54,00,00,00,45,00,4c,00,\
+  46,00,00,00,45,00,43,00,46,00,00,00,44,00,52,00,56,00,00,00,44,00,51,00,59,\
+  00,00,00,44,00,4f,00,54,00,58,00,00,00,44,00,4f,00,54,00,4d,00,00,00,44,00,\
+  4f,00,54,00,00,00,44,00,4f,00,43,00,4d,00,00,00,44,00,4f,00,43,00,42,00,00,\
+  00,44,00,4f,00,43,00,00,00,44,00,4d,00,47,00,00,00,44,00,4c,00,4c,00,00,00,\
+  44,00,49,00,52,00,00,00,44,00,49,00,46,00,00,00,44,00,49,00,41,00,47,00,43,\
+  00,41,00,42,00,00,00,44,00,45,00,53,00,4b,00,54,00,4f,00,50,00,00,00,44,00,\
+  45,00,53,00,4b,00,4c,00,49,00,4e,00,4b,00,00,00,44,00,45,00,52,00,00,00,44,\
+  00,43,00,52,00,00,00,44,00,42,00,00,00,43,00,53,00,56,00,00,00,43,00,53,00,\
+  48,00,00,00,43,00,52,00,58,00,00,00,43,00,52,00,54,00,00,00,43,00,52,00,41,\
+  00,5a,00,59,00,00,00,43,00,50,00,58,00,00,00,43,00,4f,00,4d,00,4d,00,41,00,\
+  4e,00,44,00,00,00,43,00,4e,00,56,00,00,00,43,00,4e,00,54,00,00,00,43,00,4c,\
+  00,42,00,00,00,43,00,4c,00,41,00,53,00,53,00,00,00,43,00,4c,00,41,00,00,00,\
+  43,00,48,00,4d,00,00,00,43,00,48,00,49,00,00,00,43,00,46,00,47,00,00,00,43,\
+  00,45,00,52,00,00,00,43,00,44,00,42,00,00,00,43,00,41,00,42,00,00,00,42,00,\
+  5a,00,49,00,50,00,32,00,00,00,42,00,5a,00,49,00,50,00,00,00,42,00,5a,00,32,\
+  00,00,00,42,00,5a,00,00,00,42,00,41,00,53,00,00,00,41,00,58,00,00,00,41,00,\
+  53,00,58,00,00,00,41,00,53,00,50,00,58,00,00,00,41,00,53,00,50,00,00,00,41,\
+  00,53,00,41,00,00,00,41,00,52,00,4a,00,00,00,41,00,52,00,43,00,00,00,41,00,\
+  50,00,50,00,52,00,45,00,46,00,2d,00,4d,00,53,00,00,00,41,00,50,00,50,00,4c,\
+  00,49,00,43,00,41,00,54,00,49,00,4f,00,4e,00,00,00,41,00,50,00,50,00,00,00,\
+  41,00,49,00,52,00,00,00,41,00,44,00,50,00,00,00,41,00,44,00,4e,00,00,00,41,\
+  00,44,00,45,00,00,00,41,00,44,00,00,00,41,00,43,00,4d,00,00,00,41,00,43,00,\
+  43,00,44,00,55,00,00,00,41,00,43,00,43,00,44,00,54,00,00,00,41,00,43,00,43,\
+  00,44,00,52,00,00,00,41,00,43,00,43,00,44,00,45,00,00,00,41,00,43,00,43,00,\
+  44,00,41,00,00,00,00,00
 "Levels"=dword:00071000
 "LogFileName"="C:\\Windows\\system32\\LogFiles\\SAFER.LOG"
 
