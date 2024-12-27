@@ -1,5 +1,10 @@
 @echo off
 
+rem Remove default user
+net user defaultuser0 /delete
+net user defaultuser1 /delete
+net user defaultuser100000 /delete
+
 mkdir C:\Windows\GShield
 copy emptystandbylist.exe C:\Windows\GShield\emptystandbylist.exe
 copy RamCleaner.bat C:\Windows\GShield\RamCleaner.bat
@@ -88,7 +93,7 @@ powercfg /h off
 powercfg /setACvalueindex scheme_current SUB_PROCESSOR SYSCOOLPOL 1
 powercfg /setDCvalueindex scheme_current SUB_PROCESSOR SYSCOOLPOL 1
 powercfg /setactive SCHEME_CURRENT
-bcdedit /set {current} numproc %NUMBER_OF_PROCESSORS% 
+%windir%\System32\bcdedit /set {current} numproc %NUMBER_OF_PROCESSORS% 
 powercfg -setacvalueindex scheme_current SUB_SLEEP AWAYMODE 0
 powercfg /setactive SCHEME_CURRENT
 powercfg -setacvalueindex scheme_current SUB_SLEEP ALLOWSTANDBY 0
@@ -102,12 +107,12 @@ powercfg /setactive SCHEME_CURRENT
 powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100
 powercfg /setactive SCHEME_CURRENT
 powercfg -setacvalueindex scheme_current sub_processor THROTTLING 0
-bcdedit /set allowedinmemorysettings 0x0
-bcdedit /set isolatedcontext No
+%windir%\System32\bcdedit /set allowedinmemorysettings 0x0
+%windir%\System32\bcdedit /set isolatedcontext No
 powercfg /setACvalueindex scheme_current SUB_PROCESSOR SYSCOOLPOL 1
 powercfg /setDCvalueindex scheme_current SUB_PROCESSOR SYSCOOLPOL 1
 powercfg /setactive SCHEME_CURRENT
-bcdedit /set {current} numproc %NUMBER_OF_PROCESSORS% 
+%windir%\System32\bcdedit /set {current} numproc %NUMBER_OF_PROCESSORS% 
 powercfg -setacvalueindex scheme_current SUB_SLEEP AWAYMODE 0
 powercfg /setactive SCHEME_CURRENT
 powercfg -setacvalueindex scheme_current SUB_SLEEP ALLOWSTANDBY 0
@@ -132,9 +137,9 @@ for /f %%t in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e968
     Reg.exe add "%%t" /v "ACPowerPolicyVersion" /t REG_DWORD /d "16898" /f
     Reg.exe add "%%t" /v "DCPowerPolicyVersion" /t REG_DWORD /d "16642" /f
 )
-bcdedit /set disabledynamictick yes >nul 2>&1
-bcdedit /deletevalue useplatformclock  >nul 2>&1
-bcdedit /set useplatformtick yes  >nul 2>&1
+%windir%\System32\bcdedit /set disabledynamictick yes >nul 2>&1
+%windir%\System32\bcdedit /deletevalue useplatformclock  >nul 2>&1
+%windir%\System32\bcdedit /set useplatformtick yes  >nul 2>&1
 fsutil behavior set memoryusage 2 >nul 2>&1
 fsutil behavior set mftzone 4 >nul 2>&1
 fsutil behavior set disablelastaccess 1 >nul 2>&1
@@ -143,7 +148,7 @@ fsutil behavior set encryptpagingfile 0 >nul 2>&1
 for /f %%n in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}" /v "*SpeedDuplex" /s ^| findstr  "HKEY"') do (
 Reg.exe add "%%n" /v "*InterruptModeration" /t REG_SZ /d "1" /f 
 )
-for /f "skip=1" %%i in ('wmic os get TotalVisibleMemorySize') do if not defined TOTAL_MEMORY set "TOTAL_MEMORY=%%i" & set /a SVCHOST=%%i+1024000
+for /f "skip=1" %%i in ('%windir%\System32\wmic os get TotalVisibleMemorySize') do if not defined TOTAL_MEMORY set "TOTAL_MEMORY=%%i" & set /a SVCHOST=%%i+1024000
 powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
 powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
@@ -158,7 +163,7 @@ SET STR=%%z
 SET STR=!STR:HKLM\System\CurrentControlSet\Services\=!
 ) > nul 
 )
-for /f %%g in ('wmic path win32_videocontroller get PNPDeviceID ^| findstr /L "VEN_"') do (
+for /f %%g in ('%windir%\System32\wmic path win32_videocontroller get PNPDeviceID ^| findstr /L "VEN_"') do (
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f  
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /t REG_DWORD /d "0" /f 
 )
@@ -169,11 +174,11 @@ schtasks /change /disable /tn "NvTmRep_CrashReport4_{B2FE1952-0186-46C3-BAEC-A80
 schtasks /change /disable /tn "NvDriverUpdateCheckDaily_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
 schtasks /change /disable /tn "NVIDIA GeForce Experience SelfUpdate_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
 schtasks /change /disable /tn "NvTmMon_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
-for /f %%g in ('wmic path win32_videocontroller get PNPDeviceID ^| findstr /L "VEN_"') do (
+for /f %%g in ('%windir%\System32\wmic path win32_videocontroller get PNPDeviceID ^| findstr /L "VEN_"') do (
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f  
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /t REG_DWORD /d "0" /f 
 )
-for /f %%i in ('wmic path Win32_USBController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+for /f %%i in ('%windir%\System32\wmic path Win32_USBController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "AllowIdleIrpInD3" /t REG_DWORD /d "0" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "D3ColdSupported" /t REG_DWORD /d "0" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "DeviceSelectiveSuspended" /t REG_DWORD /d "0" /f 
@@ -182,11 +187,11 @@ Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "Enhan
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "SelectiveSuspendEnabled" /t REG_DWORD /d "0" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "SelectiveSuspendOn" /t REG_DWORD /d "0" /f 
 )
-for /f %%i in ('wmic path Win32_USBController get PNPDeviceID') do set "str=%%i" & (
+for /f %%i in ('%windir%\System32\wmic path Win32_USBController get PNPDeviceID') do set "str=%%i" & (
 Reg.exe add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
 Reg.exe add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
 )
-for /f %%i in ('wmic path Win32_IDEController get PNPDeviceID 2^>nul') do set "str=%%i" & if "!str:PCI\VEN_=!" neq "!str!" (
+for /f %%i in ('%windir%\System32\wmic path Win32_IDEController get PNPDeviceID 2^>nul') do set "str=%%i" & if "!str:PCI\VEN_=!" neq "!str!" (
 Reg.exe add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
 )
 
@@ -221,6 +226,6 @@ for /f "tokens=*" %%A in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSe
 )
 echo PXE boot disabled for all network adapters.
 
-bcdedit /delete "{3512665e-b493-11ef-95ec-806e6f6e6963}"
-bcdedit /delete "{3512665f-b493-11ef-95ec-806e6f6e6963}"
-bcdedit /delete "{35126660-b493-11ef-95ec-806e6f6e6963}"
+%windir%\System32\bcdedit /delete "{3512665e-b493-11ef-95ec-806e6f6e6963}"
+%windir%\System32\bcdedit /delete "{3512665f-b493-11ef-95ec-806e6f6e6963}"
+%windir%\System32\bcdedit /delete "{35126660-b493-11ef-95ec-806e6f6e6963}"
