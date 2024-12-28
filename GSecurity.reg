@@ -10,9 +10,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\software\classes\cm_proxyentries\clsid]
 @=-
 
-[HKEY_LOCAL_MACHINE\software\Classes\cmdfile\shell\runasuser]
-"SuppressionPolicy"=dword:00001000
-
 [HKEY_LOCAL_MACHINE\software\classes\cmpolicy\clsid]
 @=-
 
@@ -610,9 +607,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{31337ec7-5767-11cf-beab-00aa006c3606}\localserver32]
 @=-
 
-[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{323CA680-C24D-4099-B94D-446DD2D7249E}\ShellFolder]
-"Attributes"=dword:a0c00100
-
 [HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{363be3c0-ddd4-4b21-bc6d-7e9df8ce19cb}\inprocserver32]
 @=-
 
@@ -639,9 +633,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{5eb699b3-9296-41ba-9258-de70f03b7d6c}\inprocserver32]
 @=-
-
-[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{679f85cb-0220-4080-b29b-5540cc05aab6}\ShellFolder]
-"Attributes"=dword:a0500000
 
 [HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{786cdb70-1628-44a0-853c-5d340a499137}\typelib]
 @=-
@@ -696,12 +687,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{eda59c23-fcb4-44af-bfe0-3708c08a212d}\localserver32]
 @=-
-
-[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}\ShellFolder]
-"Attributes"=dword:b0140064
-
-[HKEY_LOCAL_MACHINE\software\Classes\wow6432node\clsid\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}\ShellFolder]
-"Attributes"=dword:b0100000
 
 [HKEY_LOCAL_MACHINE\software\classes\wow6432node\clsid\{fa6c507d-a9af-4385-86c0-80115f0ae20b}\inprocserver32]
 @=-
