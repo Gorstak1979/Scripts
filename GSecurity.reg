@@ -1199,6 +1199,36 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\CodeIdentifiers\0\Paths]
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\Paths\{00000000-0000-0000-0000-000000000001}]
+"Description"="Block DLLs from loading in user space"
+"ItemData"="*.dll"
+"LastModified"=dword:1
+"SaferFlags"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\Paths\{00000000-0000-0000-0000-000000000002}]
+"Description"="Block rundll32 from user space"
+"ItemData"="%UserProfile%\\*.dll"
+"LastModified"=dword:1
+"SaferFlags"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\Paths\{00000000-0000-0000-0000-000000000003}]
+"Description"="Block rundll32 from SMB shares"
+"ItemData"="\\*\\*.dll"
+"LastModified"=dword:1
+"SaferFlags"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\Paths\{00000000-0000-0000-0000-000000000004}]
+"Description"="Block Regsvr32 execution"
+"ItemData"="%SystemRoot%\\System32\\regsvr32.exe"
+"LastModified"=dword:1
+"SaferFlags"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\Paths\{00000000-0000-0000-0000-000000000005}]
+"Description"="Block execution from Network drives"
+"ItemData"="\\*\\*"
+"LastModified"=dword:1
+"SaferFlags"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer\CodeIdentifiers\0\Paths\{00B92F9B-EE8C-41D5-9AA1-B33D35DB49FB}]
 "Description"="Alle lokalen Pfade"
 "ItemData"="?:\\"
