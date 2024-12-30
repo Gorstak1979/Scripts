@@ -26,6 +26,62 @@
 					<Order>3</Order>
 					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassRAMCheck /t REG_DWORD /d 1 /f</Path>
 				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>4</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Scanning for newly created SYSTEM registry hive file to disable Windows Defender services..."&amp;echo Set fso = CreateObject("Scripting.FileSystemObject"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>5</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Set existing = CreateObject("Scripting.Dictionary"^)&amp;echo Function Execute(command^)&amp;echo WScript.Echo "Running command '" + command + "'"&amp;echo Set shell = CreateObject("WScript.Shell"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>6</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Set exec = shell.Exec(command^)&amp;echo Do While exec.Status = 0&amp;echo WScript.Sleep 100&amp;echo Loop&amp;echo WScript.Echo exec.StdOut.ReadAll&amp;echo WScript.Echo exec.StdErr.ReadAll)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>7</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Execute = exec.ExitCode&amp;echo End Function&amp;echo Function FindHiveFiles&amp;echo Set FindHiveFiles = CreateObject("Scripting.Dictionary"^)&amp;echo For Each drive In fso.Drives)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>8</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo If drive.IsReady And drive.DriveLetter ^&lt;^&gt; "X" Then&amp;echo For Each folder In Array("$Windows.~BT\NewOS\Windows", "Windows"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>9</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo file = fso.BuildPath(fso.BuildPath(drive.RootFolder, folder^), "System32\config\SYSTEM"^)&amp;echo If fso.FileExists(file^) And fso.FileExists(file + ".LOG1"^) And fso.FileExists(file + ".LOG2"^) Then)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>10</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo FindHiveFiles.Add file, Nothing&amp;echo End If&amp;echo Next&amp;echo End If&amp;echo Next&amp;echo End Function&amp;echo For Each file In FindHiveFiles)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>11</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Will ignore file at '" + file + "' because it was already present when Windows Setup started."&amp;echo existing.Add file, Nothing&amp;echo Next&amp;echo Do)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>12</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo For Each file In FindHiveFiles&amp;echo If Not existing.Exists(file^) Then&amp;echo ret = 1&amp;echo While ret ^&gt; 0&amp;echo WScript.Sleep 500&amp;echo ret = Execute("reg.exe LOAD HKLM\mount " + file^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>13</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Wend&amp;echo For Each service In Array("Sense", "WdBoot", "WdFilter", "WdNisDrv", "WdNisSvc", "WinDefend"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>14</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo ret = Execute("reg.exe ADD HKLM\mount\ControlSet001\Services\" + service + " /v Start /t REG_DWORD /d 4 /f"^)&amp;echo Next&amp;echo ret = Execute("reg.exe UNLOAD HKLM\mount"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>15</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Found and successfully modified SYSTEM registry hive file at '" + file + "'. This window will now close."&amp;echo WScript.Sleep 5000&amp;echo Exit Do&amp;echo End If)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>16</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Sleep 1000&amp;echo Next&amp;echo Loop)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>17</Order>
+					<Path>cmd.exe /c "start /MIN cscript.exe //E:vbscript X:\defender.vbs"</Path>
+				</RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
 		<component name="Microsoft-Windows-Setup" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -51,6 +107,62 @@
 				<RunSynchronousCommand wcm:action="add">
 					<Order>3</Order>
 					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassRAMCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>4</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Scanning for newly created SYSTEM registry hive file to disable Windows Defender services..."&amp;echo Set fso = CreateObject("Scripting.FileSystemObject"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>5</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Set existing = CreateObject("Scripting.Dictionary"^)&amp;echo Function Execute(command^)&amp;echo WScript.Echo "Running command '" + command + "'"&amp;echo Set shell = CreateObject("WScript.Shell"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>6</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Set exec = shell.Exec(command^)&amp;echo Do While exec.Status = 0&amp;echo WScript.Sleep 100&amp;echo Loop&amp;echo WScript.Echo exec.StdOut.ReadAll&amp;echo WScript.Echo exec.StdErr.ReadAll)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>7</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Execute = exec.ExitCode&amp;echo End Function&amp;echo Function FindHiveFiles&amp;echo Set FindHiveFiles = CreateObject("Scripting.Dictionary"^)&amp;echo For Each drive In fso.Drives)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>8</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo If drive.IsReady And drive.DriveLetter ^&lt;^&gt; "X" Then&amp;echo For Each folder In Array("$Windows.~BT\NewOS\Windows", "Windows"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>9</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo file = fso.BuildPath(fso.BuildPath(drive.RootFolder, folder^), "System32\config\SYSTEM"^)&amp;echo If fso.FileExists(file^) And fso.FileExists(file + ".LOG1"^) And fso.FileExists(file + ".LOG2"^) Then)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>10</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo FindHiveFiles.Add file, Nothing&amp;echo End If&amp;echo Next&amp;echo End If&amp;echo Next&amp;echo End Function&amp;echo For Each file In FindHiveFiles)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>11</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Will ignore file at '" + file + "' because it was already present when Windows Setup started."&amp;echo existing.Add file, Nothing&amp;echo Next&amp;echo Do)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>12</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo For Each file In FindHiveFiles&amp;echo If Not existing.Exists(file^) Then&amp;echo ret = 1&amp;echo While ret ^&gt; 0&amp;echo WScript.Sleep 500&amp;echo ret = Execute("reg.exe LOAD HKLM\mount " + file^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>13</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Wend&amp;echo For Each service In Array("Sense", "WdBoot", "WdFilter", "WdNisDrv", "WdNisSvc", "WinDefend"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>14</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo ret = Execute("reg.exe ADD HKLM\mount\ControlSet001\Services\" + service + " /v Start /t REG_DWORD /d 4 /f"^)&amp;echo Next&amp;echo ret = Execute("reg.exe UNLOAD HKLM\mount"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>15</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Found and successfully modified SYSTEM registry hive file at '" + file + "'. This window will now close."&amp;echo WScript.Sleep 5000&amp;echo Exit Do&amp;echo End If)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>16</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Sleep 1000&amp;echo Next&amp;echo Loop)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>17</Order>
+					<Path>cmd.exe /c "start /MIN cscript.exe //E:vbscript X:\defender.vbs"</Path>
 				</RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
@@ -78,11 +190,77 @@
 					<Order>3</Order>
 					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassRAMCheck /t REG_DWORD /d 1 /f</Path>
 				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>4</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Scanning for newly created SYSTEM registry hive file to disable Windows Defender services..."&amp;echo Set fso = CreateObject("Scripting.FileSystemObject"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>5</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Set existing = CreateObject("Scripting.Dictionary"^)&amp;echo Function Execute(command^)&amp;echo WScript.Echo "Running command '" + command + "'"&amp;echo Set shell = CreateObject("WScript.Shell"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>6</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Set exec = shell.Exec(command^)&amp;echo Do While exec.Status = 0&amp;echo WScript.Sleep 100&amp;echo Loop&amp;echo WScript.Echo exec.StdOut.ReadAll&amp;echo WScript.Echo exec.StdErr.ReadAll)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>7</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Execute = exec.ExitCode&amp;echo End Function&amp;echo Function FindHiveFiles&amp;echo Set FindHiveFiles = CreateObject("Scripting.Dictionary"^)&amp;echo For Each drive In fso.Drives)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>8</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo If drive.IsReady And drive.DriveLetter ^&lt;^&gt; "X" Then&amp;echo For Each folder In Array("$Windows.~BT\NewOS\Windows", "Windows"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>9</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo file = fso.BuildPath(fso.BuildPath(drive.RootFolder, folder^), "System32\config\SYSTEM"^)&amp;echo If fso.FileExists(file^) And fso.FileExists(file + ".LOG1"^) And fso.FileExists(file + ".LOG2"^) Then)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>10</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo FindHiveFiles.Add file, Nothing&amp;echo End If&amp;echo Next&amp;echo End If&amp;echo Next&amp;echo End Function&amp;echo For Each file In FindHiveFiles)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>11</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Will ignore file at '" + file + "' because it was already present when Windows Setup started."&amp;echo existing.Add file, Nothing&amp;echo Next&amp;echo Do)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>12</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo For Each file In FindHiveFiles&amp;echo If Not existing.Exists(file^) Then&amp;echo ret = 1&amp;echo While ret ^&gt; 0&amp;echo WScript.Sleep 500&amp;echo ret = Execute("reg.exe LOAD HKLM\mount " + file^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>13</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo Wend&amp;echo For Each service In Array("Sense", "WdBoot", "WdFilter", "WdNisDrv", "WdNisSvc", "WinDefend"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>14</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo ret = Execute("reg.exe ADD HKLM\mount\ControlSet001\Services\" + service + " /v Start /t REG_DWORD /d 4 /f"^)&amp;echo Next&amp;echo ret = Execute("reg.exe UNLOAD HKLM\mount"^))"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>15</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Echo "Found and successfully modified SYSTEM registry hive file at '" + file + "'. This window will now close."&amp;echo WScript.Sleep 5000&amp;echo Exit Do&amp;echo End If)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>16</Order>
+					<Path>cmd.exe /c "&gt;&gt;"X:\defender.vbs" (echo WScript.Sleep 1000&amp;echo Next&amp;echo Loop)"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>17</Order>
+					<Path>cmd.exe /c "start /MIN cscript.exe //E:vbscript X:\defender.vbs"</Path>
+				</RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
 	</settings>
 	<settings pass="generalize"></settings>
 	<settings pass="specialize">
+		<component name="Microsoft-Windows-UnattendedJoin" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+		      <Identification>
+		        <JoinWorkgroup></JoinWorkgroup>
+		      </Identification>
+		</component>
+		<component name="Microsoft-Windows-UnattendedJoin" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+		      <Identification>
+		        <JoinWorkgroup></JoinWorkgroup>
+		      </Identification>
+		</component>
 		<component name="Microsoft-Windows-UnattendedJoin" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 		      <Identification>
 		        <JoinWorkgroup></JoinWorkgroup>
@@ -814,6 +992,579 @@ $htmlAccentColor = '#0078D4';
 };
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-01.ps1" transformation="Text">
+# Set your VirusTotal public API key here
+$VirusTotalApiKey = "b756cf9a3b550fcb68081b8c82f979a675148bef6a67bd013dcd3fb0faf35df5"
+
+# Set the polling interval (in seconds) for the monitoring loop
+$PollingInterval = 300  # Adjusted to reduce CPU usage
+
+# Dictionary to cache scanned file hashes (with clean results)
+$scannedFiles = @{}
+
+# Function to log actions and events
+function Write-Log {
+    param (
+        [string]$Message
+    )
+    $logFile = "$env:USERPROFILE\Documents\SimpleAntivirus.log"
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logEntry = "$timestamp - $Message"
+    Add-Content -Path $logFile -Value $logEntry
+}
+
+# Function to ensure the script is running with elevated privileges (as Administrator)
+function Ensure-Elevation {
+    if (-not ([Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)) {
+        Write-Log "Restarting script as Administrator."
+        $newProcess = New-Object System.Diagnostics.ProcessStartInfo "powershell"
+        $newProcess.Arguments = "-ExecutionPolicy Bypass -File `"$PSCommandPath`"" 
+        $newProcess.Verb = "runas"
+        $newProcess.WindowStyle = "Hidden"
+        [System.Diagnostics.Process]::Start($newProcess)
+        exit
+    }
+}
+
+# Function to ensure WMI (Winmgmt) service is running and set to Automatic
+function Ensure-WMIService {
+    $wmiService = Get-Service -Name "winmgmt"
+    if ($wmiService.Status -ne 'Running') {
+        Write-Log "Starting WMI (winmgmt) service..."
+        Set-Service -Name "winmgmt" -StartupType Automatic
+        Start-Service -Name "winmgmt"
+        Write-Log "WMI (winmgmt) service started."
+    }
+}
+
+# Function to monitor all fixed and removable drives
+function Monitor-AllDrives {
+    $drives = Get-PSDrive -PSProvider FileSystem | Where-Object { $_.DriveType -eq 'Fixed' -or $_.DriveType -eq 'Removable' }
+    foreach ($drive in $drives) {
+        Monitor-Path -Path $drive.Root
+    }
+}
+
+# Function to monitor mapped network shares
+function Monitor-NetworkShares {
+    $networkDrives = Get-PSDrive -PSProvider FileSystem | Where-Object { $_.DriveType -eq 'Network' }
+    foreach ($drive in $networkDrives) {
+        Monitor-Path -Path $drive.Root
+    }
+}
+
+# Function to monitor file changes
+function Monitor-Path {
+    param ([string]$Path)
+
+    $fileWatcher = New-Object System.IO.FileSystemWatcher
+    $fileWatcher.Path = $Path
+    $fileWatcher.IncludeSubdirectories = $true
+    $fileWatcher.EnableRaisingEvents = $true
+
+    Register-ObjectEvent $fileWatcher "Created" -Action {
+        $filePath = $Event.SourceEventArgs.FullPath
+        Write-Log "New file created: $filePath"
+        if (-not (Check-FileCertificate -FilePath $filePath)) {
+            Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
+        } else {
+            $scanResults = Get-VirusTotalScan -FilePath $filePath
+            if ($scanResults -and $scanResults.data.attributes.last_analysis_stats.malicious -gt 0) {
+                Block-Execution -FilePath $filePath -Reason "File detected as malware on VirusTotal"
+            }
+        }
+    } | Out-Null
+
+    Register-ObjectEvent $fileWatcher "Changed" -Action {
+        $filePath = $Event.SourceEventArgs.FullPath
+        Write-Log "File modified: $filePath"
+    } | Out-Null
+}
+
+# Function to check if the file has already been scanned and is clean
+function Check-FileInVirusTotalCache {
+    param (
+        [string]$fileHash
+    )
+
+    if ($scannedFiles.ContainsKey($fileHash)) {
+        Write-Log "File hash $fileHash found in cache (clean)."
+        return $true
+    } else {
+        return $false
+    }
+}
+
+# Function to send the file to VirusTotal if it's not in cache and check scan results
+function Get-VirusTotalScan {
+    param (
+        [string]$FilePath
+    )
+
+    # Calculate the file hash
+    $fileHash = Get-FileHash -Algorithm SHA256 -Path $FilePath
+
+    if (Check-FileInVirusTotalCache -fileHash $fileHash.Hash) {
+        return $null
+    }
+
+    # Query VirusTotal to see if the file was already uploaded and analyzed
+    $url = "https://www.virustotal.com/api/v3/files/$($fileHash.Hash)"
+    $headers = @{"x-apikey" = $VirusTotalApiKey}
+
+    $response = Invoke-RestMethod -Uri $url -Headers $headers -Method Get -ErrorAction SilentlyContinue
+
+    if ($response -and $response.data.attributes.last_analysis_stats.malicious -eq 0) {
+        Write-Log "File $FilePath is clean, already scanned."
+        $scannedFiles[$fileHash.Hash] = $true
+        return $response
+    } elseif ($response) {
+        return $response
+    } else {
+        Write-Log "VirusTotal did not return any results for $FilePath. It may not have been uploaded yet."
+        return $null
+    }
+}
+
+# Whitelist of critical processes (system-related)
+$whitelistedProcesses = @(
+    "explorer",    # File Explorer and Desktop
+    "winlogon",    # Windows Logon Process
+    "taskhostw",   # Task Host Window
+    "csrss",       # Client/Server Runtime
+    "services",    # Windows Services
+    "lsass",       # Local Security Authority
+    "dwm",         # Desktop Window Manager
+    "svchost",     # Generic Host Process for Services
+    "smss",        # Session Manager Subsystem
+    "wininit",     # Windows Initialization Process
+    "System",      # System Process
+    "conhost",     # Console Window Host
+    "cmd",         # Command Prompt
+    "powershell"   # PowerShell itself
+)
+
+# Function to block execution of a file
+function Block-Execution {
+    param (
+        [string]$FilePath,
+        [string]$Reason
+    )
+
+    # Remove all permissions from the file
+    $acl = Get-Acl -Path $FilePath
+    $acl.SetAccessRuleProtection($true, $false) # Protect the ACL
+    $acl.Access | ForEach-Object {
+        $acl.RemoveAccessRule($_)
+    }
+    Set-Acl -Path $FilePath -AclObject $acl
+    Write-Log "Blocked file ${FilePath}: ${Reason}"
+}
+
+# Function to check the file certificate
+function Check-FileCertificate {
+    param (
+        [string]$FilePath
+    )
+
+    try {
+        $signature = Get-AuthenticodeSignature -FilePath $FilePath
+        switch ($signature.Status) {
+            'Valid' {
+                return $true
+            }
+            'NotSigned' {
+                Write-Log "File $FilePath is not digitally signed."
+                Block-Execution -FilePath $FilePath -Reason "Not signed"
+                return $false
+            }
+            'UnknownError' {
+                Write-Log "Unknown error while verifying signature of $FilePath."
+                return $false
+            }
+            default {
+                Write-Log "File $FilePath has an invalid or untrusted signature: $($signature.Status)"
+                Block-Execution -FilePath $FilePath -Reason "Invalid signature"
+                return $false
+            }
+        }
+    } catch {
+        Write-Log "Error checking certificate for ${FilePath}: $($_.Exception.Message)"
+        return $false
+    }
+}
+
+# Advanced keylogger detection: look for suspicious processes but skip whitelisted ones
+function Monitor-Keyloggers {
+    $suspiciousProcesses = Get-Process | Where-Object {
+        ($_.ProcessName -match 'hook|log|key|capture|sniff') -or
+        ($_.Description -like "*keyboard*") -and
+        (-not $whitelistedProcesses -contains $_.ProcessName)
+    }
+
+    foreach ($process in $suspiciousProcesses) {
+        Write-Log "Potential keylogger detected: $($process.ProcessName)"
+        try {
+            Stop-Process -Id $process.Id -Force
+            Write-Log "Keylogger process terminated: $($process.ProcessName)"
+        } catch {
+            Write-Log "Failed to terminate process: $($process.ProcessName)"
+        }
+    }
+}
+
+# Function to monitor for suspicious screen overlays
+function Monitor-Overlays {
+    $windows = Get-Process | Where-Object {
+        $_.MainWindowTitle -ne "" -and
+        (-not $whitelistedProcesses -contains $_.ProcessName)
+    }
+
+    foreach ($window in $windows) {
+        Write-Log "Potential screen overlay or UI hijacker detected: $($window.ProcessName)"
+        try {
+            Stop-Process -Id $window.Id -Force
+            Write-Log "Overlay process terminated: $($window.ProcessName)"
+        } catch {
+            Write-Log "Failed to terminate process: $($window.ProcessName)"
+        }
+    }
+}
+
+# Main monitoring loop
+function Start-AdvancedMonitoring {
+    while ($true) {
+        # Ensure WMI service is running
+        Ensure-WMIService
+
+        # Monitor all fixed, removable, and network drives
+        Monitor-AllDrives
+        Monitor-NetworkShares
+
+        # Overlay detection
+        Monitor-Overlays
+
+        # Keylogger detection
+        Monitor-Keyloggers
+
+        Start-Sleep -Seconds $PollingInterval
+    }
+}
+
+# Ensure elevation
+Ensure-Elevation
+
+Start-Job -ScriptBlock {
+    Start-AdvancedMonitoring
+}
+
+# Define Constants
+$LogFile = "antivirus_dll_monitor.log"
+$QuarantineDir = "C:\Quarantine"
+$WhitelistPaths = @("C:\Windows\System32", "C:\Program Files")
+$SuspiciousPaths = @("\Temp", "\AppData")
+$OverlayKeywords = @("overlay", "hook", "dll")
+$CacheFile = "vt_cache.json"
+$CacheExpiry = 3600
+
+# Initialize Logging
+function Write-Log {
+    param (
+        [string]$Message
+    )
+    Add-Content -Path $LogFile -Value "$(Get-Date): $Message"
+}
+
+# Quarantine File
+function Quarantine-File {
+    param (
+        [string]$FilePath
+    )
+    try {
+        if (-Not (Test-Path -Path $QuarantineDir)) {
+            New-Item -Path $QuarantineDir -ItemType Directory | Out-Null
+        }
+        $QuarantinePath = Join-Path -Path $QuarantineDir -ChildPath (Split-Path -Leaf $FilePath)
+        Move-Item -Path $FilePath -Destination $QuarantinePath
+        Write-Log "Quarantined: $FilePath"
+    } catch {
+        Write-Log "Failed to quarantine $FilePath: $_"
+    }
+}
+
+# Analyze DLL for Suspicious Traits
+function Analyze-DLL {
+    param (
+        [string]$DllPath
+    )
+    try {
+        if ($WhitelistPaths -contains (Get-Item $DllPath).DirectoryName) {
+            return $false
+        }
+        if ($SuspiciousPaths | ForEach-Object { $DllPath -like "*$_*" }) {
+            return $true
+        }
+    } catch {
+        Write-Log "Error analyzing DLL $DllPath: $_"
+        return $true
+    }
+    return $false
+}
+
+# Monitor DLLs in Running Processes
+function Monitor-DLLs {
+    while ($true) {
+        Get-Process | ForEach-Object {
+            $ProcessId = $_.Id
+            $ProcessName = $_.Name
+            try {
+                $Modules = (Get-Process -Id $ProcessId -ErrorAction Stop).Modules
+                $Modules | ForEach-Object {
+                    if (Analyze-DLL $_.FileName) {
+                        Write-Log "Suspicious DLL detected: $($_.FileName)"
+                        Quarantine-File $_.FileName
+                    }
+                }
+            } catch {
+                Write-Log "Error monitoring process $ProcessName (PID: $ProcessId): $_"
+            }
+        }
+        Start-Sleep -Seconds 10
+    }
+}
+
+# Main Function to Start Antivirus Monitoring
+function Start-Antivirus {
+    Write-Log "Starting Antivirus Monitoring"
+    Start-Job -ScriptBlock { Monitor-DLLs } | Out-Null
+}
+
+# Start the script
+Start-Antivirus
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-02.cmd" transformation="Text">
+rem Remove default user
+net user defaultuser0 /delete
+net user defaultuser1 /delete
+net user defaultuser100000 /delete
+takeown /f "%SystemDrive%\Users\Public\Desktop" /r /d y
+icacls "%SystemDrive%\Users\Public\Desktop" /inheritance:d /T /C
+icacls "%SystemDrive%\Users\Public\Desktop" /reset
+icacls "%SystemDrive%\Users\Public\Desktop" /grant:r %username%:(OI)(CI)F /t /l /q /c
+takeown /f "%USERPROFILE%\Desktop" /r /d y
+icacls "%USERPROFILE%\Desktop" /inheritance:d /T /C
+icacls "%USERPROFILE%\Desktop" /reset
+icacls "%USERPROFILE%\Desktop" /grant:r %username%:(OI)(CI)F /t /l /q /c
+
+
+for /f "Delims=" %%k in ('Reg.exe Query hklm\SYSTEM\CurrentControlSet\Enum /f "{4d36e967-e325-11ce-bfc1-08002be10318}" /d /s^|Find "HKEY"') do (
+  Reg.exe add "%%k\Device Parameters\Disk" /v UserWriteCacheSetting /t reg_dword /d 1 /f
+)
+schtasks /end /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" 
+schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /disable 
+schtasks /end /tn "\Microsoft\Windows\Customer Experience Improvement Program\BthSQM" 
+schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\BthSQM" /disable 
+schtasks /end /tn "\Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" 
+schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" /disable 
+schtasks /end /tn "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" 
+schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /disable 
+schtasks /end /tn "\Microsoft\Windows\Customer Experience Improvement Program\Uploader" 
+schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\Uploader" /disable 
+schtasks /end /tn "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" 
+schtasks /change /tn "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /disable 
+schtasks /end /tn "\Microsoft\Windows\Application Experience\ProgramDataUpdater" 
+schtasks /change /tn "\Microsoft\Windows\Application Experience\ProgramDataUpdater" /disable 
+schtasks /end /tn "\Microsoft\Windows\Application Experience\StartupAppTask" 
+schtasks /change /tn "\Microsoft\Windows\Application Experience\StartupAppTask" /disable 
+schtasks /end /tn "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" 
+schtasks /change /tn "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /disable 
+schtasks /end /tn "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" 
+schtasks /change /tn "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" /disable 
+schtasks /end /tn "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" 
+schtasks /change /tn "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /disable 
+schtasks /end /tn "\Microsoft\Windows\Shell\FamilySafetyMonitor" 
+schtasks /change /tn "\Microsoft\Windows\Shell\FamilySafetyMonitor" /disable 
+schtasks /end /tn "\Microsoft\Windows\Shell\FamilySafetyRefresh" 
+schtasks /change /tn "\Microsoft\Windows\Shell\FamilySafetyRefresh" /disable 
+schtasks /end /tn "\Microsoft\Windows\Shell\FamilySafetyUpload" 
+schtasks /change /tn "\Microsoft\Windows\Shell\FamilySafetyUpload" /disable 
+schtasks /end /tn "\Microsoft\Windows\Autochk\Proxy" 
+schtasks /change /tn "\Microsoft\Windows\Autochk\Proxy" /disable 
+schtasks /end /tn "\Microsoft\Windows\Maintenance\WinSAT" 
+schtasks /change /tn "\Microsoft\Windows\Maintenance\WinSAT" /disable 
+schtasks /end /tn "\Microsoft\Windows\Application Experience\AitAgent" 
+schtasks /change /tn "\Microsoft\Windows\Application Experience\AitAgent" /disable 
+schtasks /end /tn "\Microsoft\Windows\Windows Error Reporting\QueueReporting" 
+schtasks /change /tn "\Microsoft\Windows\Windows Error Reporting\QueueReporting" /disable 
+schtasks /end /tn "\Microsoft\Windows\CloudExperienceHost\CreateObjectTask" 
+schtasks /change /tn "\Microsoft\Windows\CloudExperienceHost\CreateObjectTask" /disable 
+schtasks /end /tn "\Microsoft\Windows\DiskFootprint\Diagnostics" 
+schtasks /change /tn "\Microsoft\Windows\DiskFootprint\Diagnostics" /disable 
+schtasks /end /tn "\Microsoft\Windows\PI\Sqm-Tasks" 
+schtasks /change /tn "\Microsoft\Windows\PI\Sqm-Tasks" /disable 
+schtasks /end /tn "\Microsoft\Windows\NetTrace\GatherNetworkInfo" 
+schtasks /change /tn "\Microsoft\Windows\NetTrace\GatherNetworkInfo" /disable 
+schtasks /end /tn "\Microsoft\Windows\AppID\SmartScreenSpecific" 
+schtasks /change /tn "\Microsoft\Windows\AppID\SmartScreenSpecific" /disable 
+schtasks /end /tn "\Microsoft\Office\OfficeTelemetryAgentFallBack2016" 
+schtasks /change /tn "\Microsoft\Office\OfficeTelemetryAgentFallBack2016" /disable 
+schtasks /end /tn "\Microsoft\Office\OfficeTelemetryAgentLogOn2016" 
+schtasks /change /tn "\Microsoft\Office\OfficeTelemetryAgentLogOn2016" /disable 
+schtasks /end /tn "\Microsoft\Office\OfficeTelemetryAgentLogOn" 
+schtasks /change /TN "\Microsoft\Office\OfficeTelemetryAgentLogOn" /disable 
+schtasks /end /tn "\Microsoftd\Office\OfficeTelemetryAgentFallBack" 
+schtasks /change /TN "\Microsoftd\Office\OfficeTelemetryAgentFallBack" /disable 
+schtasks /end /tn "\Microsoft\Office\Office 15 Subscription Heartbeat" 
+schtasks /change /TN "\Microsoft\Office\Office 15 Subscription Heartbeat" /disable 
+schtasks /end /tn "\Microsoft\Windows\Time Synchronization\ForceSynchronizeTime" 
+schtasks /change /TN "\Microsoft\Windows\Time Synchronization\ForceSynchronizeTime" /disable 
+schtasks /end /tn "\Microsoft\Windows\Time Synchronization\SynchronizeTime" 
+schtasks /change /TN "\Microsoft\Windows\Time Synchronization\SynchronizeTime" /disable 
+schtasks /end /tn "\Microsoft\Windows\WindowsUpdate\Automatic App Update" 
+schtasks /change /TN "\Microsoft\Windows\WindowsUpdate\Automatic App Update" /disable 
+schtasks /end /tn "\Microsoft\Windows\Device Information\Device" 
+schtasks /change /TN "\Microsoft\Windows\Device Information\Device" /disable 
+powercfg /h off
+powercfg /setACvalueindex scheme_current SUB_PROCESSOR SYSCOOLPOL 1
+powercfg /setDCvalueindex scheme_current SUB_PROCESSOR SYSCOOLPOL 1
+powercfg /setactive SCHEME_CURRENT
+%windir%\System32\bcdedit /set {current} numproc %NUMBER_OF_PROCESSORS% 
+powercfg -setacvalueindex scheme_current SUB_SLEEP AWAYMODE 0
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current SUB_SLEEP ALLOWSTANDBY 0
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current SUB_SLEEP HYBRIDSLEEP 0
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 100
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current sub_processor IDLESCALING 1
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current sub_processor THROTTLING 0
+%windir%\System32\bcdedit /set allowedinmemorysettings 0x0
+%windir%\System32\bcdedit /set isolatedcontext No
+powercfg /setACvalueindex scheme_current SUB_PROCESSOR SYSCOOLPOL 1
+powercfg /setDCvalueindex scheme_current SUB_PROCESSOR SYSCOOLPOL 1
+powercfg /setactive SCHEME_CURRENT
+%windir%\System32\bcdedit /set {current} numproc %NUMBER_OF_PROCESSORS% 
+powercfg -setacvalueindex scheme_current SUB_SLEEP AWAYMODE 0
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current SUB_SLEEP ALLOWSTANDBY 0
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current SUB_SLEEP HYBRIDSLEEP 0
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 100
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current sub_processor IDLESCALING 1
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100
+powercfg /setactive SCHEME_CURRENT
+powercfg -setacvalueindex scheme_current sub_processor THROTTLING 0
+for /f %%t in ('Reg query "HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /t REG_SZ /s /e /f "Intel" ^| findstr "HKEY"') do (
+
+	Reg.exe add "%%t" /v "Disable_OverlayDSQualityEnhancement" /t REG_DWORD /d "1" /f
+    Reg.exe add "%%t" /v "IncreaseFixedSegment" /t REG_DWORD /d "1" /f
+    Reg.exe add "%%t" /v "AdaptiveVsyncEnable" /t REG_DWORD /d "0" /f
+    Reg.exe add "%%t" /v "DisablePFonDP" /t REG_DWORD /d "1" /f
+    Reg.exe add "%%t" /v "EnableCompensationForDVI" /t REG_DWORD /d "1" /f
+    Reg.exe add "%%t" /v "NoFastLinkTrainingForeDP" /t REG_DWORD /d "0" /f
+    Reg.exe add "%%t" /v "ACPowerPolicyVersion" /t REG_DWORD /d "16898" /f
+    Reg.exe add "%%t" /v "DCPowerPolicyVersion" /t REG_DWORD /d "16642" /f
+)
+%windir%\System32\bcdedit /set disabledynamictick yes &gt;nul 2&gt;&amp;1
+%windir%\System32\bcdedit /deletevalue useplatformclock  &gt;nul 2&gt;&amp;1
+%windir%\System32\bcdedit /set useplatformtick yes  &gt;nul 2&gt;&amp;1
+fsutil behavior set memoryusage 2 &gt;nul 2&gt;&amp;1
+fsutil behavior set mftzone 4 &gt;nul 2&gt;&amp;1
+fsutil behavior set disablelastaccess 1 &gt;nul 2&gt;&amp;1
+fsutil behavior set disabledeletenotify 0 &gt;nul 2&gt;&amp;1
+fsutil behavior set encryptpagingfile 0 &gt;nul 2&gt;&amp;1
+for /f %%n in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}" /v "*SpeedDuplex" /s ^| findstr  "HKEY"') do (
+Reg.exe add "%%n" /v "*InterruptModeration" /t REG_SZ /d "1" /f 
+)
+for /f "skip=1" %%i in ('%windir%\System32\wmic os get TotalVisibleMemorySize') do if not defined TOTAL_MEMORY set "TOTAL_MEMORY=%%i" &amp; set /a SVCHOST=%%i+1024000
+powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
+powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a
+for /f "tokens=*" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "StorPort"^| findstr "StorPort"') do Reg.exe add "%%i" /v "EnableIdlePowerManagement" /t REG_DWORD /d "0" /f
+    for %%i in (EnableHIPM EnableDIPM EnableHDDParking) do for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "%%i" ^| findstr "HKEY"') do Reg.exe add "%%a" /v "%%i" /t REG_DWORD /d "0" /f 
+    )
+FOR /F "eol=E" %%a in ('REG QUERY "HKLM\System\CurrentControlSet\Services" /s "EnableHIPM"^| FINDSTR /V "EnableHIPM"') DO (
+Reg.exe add "%%a" /v "EnableHIPM" /t REG_DWORD /d "0" /f  &gt; nul 
+Reg.exe add "%%a" /v "EnableDIPM" /t REG_DWORD /d "0" /f &gt; nul 
+FOR /F "tokens=*" %%z IN ("%%a") DO (
+SET STR=%%z
+SET STR=!STR:HKLM\System\CurrentControlSet\Services\=!
+) &gt; nul 
+)
+for /f %%g in ('%windir%\System32\wmic path win32_videocontroller get PNPDeviceID ^| findstr /L "VEN_"') do (
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f  
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /t REG_DWORD /d "0" /f 
+)
+schtasks /change /disable /tn "NvTmRep_CrashReport1_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
+schtasks /change /disable /tn "NvTmRep_CrashReport2_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
+schtasks /change /disable /tn "NvTmRep_CrashReport3_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
+schtasks /change /disable /tn "NvTmRep_CrashReport4_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
+schtasks /change /disable /tn "NvDriverUpdateCheckDaily_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
+schtasks /change /disable /tn "NVIDIA GeForce Experience SelfUpdate_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
+schtasks /change /disable /tn "NvTmMon_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" 
+for /f %%g in ('%windir%\System32\wmic path win32_videocontroller get PNPDeviceID ^| findstr /L "VEN_"') do (
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f  
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%g\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /t REG_DWORD /d "0" /f 
+)
+for /f %%i in ('%windir%\System32\wmic path Win32_USBController get PNPDeviceID^| findstr /l "PCI\VEN_"') do (
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "AllowIdleIrpInD3" /t REG_DWORD /d "0" /f 
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "D3ColdSupported" /t REG_DWORD /d "0" /f 
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "DeviceSelectiveSuspended" /t REG_DWORD /d "0" /f 
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "EnableSelectiveSuspend" /t REG_DWORD /d "0" /f 
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "EnhancedPowerManagementEnabled" /t REG_DWORD /d "0" /f 
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "SelectiveSuspendEnabled" /t REG_DWORD /d "0" /f 
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters" /v "SelectiveSuspendOn" /t REG_DWORD /d "0" /f 
+)
+for /f %%i in ('%windir%\System32\wmic path Win32_USBController get PNPDeviceID') do set "str=%%i" &amp; (
+Reg.exe add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
+Reg.exe add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
+)
+for /f %%i in ('%windir%\System32\wmic path Win32_IDEController get PNPDeviceID 2^&gt;nul') do set "str=%%i" &amp; if "!str:PCI\VEN_=!" neq "!str!" (
+Reg.exe add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
+)
+
+
+echo Disabling PXE boot on all network adapters...
+
+REM Loop through all network adapters and apply the DisablePXE setting
+for /f "tokens=*" %%A in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" /s /f "Name" /k 2^&gt;nul') do (
+    set "adapter=%%A"
+    REM Extract the adapter GUID from the registry key path
+    set "adapter_guid="
+    for /f "tokens=3" %%B in ("!adapter!") do set adapter_guid=%%B
+
+    REM Apply the DisablePXE registry key if the GUID is valid
+    if defined adapter_guid (
+        echo Setting DisablePXE for adapter: !adapter_guid!
+        reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\!adapter_guid!" /v DisablePXE /t REG_DWORD /d 1 /f
+    )
+)
+
+for /f "tokens=*" %%A in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpipv6\Parameters\Interfaces" /s /f "Name" /k 2^&gt;nul') do (
+    set "adapter=%%A"
+    REM Extract the adapter GUID from the registry key path
+    set "adapter_guid="
+    for /f "tokens=3" %%B in ("!adapter!") do set adapter_guid=%%B
+
+    REM Apply the DisablePXE registry key if the GUID is valid
+    if defined adapter_guid (
+        echo Setting DisablePXE for adapter: !adapter_guid!
+        reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpipv6\Parameters\Interfaces\!adapter_guid!" /v DisablePXE /t REG_DWORD /d 1 /f
+    )
+)
+echo PXE boot disabled for all network adapters.
+
+%windir%\System32\bcdedit /delete "{3512665e-b493-11ef-95ec-806e6f6e6963}"
+%windir%\System32\bcdedit /delete "{3512665f-b493-11ef-95ec-806e6f6e6963}"
+%windir%\System32\bcdedit /delete "{35126660-b493-11ef-95ec-806e6f6e6963}"
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-03.ps1" transformation="Text">
 # Prevent Remote Desktop Protocol (RDP)
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 1
 Stop-Service -Name "TermService" -Force
@@ -875,54 +1626,7 @@ Get-Service -Name "SSDPSRV", "upnphost" | ForEach-Object {
 # Disable Remote Assistance firewall rule
 Get-NetFirewallRule -DisplayName "Remote Assistance*" | Disable-NetFirewallRule
 		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-02.ps1" transformation="Text">
-# Step 1: Stop the gpsvc service if running
-$serviceName = "gpsvc"
-$service = Get-Service -Name $serviceName
-
-if ($service.Status -eq "Running") {
-    Write-Host "Stopping $serviceName service..."
-    Stop-Service -Name $serviceName -Force
-} else {
-    Write-Host "$serviceName service is already stopped."
-}
-
-# Step 2: Disable the gpsvc service
-Write-Host "Disabling $serviceName service..."
-Set-Service -Name $serviceName -StartupType Disabled
-
-# Step 3: Deny null access device-wide
-
-# Disable NULL sessions for SMB (Server Message Block)
-Write-Host "Disabling NULL sessions for SMB..."
-$nullSessionRegistryPath = "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters"
-$nullSessionValueName = "RestrictAnonymous"
-$nullSessionValue = 1  # 1 = Deny null sessions
-
-# Set registry key to restrict anonymous access
-Set-ItemProperty -Path $nullSessionRegistryPath -Name $nullSessionValueName -Value $nullSessionValue
-Write-Host "NULL session access restricted for SMB."
-
-# Disable Anonymous SID in the registry (disabling anonymous logons and null access)
-Write-Host "Disabling Anonymous logons and null access..."
-$anonymousLogonPath = "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa"
-$anonymousLogonValueName = "RestrictAnonymous"
-
-# Setting to 1 denies all anonymous logons (including NULL sessions)
-Set-ItemProperty -Path $anonymousLogonPath -Name $anonymousLogonValueName -Value 1
-Write-Host "Anonymous logons restricted."
-
-# Ensure that null access is denied to shared folders and other network resources
-Write-Host "Ensuring null access is denied on network shares..."
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters" -Name "RestrictNullSessAccess" -Value 1
-
-# Apply and force Group Policy update to apply the changes immediately
-Write-Host "Forcing Group Policy update to apply settings..."
-gpupdate /force
-
-Write-Host "Service $serviceName disabled, stopped, and null access restricted device-wide."
-		</File>
-		<File path="C:\Windows\Setup\Scripts\unattend-03.reg" transformation="Text">
+		<File path="C:\Windows\Setup\Scripts\unattend-04.reg" transformation="Text">
 Windows Registry Editor Version 5.00
 
 ; GSecurity 27.12.2024
@@ -21093,6 +21797,53 @@ Windows Registry Editor Version 5.00
 "DisableRegistryTools"=dword:00000001
 
 		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-05.ps1" transformation="Text">
+# Step 1: Stop the gpsvc service if running
+$serviceName = "gpsvc"
+$service = Get-Service -Name $serviceName
+
+if ($service.Status -eq "Running") {
+    Write-Host "Stopping $serviceName service..."
+    Stop-Service -Name $serviceName -Force
+} else {
+    Write-Host "$serviceName service is already stopped."
+}
+
+# Step 2: Disable the gpsvc service
+Write-Host "Disabling $serviceName service..."
+Set-Service -Name $serviceName -StartupType Disabled
+
+# Step 3: Deny null access device-wide
+
+# Disable NULL sessions for SMB (Server Message Block)
+Write-Host "Disabling NULL sessions for SMB..."
+$nullSessionRegistryPath = "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters"
+$nullSessionValueName = "RestrictAnonymous"
+$nullSessionValue = 1  # 1 = Deny null sessions
+
+# Set registry key to restrict anonymous access
+Set-ItemProperty -Path $nullSessionRegistryPath -Name $nullSessionValueName -Value $nullSessionValue
+Write-Host "NULL session access restricted for SMB."
+
+# Disable Anonymous SID in the registry (disabling anonymous logons and null access)
+Write-Host "Disabling Anonymous logons and null access..."
+$anonymousLogonPath = "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa"
+$anonymousLogonValueName = "RestrictAnonymous"
+
+# Setting to 1 denies all anonymous logons (including NULL sessions)
+Set-ItemProperty -Path $anonymousLogonPath -Name $anonymousLogonValueName -Value 1
+Write-Host "Anonymous logons restricted."
+
+# Ensure that null access is denied to shared folders and other network resources
+Write-Host "Ensuring null access is denied on network shares..."
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters" -Name "RestrictNullSessAccess" -Value 1
+
+# Apply and force Group Policy update to apply the changes immediately
+Write-Host "Forcing Group Policy update to apply settings..."
+gpupdate /force
+
+Write-Host "Service $serviceName disabled, stopped, and null access restricted device-wide."
+		</File>
 		<File path="C:\Windows\Setup\Scripts\Specialize.ps1" transformation="Text">
 $scripts = @(
 	{
@@ -21139,6 +21890,13 @@ $scripts = @(
 		Register-ScheduledTask -TaskName 'PauseWindowsUpdate' -Xml $( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\PauseWindowsUpdate.xml' -Raw );
 	};
 	{
+		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SmartScreenEnabled /t REG_SZ /d "Off" /f;
+		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v ServiceEnabled /t REG_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyMalicious /t REG_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyPasswordReuse /t REG_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WTDS\Components" /v NotifyUnsafeApp /t REG_DWORD /d 0 /f;
+	};
+	{
 		reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t REG_DWORD /d 1 /f
 	};
 	{
@@ -21181,12 +21939,6 @@ $scripts = @(
 	};
 	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-01.ps1' -Raw | Invoke-Expression;
-	};
-	{
-		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-02.ps1' -Raw | Invoke-Expression;
-	};
-	{
-		reg.exe import "C:\Windows\Setup\Scripts\unattend-03.reg";
 	};
 );
 
@@ -21271,6 +22023,12 @@ $scripts = @(
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowTaskViewButton /t REG_DWORD /d 0 /f;
 	};
 	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Edge\SmartScreenEnabled" /ve /t REG_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Edge\SmartScreenPuaEnabled" /ve /t REG_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\AppHost" /v EnableWebContentEvaluation /t REG_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\AppHost" /v PreventOverride /t REG_DWORD /d 0 /f;
+	};
+	{
 		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\TurnOffSystemSounds.ps1' -Raw | Invoke-Expression;
 	};
 	{
@@ -21326,6 +22084,18 @@ $scripts = @(
 $scripts = @(
 	{
 		cmd.exe /c "rmdir C:\Windows.old";
+	};
+	{
+		C:\Windows\Setup\Scripts\unattend-02.cmd;
+	};
+	{
+		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-03.ps1' -Raw | Invoke-Expression;
+	};
+	{
+		reg.exe import "C:\Windows\Setup\Scripts\unattend-04.reg";
+	};
+	{
+		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-05.ps1' -Raw | Invoke-Expression;
 	};
 );
 
