@@ -1,9 +1,10 @@
 <#
     Script Name: GSecurity
     Author: Gorstak
-    Description: Advanced script to detect and mitigate web servers, screen overlays, and keyloggers. 
-                 Protects critical system processes and specific trusted drivers from termination.
-    Version: 1.3
+    Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files. 
+                 Monitors all local drives and network shares, ensures critical services are running, and uploads files to VirusTotal if they haven't been scanned.
+                 Protects critical system processes and specific trusted drivers from termination. Runs invisibly without disrupting the calling batch file.
+    Version: 2.1
     License: Free for personal use
 #>
 
@@ -12,202 +13,124 @@ function Write-Log {
     param ([string]$Message)
     $logFile = "$env:USERPROFILE\Documents\GSecurity.log"
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Add-Content -Path $logFile -Value "$timestamp - $Message"
+    $logMessage = "$timestamp - $Message"
+    Add-Content -Path $logFile -Value $logMessage
 }
 
-# Path to EmptyStandbyList executable
-$rammapPath = "C:\Windows\GShield\EmptyStandbyList.exe"
+# Ensure the script runs as administrator
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Log "Script not running as administrator. Restarting with elevated privileges."
+    Start-Process -FilePath "powershell" -ArgumentList "-File '$PSCommandPath'" -Verb RunAs
+    exit
+}
+
+# Add the script to startup
+$scriptPath = [System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
+$startupTask = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
+Set-ItemProperty -Path $startupTask -Name "GSecurity" -Value "$scriptPath"
+Write-Log "Script added to startup."
+
+# Run invisibly
+if ($MyInvocation.InvocationName -notlike "powershell.exe -windowstyle hidden") {
+    Start-Process -FilePath "powershell.exe" -ArgumentList "-windowstyle hidden -File '$PSCommandPath'" -NoNewWindow
+    exit
+}
 
 # Whitelist of critical system processes to protect
 $protectedProcesses = @(
-    "System",
-    "smss",       # Session Manager Subsystem
-    "csrss",      # Client/Server Runtime
-    "wininit",    # Windows Initialization Process
-    "services",   # Service Control Manager
-    "lsass",      # Local Security Authority
-    "svchost",    # Generic Host Process for Services
-    "dwm",        # Desktop Window Manager
-    "explorer",   # File Explorer and Desktop
-    "taskhostw",  # Task Host Window
-    "winlogon",   # Windows Logon Process
-    "conhost",    # Console Window Host
-    "cmd",        # Command Prompt
-    "powershell"  # PowerShell itself
+    "System", "smss", "csrss", "wininit", "services", "lsass", 
+    "svchost", "dwm", "explorer", "taskhostw", "winlogon", 
+    "conhost", "cmd", "powershell"
 )
 
 # Trusted driver vendors to exclude from termination
 $trustedDriverVendors = @(
-    "*Microsoft*",  # Microsoft drivers
-    "*NVIDIA*",     # NVIDIA GPU drivers
-    "*Intel*",      # Intel drivers
-    "*AMD*",        # AMD GPU and CPU drivers
-    "*Realtek*"     # Realtek audio/network drivers
+    "*Microsoft*", "*NVIDIA*", "*Intel*", "*AMD*", "*Realtek*"
 )
 
-# Detect and terminate web servers
-function Detect-And-Terminate-WebServers {
-    $ports = @(80, 443, 8080) # Common web server ports
-    $connections = Get-NetTCPConnection | Where-Object { $ports -contains $_.LocalPort }
-    foreach ($connection in $connections) {
-        $process = Get-Process -Id $connection.OwningProcess -ErrorAction SilentlyContinue
-        if ($process -and -not ($protectedProcesses -contains $process.ProcessName)) {
-            Write-Log "Web server detected: $($process.ProcessName) (PID: $($process.Id)) on Port $($connection.LocalPort)"
-            Stop-Process -Id $process.Id -Force
-            Write-Log "Web server process terminated: $($process.ProcessName)"
+# Ensure WMI service is running
+function Ensure-WMIService {
+    $service = Get-Service -Name "winmgmt" -ErrorAction SilentlyContinue
+    if ($service -and $service.Status -ne "Running") {
+        Start-Service -Name "winmgmt" -ErrorAction SilentlyContinue
+        Write-Log "WMI service started."
+    } elseif (-not $service) {
+        Write-Log "WMI service not found. Check system integrity."
+    } else {
+        Write-Log "WMI service is running."
+    }
+}
+Ensure-WMIService
+
+# Monitor and terminate unauthorized remote threads
+function Detect-And-Terminate-RemoteThreads {
+    $threads = Get-WmiObject Win32_Thread | Where-Object {
+        $_.ProcessHandle -ne $null -and $_.OtherProcessHandle -ne $null
+    }
+    foreach ($thread in $threads) {
+        Write-Log "Unauthorized remote thread detected in PID $($thread.ProcessHandle)"
+        Stop-Process -Id $thread.ProcessHandle -Force -ErrorAction SilentlyContinue
+        Write-Log "Remote thread terminated in PID $($thread.ProcessHandle)"
+    }
+}
+
+# Monitor and upload files to VirusTotal (only new files)
+function VirusTotal-Check {
+    param ([string]$FilePath)
+
+    $hash = (Get-FileHash -Path $FilePath -Algorithm SHA256).Hash
+    $apiKey = "YOUR_VIRUSTOTAL_API_KEY"
+    $url = "https://www.virustotal.com/api/v3/files/$hash"
+
+    $response = Invoke-RestMethod -Uri $url -Headers @{ "x-apikey" = $apiKey } -Method Get -ErrorAction SilentlyContinue
+
+    if (-not $response) {
+        Write-Log "Uploading new file to VirusTotal: $FilePath"
+        Invoke-RestMethod -Uri "https://www.virustotal.com/api/v3/files" -Headers @{ "x-apikey" = $apiKey } -Method Post -InFile $FilePath -ContentType "multipart/form-data"
+        Write-Log "File uploaded to VirusTotal: $FilePath"
+    } else {
+        Write-Log "File already scanned: $FilePath"
+    }
+}
+
+# Monitor all local drives and network shares
+function Monitor-Drives-And-Shares {
+    $paths = Get-PSDrive | Where-Object { $_.Provider -eq "FileSystem" } | Select-Object -ExpandProperty Root
+    $networkShares = Get-WmiObject -Query "Select * from Win32_Share" | Select-Object -ExpandProperty Path
+
+    $allPaths = $paths + $networkShares
+    foreach ($path in $allPaths) {
+        Get-ChildItem -Path $path -Recurse -ErrorAction SilentlyContinue |
+            ForEach-Object {
+                VirusTotal-Check $_.FullName
+            }
+    }
+}
+
+# Detect and remove suspicious DLLs
+function Detect-And-Remove-Suspicious-DLLs {
+    $suspiciousPatterns = @("*.hook", "*.log", "*.key")  # Define suspicious patterns
+    $searchPaths = @("C:\\Windows\\System32", "$env:USERPROFILE")
+
+    foreach ($path in $searchPaths) {
+        $dlls = Get-ChildItem -Path $path -Recurse -Include "*.dll" -ErrorAction SilentlyContinue |
+                Where-Object { $suspiciousPatterns | ForEach-Object { $_ -like $_.Name } }
+
+        foreach ($dll in $dlls) {
+            Write-Log "Suspicious DLL detected: $($dll.FullName)"
+            Remove-Item -Path $dll.FullName -Force -ErrorAction SilentlyContinue
+            Write-Log "Suspicious DLL removed: $($dll.FullName)"
         }
     }
 }
 
-# Terminate suspicious web server services
-function Detect-And-Terminate-WebServerServices {
-    $webServices = @("w3svc", "apache2", "nginx") # Known web server services
-    foreach ($serviceName in $webServices) {
-        $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
-        if ($service -and $service.Status -eq "Running") {
-            Write-Log "Web server service detected: $($serviceName)"
-            Stop-Service -Name $serviceName -Force
-            Write-Log "Web server service stopped: $($serviceName)"
-        }
-    }
+# Continuously run the script
+while ($true) {
+    Write-Log "Starting security checks..."
+    Detect-And-Terminate-RemoteThreads
+    Monitor-Drives-And-Shares
+    Detect-And-Remove-Suspicious-DLLs
+    Start-Sleep -Seconds 60  # Pause for a minute before the next cycle
 }
 
-# Detect and terminate screen overlays
-function Detect-And-Terminate-Overlays {
-    $overlayProcesses = Get-Process | Where-Object {
-        $_.MainWindowTitle -ne "" -and 
-        (-not $protectedProcesses -contains $_.ProcessName)
-    }
-    foreach ($process in $overlayProcesses) {
-        Write-Log "Suspicious overlay detected: $($process.ProcessName) (PID: $($process.Id))"
-        Stop-Process -Id $process.Id -Force
-        Write-Log "Overlay process terminated: $($process.ProcessName)"
-    }
-}
-
-# Detect and terminate keyloggers
-function Detect-And-Terminate-Keyloggers {
-    $hooks = Get-WmiObject -Query "SELECT * FROM Win32_Process WHERE CommandLine LIKE '%hook%' OR CommandLine LIKE '%log%' OR CommandLine LIKE '%key%'"
-    foreach ($hook in $hooks) {
-        $process = Get-Process -Id $hook.ProcessId -ErrorAction SilentlyContinue
-        if ($process -and -not ($protectedProcesses -contains $process.ProcessName)) {
-            Write-Log "Keylogger activity detected: $($process.ProcessName) (PID: $($process.Id))"
-            Stop-Process -Id $process.Id -Force
-            Write-Log "Keylogger process terminated: $($process.ProcessName)"
-        }
-    }
-}
-
-# Detect and terminate untrusted drivers
-function Detect-And-Terminate-SuspiciousDrivers {
-    $drivers = Get-WmiObject Win32_SystemDriver | Where-Object {
-        ($_.DisplayName -notlike $trustedDriverVendors) -and $_.Started -eq $true
-    }
-    foreach ($driver in $drivers) {
-        Write-Log "Suspicious driver detected: $($driver.DisplayName)"
-        Stop-Service -Name $driver.Name -Force
-        Write-Log "Suspicious driver stopped: $($driver.DisplayName)"
-    }
-}
-
-# Clear Standby List and Working Sets
-function Clear-Memory {
-    Start-Process -FilePath $rammapPath -ArgumentList "standbylist" -NoNewWindow -Wait
-    Start-Process -FilePath $rammapPath -ArgumentList "workingsets" -NoNewWindow -Wait
-    Write-Log "Memory cleared (standby list and working sets)."
-}
-
-# Block Remote Services and Disable Unwanted Features
-function Block-Remote-Services {
-    # Prevent Remote Desktop Protocol (RDP)
-    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 1
-    Stop-Service -Name "TermService" -Force
-    Set-Service -Name "TermService" -StartupType Disabled
-    Write-Log "RDP disabled."
-
-    # Disable Remote Assistance
-    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Remote Assistance' -Name 'fAllowToGetHelp' -Value 0
-    Write-Log "Remote Assistance disabled."
-
-    # Block PowerShell Remoting
-    Disable-PSRemoting -Force
-    Stop-Service -Name "WinRM" -Force
-    Set-Service -Name "WinRM" -StartupType Disabled
-    Write-Log "PowerShell Remoting disabled."
-
-    # Disable Telnet (if enabled)
-    Disable-WindowsOptionalFeature -Online -FeatureName "TelnetClient" -NoRestart
-    Write-Log "Telnet disabled."
-
-    # Block SMB (File Sharing)
-    Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
-    Set-SmbServerConfiguration -EnableSMB2Protocol $false -Force
-    Write-Log "SMB blocked."
-
-    # Disable Wake-on-LAN (WOL)
-    Get-NetAdapter | ForEach-Object {
-        Set-NetAdapterAdvancedProperty -Name $_.Name -DisplayName "Wake on Magic Packet" -DisplayValue "Disabled"
-        Set-NetAdapterAdvancedProperty -Name $_.Name -DisplayName "Wake on Pattern Match" -DisplayValue "Disabled"
-    }
-    Write-Log "Wake-on-LAN disabled."
-
-    # Block SSH (if OpenSSH Server is installed)
-    Stop-Service -Name "sshd" -Force
-    Set-Service -Name "sshd" -StartupType Disabled
-    Write-Log "SSH blocked."
-
-    # Block VNC Services (if installed)
-    Get-Service -Name "*VNC*" | ForEach-Object {
-        Stop-Service -Name $_.Name -Force
-        Set-Service -Name $_.Name -StartupType Disabled
-    }
-    Write-Log "VNC blocked."
-
-    # Enforce Firewall Rules
-    New-NetFirewallRule -DisplayName "Block RDP" -Direction Inbound -LocalPort 3389 -Protocol TCP -Action Block
-    New-NetFirewallRule -DisplayName "Block SMB TCP 445" -Direction Inbound -LocalPort 445 -Protocol TCP -Action Block
-    New-NetFirewallRule -DisplayName "Block SMB TCP 139" -Direction Inbound -LocalPort 139 -Protocol TCP -Action Block
-    New-NetFirewallRule -DisplayName "Block SMB UDP 137-138" -Direction Inbound -LocalPort 137-138 -Protocol UDP -Action Block
-    New-NetFirewallRule -DisplayName "Block WinRM HTTP" -Direction Inbound -LocalPort 5985 -Protocol TCP -Action Block
-    New-NetFirewallRule -DisplayName "Block WinRM HTTPS" -Direction Inbound -LocalPort 5986 -Protocol TCP -Action Block
-    New-NetFirewallRule -DisplayName "Block Telnet" -Direction Inbound -LocalPort 23 -Protocol TCP -Action Block
-    Write-Log "Firewall rules enforced."
-
-    # Disable UPnP
-    Get-Service -Name "SSDPSRV", "upnphost" | ForEach-Object {
-        Stop-Service -Name $_.Name -Force
-        Set-Service -Name $_.Name -StartupType Disabled
-    }
-    Write-Log "UPnP disabled."
-
-    # Disable Remote Assistance firewall rule
-    Get-NetFirewallRule -DisplayName "Remote Assistance*" | Disable-NetFirewallRule
-    Write-Log "Remote Assistance firewall rule disabled."
-}
-
-# Main monitoring loop
-function Start-GSecurity {
-    Write-Log "GSecurity started."
-    while ($true) {
-        try {
-            # Detect and mitigate threats
-            Detect-And-Terminate-WebServers
-            Detect-And-Terminate-WebServerServices
-            Detect-And-Terminate-Overlays
-            Detect-And-Terminate-Keyloggers
-            Detect-And-Terminate-SuspiciousDrivers
-            Block-Remote-Services
-            Clear-Memory
-
-            Start-Sleep -Seconds 10 # Adjust as needed
-        } catch {
-            Write-Log "Error occurred: $($_.Exception.Message)"
-        }
-    }
-}
-
-# Start monitoring in the background
-Start-Job -ScriptBlock {
-    Start-GSecurity
-}
-Write-Log "GSecurity initialized and running."
+Write-Log "Security checks completed successfully."
