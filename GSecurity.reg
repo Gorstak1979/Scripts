@@ -1059,7 +1059,7 @@ Windows Registry Editor Version 5.00
 
 ; SSRP
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control\Srp\Gp]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Srp\Gp]
 "RuleCount"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\safer]
@@ -11490,20 +11490,20 @@ Windows Registry Editor Version 5.00
 "MaxConnectionsPerServer"=dword:0000000a
 "MaxConnectionsPer1_0Server"=dword:0000000a
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Dnscache\Parameters]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters]
 "NetFailureCacheTime"=dword:00000000
 "NegativeSOACacheTime"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Tcpip\ServiceProvider]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider]
 "LocalPriority"=dword:00000005
 "HostsPriority"=dword:00000006
 "DnsPriority"=dword:00000007
 "NetbtPriority"=dword:00000008
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\SharedAccess\Parameters\FirewallPolicy\ConSecRules]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\ConSecRules]
 "{2E62ACC1-C415-4634-A011-84717C07D7DF}"="v2.33|Action=SecureServer|Name=Auth|Desc=Require auth inbound and request outbound|Active=TRUE|Auth1Set={E5A5D32A-4BCE-4e4d-B07F-4AB1BA7E5FE3}|Auth2Set={E5A5D32A-4BCE-4e4d-B07F-4AB1BA7E5FE4}|Crypto2Set={E5A5D32A-4BCE-4e4d-B07F-4AB1BA7E5FE2}|"
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\SharedAccess\Parameters\FirewallPolicy\ConSecRules\DomainProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\ConSecRules\DomainProfile]
 "AllowLocalIPsecPolicyMerge"=dword:00000000
 "AllowLocalPolicyMerge"=dword:00000001
 "DefaultInboundAction"=dword:00000001
@@ -11512,7 +11512,7 @@ Windows Registry Editor Version 5.00
 "DisableUnicastResponsesToMulticastBroadcast"=dword:00000000
 "EnableFirewall"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules]
 "{f016bbe0-a716-428b-822e-5E544B6A3196}"="v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\system32\\regsvr32.exe|Name=H_C rule for: regsvr32.exe|EmbedCtxt=H_C Firewall Rules|"
 "{f016bbe0-a716-428b-822e-5E544B6A3197}"="v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\system32\\replace.exe|Name=H_C rule for: replace.exe|EmbedCtxt=H_C Firewall Rules|"
 "{f016bbe0-a716-428b-822e-5E544B6A3198}"="v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\system32\\rundll32.exe|Name=H_C rule for: rundll32.exe|EmbedCtxt=H_C Firewall Rules|"
@@ -11686,7 +11686,7 @@ Windows Registry Editor Version 5.00
 "{f016bbe0-a716-428b-822e-5E544B6A3206}"="v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\system32\\wbem\\wmic.exe|Name=H_C rule for: wmic.exe|EmbedCtxt=H_C Firewall Rules|"
 "{f016bbe0-a716-428b-822e-5E544B6A3186}"="v2.29|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\system32\\mmc.exe|Name=H_C rule for: mmc.exe|EmbedCtxt=H_C Firewall Rules|"
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\SharedAccess\Parameters\FirewallPolicy\PrivateProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PrivateProfile]
 "AllowLocalIPsecPolicyMerge"=dword:00000000
 "AllowLocalPolicyMerge"=dword:00000001
 "DefaultInboundAction"=dword:00000001
@@ -11695,7 +11695,7 @@ Windows Registry Editor Version 5.00
 "DisableUnicastResponsesToMulticastBroadcast"=dword:00000000
 "EnableFirewall"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
 "AllowLocalIPsecPolicyMerge"=dword:00000000
 "AllowLocalPolicyMerge"=dword:00000001
 "DefaultInboundAction"=dword:00000001
@@ -11704,7 +11704,7 @@ Windows Registry Editor Version 5.00
 "DisableUnicastResponsesToMulticastBroadcast"=dword:00000000
 "EnableFirewall"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
 "AllowLocalIPsecPolicyMerge"=dword:00000000
 "AllowLocalPolicyMerge"=dword:00000001
 "DefaultInboundAction"=dword:00000001
@@ -15901,7 +15901,7 @@ Windows Registry Editor Version 5.00
 "Type"=dword:00000001
 
 [HKEY_CURRENT_USER\System\GameConfigStore\Children\cdb5dd72-1006-46eb-8e29-80803047d4f4]
-"ExeParentDirectory"="DRAGON QUEST HEROES}� II"
+"ExeParentDirectory"="DRAGON QUEST HEROES}  II"
 "Flags"=dword:00000231
 "GameDVR_GameGUID"="3e2b01f2-e8ea-487c-88de-367befa71d31"
 "Parent"=hex:01,00,00,00,d0,8c,9d,df,01,15,d1,11,8c,7a,00,c0,4f,c2,97,eb,01,00,\
@@ -17926,478 +17926,478 @@ Windows Registry Editor Version 5.00
 
 ; Services
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\.NET CLR Data]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\.NET CLR Data]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\.NET CLR Networking]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\.NET CLR Networking]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\.NET CLR Networking 4.0.0.0]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\.NET CLR Networking 4.0.0.0]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\.NET Data Provider for Oracle]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\.NET Data Provider for Oracle]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\.NET Data Provider for SqlServer]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\.NET Data Provider for SqlServer]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\.NET Memory Cache 4.0]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\.NET Memory Cache 4.0]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\.NETFramework]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\.NETFramework]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\1394ohci]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\1394ohci]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\3ware]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\3ware]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AarSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AarSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AarSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AarSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ACPI]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ACPI]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AcpiDev]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AcpiDev]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\acpiex]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\acpiex]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\acpipagr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\acpipagr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AcpiPmi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AcpiPmi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\acpitime]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\acpitime]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Acx01000]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Acx01000]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ADP80XX]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ADP80XX]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AFD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AFD]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\afunix]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\afunix]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ahcache]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ahcache]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AJRouter]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AJRouter]
 "Start"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ALG]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ALG]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AMD External Events Utility]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AMD External Events Utility]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdgpio2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdgpio2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdgpio3]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdgpio3]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdi2c]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdi2c]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AmdK8]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AmdK8]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdlog]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdlog]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AMDPCIDev]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AMDPCIDev]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AmdPPM]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AmdPPM]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdsata]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdsata]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdsbs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdsbs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdsbs\Settings\CAM]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdsbs\Settings\CAM]
 "EnableHDDParking"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amduw23g]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amduw23g]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdwps]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdwps]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\amdxata]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdxata]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppID]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppID]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppIDSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppIDSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Appinfo]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Appinfo]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppleSSD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppleSSD]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\applockerfltr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\applockerfltr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppMgmt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppMgmt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppReadiness]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppReadiness]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppVClient]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppVClient]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppvStrm]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppvStrm]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppvVemgr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppvVemgr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppvVfs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppvVfs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AppXSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AppXSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ApxSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ApxSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\arcsas]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\arcsas]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AssignedAccessManagerSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AssignedAccessManagerSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AsyncMac]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AsyncMac]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\atapi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\atapi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AudioEndpointBuilder]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AudioEndpointBuilder]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Audiosrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Audiosrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\autotimesvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\autotimesvc]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\AxInstSV]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AxInstSV]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\b06bdrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\b06bdrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\bam]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\bam]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BasicDisplay]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BasicDisplay]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BasicRender]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BasicRender]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BcastDVRUserService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BcastDVRUserService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BcastDVRUserService_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BcastDVRUserService_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\bcmfn2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\bcmfn2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BDESVC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BDESVC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Beep]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Beep]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BFE]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BFE]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\bfs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\bfs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\bindflt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\bindflt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BITS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BITS]
 "Start"=dword:00000003
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BluetoothUserService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BluetoothUserService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BluetoothUserService_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BluetoothUserService_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\bowser]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\bowser]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BTAGService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BTAGService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BthA2dp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BthA2dp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BthAvctpSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BthAvctpSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BthEnum]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BthEnum]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BthHFEnum]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BthHFEnum]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BthLEEnum]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BthLEEnum]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BthMini]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BthMini]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BTHMODEM]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BTHMODEM]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BTHPORT]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BTHPORT]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\bthserv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\bthserv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\BTHUSB]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BTHUSB]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\bttflt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\bttflt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\buttonconverter]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\buttonconverter]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CAD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CAD]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\camsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\camsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CaptureService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CaptureService]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CaptureService_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CaptureService_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\cbdhsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\cbdhsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\cbdhsvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\cbdhsvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CDD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CDD]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\cdfs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\cdfs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CDPSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CDPSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CDPUserSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CDPUserSvc]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CDPUserSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CDPUserSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\cdrom]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\cdrom]
 "SvcHostSplitDisable"=dword:00000001
 "AutoRun"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CertPropSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CertPropSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\cht4iscsi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\cht4iscsi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\cht4vbd]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\cht4vbd]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CimFS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CimFS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\circlass]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\circlass]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CldFlt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CldFlt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CLFS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CLFS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ClipSVC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ClipSVC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CloudBackupRestoreSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CloudBackupRestoreSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CloudBackupRestoreSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CloudBackupRestoreSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\cloudidsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\cloudidsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CmBatt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CmBatt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CNG]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CNG]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\cnghwassist]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\cnghwassist]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CompositeBus]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CompositeBus]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\COMSysApp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\COMSysApp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\condrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\condrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ConsentUxUserSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ConsentUxUserSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ConsentUxUserSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ConsentUxUserSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CoreMessagingRegistrar]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CoreMessagingRegistrar]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CredentialEnrollmentManagerUserSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CredentialEnrollmentManagerUserSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CredentialEnrollmentManagerUserSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CredentialEnrollmentManagerUserSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CryptSvc]
-"SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CSC]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\CscService]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\dam]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CryptSvc]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\dcsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CSC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\defragsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CscService]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dam]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DeviceAssociationBrokerSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dcsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DeviceAssociationBrokerSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\defragsvc]
+"SvcHostSplitDisable"=dword:00000001
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DeviceAssociationBrokerSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DeviceAssociationService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DeviceAssociationBrokerSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DeviceInstall]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DeviceAssociationService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DevicePickerUserSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DeviceInstall]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DevicePickerUserSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DevicePickerUserSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DevicesFlowUserSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DevicePickerUserSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DevicesFlowUserSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DevicesFlowUserSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\devmap]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DevicesFlowUserSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DevQueryBroker]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\devmap]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Dfsc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DevQueryBroker]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Dhcp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Dfsc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\diagnosticshub.standardcollector.service]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Dhcp]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\diagnosticshub.standardcollector.service]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\diagsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\diagsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DiagTrack]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DiagTrack]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DialogBlockingService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DialogBlockingService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\disk]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\disk]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DispBrokerDesktopSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DispBrokerDesktopSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DisplayEnhancementService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DisplayEnhancementService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DisplayMux]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DisplayMux]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DmEnrollmentSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DmEnrollmentSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\dmvsc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dmvsc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\dmwappushservice]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dmwappushservice]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\dmwappushsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dmwappushsvc]
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Dnscache]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Dnscache]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Dnscache\Parameters]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Dnscache\Parameters]
 "maxnegativecachettl"=dword:00000000
 "CacheHashTableSize"=dword:00000180
 "MaxSOACacheEntryTtlLimit"=dword:0000012d
@@ -18407,709 +18407,709 @@ Windows Registry Editor Version 5.00
 "CacheHashTableBucketSize"=dword:00000001
 "maxcachettl"=dword:00002a30
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DoSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DoSvc]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\dot3svc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dot3svc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\drmkaud]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\drmkaud]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DsmSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DsmSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DsSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DsSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DusmSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DusmSvc]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\DXGKrnl]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DXGKrnl]
 "MonitorRefreshLatencyTolerance"=dword:00000001
 "SvcHostSplitDisable"=dword:00000001
 "MonitorLatencyTolerance"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\EapHost]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\EapHost]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ebdrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ebdrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ebdrv0]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ebdrv0]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\edgeupdate]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\edgeupdate]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\edgeupdatem]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\edgeupdatem]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\EFS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\EFS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\EhStorClass]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\EhStorClass]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\EhStorTcgDrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\EhStorTcgDrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\embeddedmode]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\embeddedmode]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\EntAppSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\EntAppSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ErrDev]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ErrDev]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ESENT]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ESENT]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\EventLog]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\EventLog]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\EventSystem]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\EventSystem]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ExecutionContext]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ExecutionContext]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\exfat]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\exfat]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\fastfat]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\fastfat]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Fax]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Fax]
 "Start"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\fdc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\fdc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\fdPHost]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\fdPHost]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FDResPub]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FDResPub]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\fhsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\fhsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FileCrypt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FileCrypt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FileInfo]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FileInfo]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Filetrace]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Filetrace]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\flpydisk]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\flpydisk]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FltMgr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FltMgr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FontCache]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FontCache]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FontCache3.0.0.0]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FontCache3.0.0.0]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FrameServer]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FrameServer]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FrameServerMonitor]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FrameServerMonitor]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Fs_Rec]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Fs_Rec]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\FsDepends]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FsDepends]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\fvevol]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\fvevol]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\GameInputSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GameInputSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\gencounter]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\gencounter]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\genericusbfn]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\genericusbfn]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\GenPass]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GenPass]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\GPIOClx0101]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GPIOClx0101]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\GpuEnergyDr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GpuEnergyDr]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\GpuEnergyDrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GpuEnergyDrv]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\GraphicsPerfSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GraphicsPerfSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HdAudAddService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HdAudAddService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HDAudBus]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HDAudBus]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HidBatt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HidBatt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HidBth]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HidBth]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\hidi2c]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hidi2c]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\hidinterrupt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hidinterrupt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HidIr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HidIr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\hidserv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hidserv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\hidspi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hidspi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HidSpiCx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HidSpiCx]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HidUsb]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HidUsb]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HomeGroupProvider]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HomeGroupProvider]
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HpSAMD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HpSAMD]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Hsp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Hsp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HTTP]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HTTP]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\hvcrash]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hvcrash]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HvHost]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HvHost]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\hvservice]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hvservice]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HwNClx0101]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HwNClx0101]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\hwpolicy]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hwpolicy]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\hyperkbd]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hyperkbd]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\HyperVideo]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HyperVideo]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\I3CHost]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\I3CHost]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\i8042prt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\i8042prt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iagpio]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iagpio]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iai2c]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iai2c]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSS2i_GPIO2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSS2i_GPIO2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSS2i_GPIO2_BXT_P]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSS2i_GPIO2_BXT_P]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSS2i_GPIO2_CNL]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSS2i_GPIO2_CNL]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSS2i_GPIO2_GLK]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSS2i_GPIO2_GLK]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSS2i_I2C]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSS2i_I2C]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSS2i_I2C_BXT_P]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSS2i_I2C_BXT_P]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSS2i_I2C_CNL]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSS2i_I2C_CNL]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSS2i_I2C_GLK]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSS2i_I2C_GLK]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSSi_GPIO]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSSi_GPIO]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaLPSSi_I2C]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaLPSSi_I2C]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaStorAVC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaStorAVC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iaStorV]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iaStorV]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ibbus]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ibbus]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\icssvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\icssvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IKEEXT]
-"SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IndirectKmd]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\InstallService]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\intelide]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\intelpep]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\intelpmax]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IntelPMT]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\intelppm]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\InventorySvc]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iorate]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IpFilterDriver]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iphlpsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IKEEXT]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IPMIDRV]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IndirectKmd]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IPNAT]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\InstallService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IPSEC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\intelide]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IPT]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\intelpep]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\IpxlatCfgSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\intelpmax]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\irmon]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IntelPMT]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\intelppm]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\InventorySvc]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iorate]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IpFilterDriver]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iphlpsvc]
+"SvcHostSplitDisable"=dword:00000001
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IPMIDRV]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IPNAT]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IPSEC]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IPT]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IpxlatCfgSvc]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\irmon]
 "Start"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\isapnp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\isapnp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\iScsiPrt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iScsiPrt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ItSas35i]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ItSas35i]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\kbdclass]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\kbdclass]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\kbdclass\Parameters]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\kbdclass\Parameters]
 "KeyboardDataQueueSize"=dword:00000020
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\kbdhid]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\kbdhid]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\kbldfltr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\kbldfltr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\kdnic]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\kdnic]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\kdnic_legacy]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\kdnic_legacy]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\KeyIso]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\KeyIso]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\KSecDD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\KSecDD]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\KSecPkg]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\KSecPkg]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ksthunk]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ksthunk]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\KtmRm]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\KtmRm]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LanmanServer]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanServer]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LanmanWorkstation]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanWorkstation]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\lfsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\lfsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LicenseManager]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LicenseManager]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\lltdio]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\lltdio]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\lltdsvc]
-"SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\lmhosts]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\lltdsvc]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LocalKdc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\lmhosts]
+"SvcHostSplitDisable"=dword:00000001
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LocalKdc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LSI_SAS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LSI_SAS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LSI_SAS2i]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LSI_SAS2i]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LSI_SAS3i]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LSI_SAS3i]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LSM]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LSM]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\luafv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\luafv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\LxpSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LxpSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MapsBroker]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MapsBroker]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mausbhost]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mausbhost]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mausbip]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mausbip]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MbbCx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MbbCx]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\McpManagementService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\McpManagementService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\megasas2i]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\megasas2i]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\megasas35i]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\megasas35i]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\megasr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\megasr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MessagingService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MessagingService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MessagingService_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MessagingService_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Microsoft_Bluetooth_AvrcpTransport]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Microsoft_Bluetooth_AvrcpTransport]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MicrosoftEdgeElevationService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MicrosoftEdgeElevationService]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mlx4_bus]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mlx4_bus]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MMCSS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MMCSS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Modem]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Modem]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\monitor]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\monitor]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mouclass]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mouclass]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mouhid]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mouhid]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mountmgr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mountmgr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mpi3drvi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mpi3drvi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mpsdrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mpsdrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MRxDAV]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MRxDAV]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mrxsmb]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mrxsmb]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MrxSmb10]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MrxSmb10]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mrxsmb20]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mrxsmb20]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsBridge]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsBridge]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MSDTC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MSDTC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Msfs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Msfs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\msgpiowin32]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\msgpiowin32]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mshidkmdf]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mshidkmdf]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mshidumdf]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mshidumdf]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\msisadrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\msisadrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MSiSCSI]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MSiSCSI]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\msiserver]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\msiserver]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsKeyboardFilter]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsKeyboardFilter]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MSKSSRV]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MSKSSRV]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsLldp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsLldp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MSPCLOCK]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MSPCLOCK]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MSPQM]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MSPQM]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsQuic]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsQuic]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsQuicPrev]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsQuicPrev]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsRPC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsRPC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsSecCore]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsSecCore]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsSecFlt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsSecFlt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MsSecWfp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MsSecWfp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mssmbios]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mssmbios]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MSTEE]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MSTEE]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\MTConfig]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MTConfig]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Mup]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Mup]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\mvumis]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mvumis]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NativeWifiP]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NativeWifiP]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NaturalAuthentication]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NaturalAuthentication]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NcaSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NcaSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NcbService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NcbService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NcdAutoSetup]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NcdAutoSetup]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ndfltr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ndfltr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NDIS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NDIS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NDIS\Parameters]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NDIS\Parameters]
 "ThreadPriority"=dword:0000001f
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NdisCap]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NdisCap]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NdisImPlatform]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NdisImPlatform]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NdisTapi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NdisTapi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Ndisuio]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Ndisuio]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NdisVirtualBus]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NdisVirtualBus]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NdisWan]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NdisWan]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ndiswanlegacy]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ndiswanlegacy]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NDKPerf]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NDKPerf]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NDKPing]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NDKPing]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ndproxy]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ndproxy]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Ndu]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Ndu]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NetAdapterCx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetAdapterCx]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NetBIOS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetBIOS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NetBT]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetBT]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Netlogon]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Netman]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netman]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NetMsmqActivator]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetMsmqActivator]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\netprofm]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\netprofm]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NetSetupSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetSetupSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NetTcpPortSharing]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetTcpPortSharing]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\netvsc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\netvsc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NetworkPrivacyPolicy]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetworkPrivacyPolicy]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NfsClnt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NfsClnt]
 "Start"=dword:00000003
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NgcCtnrSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NgcCtnrSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NgcSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NgcSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NlaSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NlaSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Npfs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Npfs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NPSMSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NPSMSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\NPSMSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NPSMSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\npsvctrig]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\npsvctrig]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\nsi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nsi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\nsiproxy]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nsiproxy]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Ntfs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Ntfs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Null]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Null]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\nvdimm]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nvdimm]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\nvlddmkm]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nvlddmkm]
 "DisablePreemption"=dword:00000001
 "DisablePreemptionOnS3S4"=dword:00000001
 "DisableWriteCombining"=dword:00000001
@@ -19118,475 +19118,475 @@ Windows Registry Editor Version 5.00
 "EnableCEPreemption"=dword:00000000
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\nvlddmkm\Parameters]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nvlddmkm\Parameters]
 "ThreadPriority"=dword:0000001f
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\nvmedisk]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nvmedisk]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\nvraid]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nvraid]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\nvstor]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nvstor]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\OneSyncSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\OneSyncSvc]
 "DisplayName"="Sync Host"
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\OneSyncSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\OneSyncSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\OSRSS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\OSRSS]
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\p2pimsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\p2pimsvc]
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\p2psvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\p2psvc]
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\P9Rdr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\P9Rdr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\P9RdrService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\P9RdrService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\P9RdrService_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\P9RdrService_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Parport]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Parport]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\partmgr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\partmgr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PcaSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PcaSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\pci]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\pci]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\pciide]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\pciide]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\pcmcia]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\pcmcia]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\pcw]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\pcw]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\pdc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\pdc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PEAUTH]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PEAUTH]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PeerDistSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PeerDistSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PenService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PenService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PenService_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PenService_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\perceptionsimulation]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\perceptionsimulation]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\percsas2i]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\percsas2i]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\percsas3i]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\percsas3i]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PerfHost]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PerfHost]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PerfOS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PerfOS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PerfOS\Performance]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PerfOS\Performance]
 "Disable Performance Counters"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PerfProc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PerfProc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PerfProc\Performance]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PerfProc\Performance]
 "Disable Performance Counters"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PhoneSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PhoneSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PimIndexMaintenanceSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PimIndexMaintenanceSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PktMon]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PktMon]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PktMonApi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PktMonApi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\pla]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\pla]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PlutonHeci]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PlutonHeci]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PlutonHsp2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PlutonHsp2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\pmem]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\pmem]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PNPMEM]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PNPMEM]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PNRPsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PNRPsvc]
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PolicyAgent]
-"SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\portcfg]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PptpMiniport]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PrintDeviceConfigurationService]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PrintNotify]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PolicyAgent]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PrintScanBrokerService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\portcfg]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PrintWorkflowUserSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PptpMiniport]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PrintWorkflowUserSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PrintDeviceConfigurationService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PRM]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Processor]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ProfSvc]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Psched]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\PushToInstall]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\pvscsi]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\QHActiveDefense]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\QHProtected]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\QWAVE]
-"Start"=dword:00000004
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\QWAVEdrv]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Ramdisk]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RasAcd]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RasAgileVpn]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RasAuto]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Rasl2tp]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RasMan]
-"Start"=dword:00000004
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RasPppoe]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RasSstp]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\rdbss]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\rdpbus]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RDPDR]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\rdyboost]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ReFS]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\refsdedupsvc]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ReFSv1]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RemoteRegistry]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RetailDemo]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RFCOMM]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\rhproxy]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RmSvc]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RoutePolicy]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\RpcLocator]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\rspndr]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\rtcx21]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\s3cap]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\sbp2port]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SCardSvr]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ScDeviceEnum]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\scfilter]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Schedule]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\scmbus]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SCPolicySvc]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\sdbus]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SDRSVC]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\sdstor]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\seclogon]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PrintNotify]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\sedsvc]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SEMgrSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PrintScanBrokerService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SENS]
-"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PrintWorkflowUserSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Sense]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PrintWorkflowUserSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SensorDataService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PRM]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SensorService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Processor]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SensrSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ProfSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SerCx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Psched]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SerCx2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PushToInstall]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Serenum]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\pvscsi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Serial]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\QHActiveDefense]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\sermouse]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\QHProtected]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SessionEnv]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\sfloppy]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SgrmAgent]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SgrmBroker]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SharedAccess]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\QWAVE]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SharedRealitySvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\QWAVEdrv]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Ramdisk]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasAcd]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasAgileVpn]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasAuto]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Rasl2tp]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasMan]
+"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasPppoe]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasSstp]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\rdbss]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\rdpbus]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RDPDR]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\rdyboost]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ReFS]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\refsdedupsvc]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ReFSv1]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RemoteRegistry]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RetailDemo]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RFCOMM]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\rhproxy]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RmSvc]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RoutePolicy]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RpcLocator]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\rspndr]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\rtcx21]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\s3cap]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sbp2port]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SCardSvr]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ScDeviceEnum]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\scfilter]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Schedule]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\scmbus]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SCPolicySvc]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sdbus]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SDRSVC]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sdstor]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\seclogon]
+"SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ShellHWDetection]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sedsvc]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SEMgrSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\shpamsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SENS]
+"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SiSRaid2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Sense]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SiSRaid4]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SensorDataService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SmartSAMD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SensorService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\smbdirect]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SensrSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\smphost]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SerCx]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SmsRouter]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SerCx2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SMSvcHost 4.0.0.0]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Serenum]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SNMPTrap]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Serial]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\spaceparser]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sermouse]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\spaceport]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SessionEnv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SpbCx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sfloppy]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Spooler]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SgrmAgent]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SgrmBroker]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess]
+"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedRealitySvc]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ShellHWDetection]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\shpamsvc]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SiSRaid2]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SiSRaid4]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SmartSAMD]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\smbdirect]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\smphost]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SmsRouter]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SMSvcHost 4.0.0.0]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SNMPTrap]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\spaceparser]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\spaceport]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SpbCx]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Spooler]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\sppsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sppsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\srv2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\srv2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\srvnet]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\srvnet]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SSDPSRV]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SSDPSRV]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ssh-agent]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ssh-agent]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SstpSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SstpSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\StateRepository]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\StateRepository]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\stexstor]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\stexstor]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\StiSvc]
-"SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\storahci]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\storflt]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\stornvme]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\storqosflt]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\StorSvc]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\storufs]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\storvsc]
-"SvcHostSplitDisable"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\svsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\StiSvc]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\swenum]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\storahci]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\swprv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\storflt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\SysMain]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\stornvme]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\storqosflt]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\StorSvc]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\storufs]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\storvsc]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\svsvc]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TabletInputService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\swenum]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TapiSrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\swprv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Tcpip]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SysMain]
+"SvcHostSplitDisable"=dword:00000001
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TabletInputService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Tcpip6]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TapiSrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Tcpip\Parameters]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip6]
+"SvcHostSplitDisable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
 "SackOpts"=dword:00000001
 "DisableIPSourceRouting"=dword:00000002
 "EnableICMPRedirect"=dword:00000000
@@ -19604,7 +19604,7 @@ Windows Registry Editor Version 5.00
 "TcpMaxDupAcks"=dword:00000002
 "Tcp1323Opts"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Tcpip\Parameters\Interfaces]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces]
 "TCPMaxDataRetransmissions"=dword:00000007
 "EnablePMTUBHDetect"=dword:00000000
 "TcpDelAckTicks"=dword:00000000
@@ -19618,539 +19618,539 @@ Windows Registry Editor Version 5.00
 "EnablePMTUDiscovery"=dword:00000001
 "EnableDca"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Tcpip\ServiceProvider]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\ServiceProvider]
 "NetbtPriority"=dword:00000008
 "LocalPriority"=dword:00000005
 "HostsPriority"=dword:00000006
 "DnsPriority"=dword:00000007
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\tcpipreg]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\tcpipreg]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\tdx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\tdx]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Telemetry]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Telemetry]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\terminpt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\terminpt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TermService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TermService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TextInputManagementService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TextInputManagementService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Themes]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Themes]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TieringEngineService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TieringEngineService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TimeBrokerSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TimeBrokerSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TokenBroker]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TokenBroker]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TPM]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TPM]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TroubleshootingSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TroubleshootingSvc]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TsUsbFlt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TsUsbFlt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\TsUsbGD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TsUsbGD]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\tsusbhub]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\tsusbhub]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\tunnel]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\tunnel]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\tzautoupdate]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\tzautoupdate]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UASPStor]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UASPStor]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UcmCx0101]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UcmCx0101]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UcmTcpciCx0101]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UcmTcpciCx0101]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UcmUcsiAcpiClient]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UcmUcsiAcpiClient]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UcmUcsiCx0101]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UcmUcsiCx0101]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UCPD]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UCPD]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Ucx01000]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Ucx01000]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UdeCx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UdeCx]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\udfs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\udfs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UdkUserSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UdkUserSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UdkUserSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UdkUserSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UEFI]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UEFI]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UevAgentDriver]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UevAgentDriver]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UevAgentService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UevAgentService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Ufx01000]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Ufx01000]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UfxChipidea]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UfxChipidea]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ufxsynopsys]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ufxsynopsys]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UGatherer]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UGatherer]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UGTHRSVC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UGTHRSVC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\uhssvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\uhssvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\uiomap]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\uiomap]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\umbus]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\umbus]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UmPass]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UmPass]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UmRdpService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UmRdpService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UnionFS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UnionFS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UnistoreSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UnistoreSvc]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UnistoreSvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UnistoreSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\upnphost]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\upnphost]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UrsChipidea]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UrsChipidea]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UrsCx01000]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UrsCx01000]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UrsSynopsys]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UrsSynopsys]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\USB]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\USB]
 "DisableSelectiveSuspend"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Usb4DeviceRouter]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Usb4DeviceRouter]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Usb4HostRouter]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Usb4HostRouter]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbaudio]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbaudio]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbaudio2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbaudio2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbccgp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbccgp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbcir]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbcir]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbehci]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbehci]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbhub]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbhub]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\USBHUB3]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\USBHUB3]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\USBHUB3\Parameters]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\USBHUB3\Parameters]
 "ThreadPriority"=dword:0000001f
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbohci]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbohci]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbprint]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbprint]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbser]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbser]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\USBSTOR]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\USBSTOR]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbuhci]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbuhci]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\usbvideo]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\usbvideo]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\USBXHCI]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\USBXHCI]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\USBXHCI\Parameters]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\USBXHCI\Parameters]
 "ThreadPriority"=dword:0000001f
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UserDataSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UserDataSvc]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UserManager]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UserManager]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\UsoSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UsoSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\VaultSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VaultSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vdrvroot]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vdrvroot]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vds]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vds]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\VerifierExt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VerifierExt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vhdmp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vhdmp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vhf]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vhf]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Vid]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Vid]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\VirtualRender]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VirtualRender]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmbus]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmbus]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\VMBusHID]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VMBusHID]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmgid]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmgid]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmicguestinterface]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmicguestinterface]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmicheartbeat]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmicheartbeat]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmickvpexchange]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmickvpexchange]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmicrdv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmicrdv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmicshutdown]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmicshutdown]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmictimesync]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmictimesync]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmicvmsession]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmicvmsession]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vmicvss]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vmicvss]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\volmgr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\volmgr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\volmgrx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\volmgrx]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\volsnap]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\volsnap]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\volume]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\volume]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vpci]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vpci]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vsmraid]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vsmraid]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\VSS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VSS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\VSTXRAID]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VSTXRAID]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vwifibus]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vwifibus]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\vwififlt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\vwififlt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\W32Time]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W32Time]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\W3SVC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WaaSMedicSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WaaSMedicSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WacomPen]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WacomPen]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WalletService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WalletService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wanarp]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wanarp]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wanarpv6]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wanarpv6]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WarpJITSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WarpJITSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wbengine]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wbengine]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WbioSrvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WbioSrvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wcifs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wcifs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Wcmsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Wcmsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wcncsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wcncsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Wdf01000]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Wdf01000]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wdiwifi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wdiwifi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WdmCompanionFilter]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WdmCompanionFilter]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WebClient]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WebClient]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\webthreatdefsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\webthreatdefsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\webthreatdefusersvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\webthreatdefusersvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\webthreatdefusersvc_11c6b2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\webthreatdefusersvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Wecsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Wecsvc]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WEPHOSTSVC]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WEPHOSTSVC]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wercplsupport]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wercplsupport]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WerSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WerSvc]
 "SvcHostSplitDisable"=dword:00000001
 "Start"=dword:00000004
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WFDSConMgrSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WFDSConMgrSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WFPLWFS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WFPLWFS]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WiaRpc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WiaRpc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Wificx]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Wificx]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WIMMount]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WIMMount]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WinAccelCx0101]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WinAccelCx0101]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Windows Workflow Foundation 4.0.0.0]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Windows Workflow Foundation 4.0.0.0]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WindowsTrustedRT]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WindowsTrustedRT]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WindowsTrustedRTProxy]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WindowsTrustedRTProxy]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WinHttpAutoProxySvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WinHttpAutoProxySvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WinI3C]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WinI3C]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WinMad]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WinMad]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Winmgmt]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Winmgmt]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WinNat]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WinNat]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WinRM]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WinRM]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Winsock]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Winsock]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WinSock2]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WinSock2]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WINUSB]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WINUSB]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WinVerbs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WinVerbs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wisvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wisvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WlanSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WlanSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wlidsvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wlidsvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wlpasvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wlpasvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WManSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WManSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WmiAcpi]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WmiAcpi]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WmiApRpl]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WmiApRpl]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wmiApSrv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wmiApSrv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WMPNetworkSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WMPNetworkSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\Wof]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Wof]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\workfolderssvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\workfolderssvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WpcMonSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WpcMonSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WPDBusEnum]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WPDBusEnum]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WpdUpFltr]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WpdUpFltr]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WpnService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WpnService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WpnUserService]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WpnUserService]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ws2ifsl]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ws2ifsl]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WSearch]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WSearch]
 "WSearch"=dword:00000002
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wtd]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wtd]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\wuauserv]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\wuauserv]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WudfPf]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WudfPf]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WUDFRd]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WUDFRd]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WUDFWpdFs]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WUDFWpdFs]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\WwanSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WwanSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\XblAuthManager]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\XblAuthManager]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\XblGameSave]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\XblGameSave]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\XboxGipSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\XboxGipSvc]
 "Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\XboxNetApiSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\XboxNetApiSvc]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\xinputhid]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\xinputhid]
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ZAMSvc]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ZAMSvc]
 "Start"=dword:00000003
 "SvcHostSplitDisable"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\System\ControlSet002\Services\ZTDNS]
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ZTDNS]
 "SvcHostSplitDisable"=dword:00000001
 
 ; Finish
