@@ -992,6 +992,18 @@ $htmlAccentColor = '#0078D4';
 };
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-01.ps1" transformation="Text">
+function Add-ToStartup {
+    param (
+        [string]$ScriptPath = $PSCommandPath
+    )
+    $taskName = "SimpleAntivirus"
+    $taskAction = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-ExecutionPolicy Bypass -File `"$ScriptPath`""
+    $taskTrigger = New-ScheduledTaskTrigger -AtStartup
+    $taskSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+    Register-ScheduledTask -TaskName $taskName -Action $taskAction -Trigger $taskTrigger -Settings $taskSettings -Force
+    Write-Log "Script added to startup using Task Scheduler."
+}
+
 # Set your VirusTotal public API key here
 $VirusTotalApiKey = "b756cf9a3b550fcb68081b8c82f979a675148bef6a67bd013dcd3fb0faf35df5"
 
@@ -1339,6 +1351,8 @@ function Start-Antivirus {
 }
 
 # Start the script
+Ensure-Elevation
+Add-ToStartup
 Start-Antivirus
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-02.cmd" transformation="Text">
