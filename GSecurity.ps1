@@ -356,6 +356,3 @@ while ($true) {
 }
 
 Write-Log "Security checks completed successfully."
-
-
-Write-Log "Security checks completed successfully."
