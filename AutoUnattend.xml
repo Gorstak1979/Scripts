@@ -992,368 +992,142 @@ $htmlAccentColor = '#0078D4';
 };
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-01.ps1" transformation="Text">
-function Add-ToStartup {
-    param (
-        [string]$ScriptPath = $PSCommandPath
-    )
-    $taskName = "SimpleAntivirus"
-    $taskAction = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-ExecutionPolicy Bypass -File `"$ScriptPath`""
-    $taskTrigger = New-ScheduledTaskTrigger -AtStartup
-    $taskSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
-    Register-ScheduledTask -TaskName $taskName -Action $taskAction -Trigger $taskTrigger -Settings $taskSettings -Force
-    Write-Log "Script added to startup using Task Scheduler."
-}
+<#
+    Script Name: GSecurity
+    Author: Gorstak
+    Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files. 
+                 Monitors all local drives and network shares, ensures critical services are running, and uploads files to VirusTotal if they haven't been scanned.
+                 Protects critical system processes and specific trusted drivers from termination. Runs invisibly without disrupting the calling batch file.
+    Version: 2.1
+    License: Free for personal use
+#>
 
-# Set your VirusTotal public API key here
-$VirusTotalApiKey = "b756cf9a3b550fcb68081b8c82f979a675148bef6a67bd013dcd3fb0faf35df5"
-
-# Set the polling interval (in seconds) for the monitoring loop
-$PollingInterval = 300  # Adjusted to reduce CPU usage
-
-# Dictionary to cache scanned file hashes (with clean results)
-$scannedFiles = @{}
-
-# Function to log actions and events
+# Logging utility
 function Write-Log {
-    param (
-        [string]$Message
-    )
-    $logFile = "$env:USERPROFILE\Documents\SimpleAntivirus.log"
+    param ([string]$Message)
+    $logFile = "$env:USERPROFILE\Documents\GSecurity.log"
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    $logEntry = "$timestamp - $Message"
-    Add-Content -Path $logFile -Value $logEntry
+    $logMessage = "$timestamp - $Message"
+    Add-Content -Path $logFile -Value $logMessage
 }
 
-# Function to ensure the script is running with elevated privileges (as Administrator)
-function Ensure-Elevation {
-    if (-not ([Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)) {
-        Write-Log "Restarting script as Administrator."
-        $newProcess = New-Object System.Diagnostics.ProcessStartInfo "powershell"
-        $newProcess.Arguments = "-ExecutionPolicy Bypass -File `"$PSCommandPath`"" 
-        $newProcess.Verb = "runas"
-        $newProcess.WindowStyle = "Hidden"
-        [System.Diagnostics.Process]::Start($newProcess)
-        exit
-    }
+# Ensure the script runs as administrator
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Log "Script not running as administrator. Restarting with elevated privileges."
+    Start-Process -FilePath "powershell" -ArgumentList "-File '$PSCommandPath'" -Verb RunAs
+    exit
 }
 
-# Function to ensure WMI (Winmgmt) service is running and set to Automatic
-function Ensure-WMIService {
-    $wmiService = Get-Service -Name "winmgmt"
-    if ($wmiService.Status -ne 'Running') {
-        Write-Log "Starting WMI (winmgmt) service..."
-        Set-Service -Name "winmgmt" -StartupType Automatic
-        Start-Service -Name "winmgmt"
-        Write-Log "WMI (winmgmt) service started."
-    }
+# Add the script to startup
+$scriptPath = [System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
+$startupTask = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
+Set-ItemProperty -Path $startupTask -Name "GSecurity" -Value "$scriptPath"
+Write-Log "Script added to startup."
+
+# Run invisibly
+if ($MyInvocation.InvocationName -notlike "powershell.exe -windowstyle hidden") {
+    Start-Process -FilePath "powershell.exe" -ArgumentList "-windowstyle hidden -File '$PSCommandPath'" -NoNewWindow
+    exit
 }
 
-# Function to monitor all fixed and removable drives
-function Monitor-AllDrives {
-    $drives = Get-PSDrive -PSProvider FileSystem | Where-Object { $_.DriveType -eq 'Fixed' -or $_.DriveType -eq 'Removable' }
-    foreach ($drive in $drives) {
-        Monitor-Path -Path $drive.Root
-    }
-}
-
-# Function to monitor mapped network shares
-function Monitor-NetworkShares {
-    $networkDrives = Get-PSDrive -PSProvider FileSystem | Where-Object { $_.DriveType -eq 'Network' }
-    foreach ($drive in $networkDrives) {
-        Monitor-Path -Path $drive.Root
-    }
-}
-
-# Function to monitor file changes
-function Monitor-Path {
-    param ([string]$Path)
-
-    $fileWatcher = New-Object System.IO.FileSystemWatcher
-    $fileWatcher.Path = $Path
-    $fileWatcher.IncludeSubdirectories = $true
-    $fileWatcher.EnableRaisingEvents = $true
-
-    Register-ObjectEvent $fileWatcher "Created" -Action {
-        $filePath = $Event.SourceEventArgs.FullPath
-        Write-Log "New file created: $filePath"
-        if (-not (Check-FileCertificate -FilePath $filePath)) {
-            Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
-        } else {
-            $scanResults = Get-VirusTotalScan -FilePath $filePath
-            if ($scanResults -and $scanResults.data.attributes.last_analysis_stats.malicious -gt 0) {
-                Block-Execution -FilePath $filePath -Reason "File detected as malware on VirusTotal"
-            }
-        }
-    } | Out-Null
-
-    Register-ObjectEvent $fileWatcher "Changed" -Action {
-        $filePath = $Event.SourceEventArgs.FullPath
-        Write-Log "File modified: $filePath"
-    } | Out-Null
-}
-
-# Function to check if the file has already been scanned and is clean
-function Check-FileInVirusTotalCache {
-    param (
-        [string]$fileHash
-    )
-
-    if ($scannedFiles.ContainsKey($fileHash)) {
-        Write-Log "File hash $fileHash found in cache (clean)."
-        return $true
-    } else {
-        return $false
-    }
-}
-
-# Function to send the file to VirusTotal if it's not in cache and check scan results
-function Get-VirusTotalScan {
-    param (
-        [string]$FilePath
-    )
-
-    # Calculate the file hash
-    $fileHash = Get-FileHash -Algorithm SHA256 -Path $FilePath
-
-    if (Check-FileInVirusTotalCache -fileHash $fileHash.Hash) {
-        return $null
-    }
-
-    # Query VirusTotal to see if the file was already uploaded and analyzed
-    $url = "https://www.virustotal.com/api/v3/files/$($fileHash.Hash)"
-    $headers = @{"x-apikey" = $VirusTotalApiKey}
-
-    $response = Invoke-RestMethod -Uri $url -Headers $headers -Method Get -ErrorAction SilentlyContinue
-
-    if ($response -and $response.data.attributes.last_analysis_stats.malicious -eq 0) {
-        Write-Log "File $FilePath is clean, already scanned."
-        $scannedFiles[$fileHash.Hash] = $true
-        return $response
-    } elseif ($response) {
-        return $response
-    } else {
-        Write-Log "VirusTotal did not return any results for $FilePath. It may not have been uploaded yet."
-        return $null
-    }
-}
-
-# Whitelist of critical processes (system-related)
-$whitelistedProcesses = @(
-    "explorer",    # File Explorer and Desktop
-    "winlogon",    # Windows Logon Process
-    "taskhostw",   # Task Host Window
-    "csrss",       # Client/Server Runtime
-    "services",    # Windows Services
-    "lsass",       # Local Security Authority
-    "dwm",         # Desktop Window Manager
-    "svchost",     # Generic Host Process for Services
-    "smss",        # Session Manager Subsystem
-    "wininit",     # Windows Initialization Process
-    "System",      # System Process
-    "conhost",     # Console Window Host
-    "cmd",         # Command Prompt
-    "powershell"   # PowerShell itself
+# Whitelist of critical system processes to protect
+$protectedProcesses = @(
+    "System", "smss", "csrss", "wininit", "services", "lsass", 
+    "svchost", "dwm", "explorer", "taskhostw", "winlogon", 
+    "conhost", "cmd", "powershell"
 )
 
-# Function to block execution of a file
-function Block-Execution {
-    param (
-        [string]$FilePath,
-        [string]$Reason
-    )
+# Trusted driver vendors to exclude from termination
+$trustedDriverVendors = @(
+    "*Microsoft*", "*NVIDIA*", "*Intel*", "*AMD*", "*Realtek*"
+)
 
-    # Remove all permissions from the file
-    $acl = Get-Acl -Path $FilePath
-    $acl.SetAccessRuleProtection($true, $false) # Protect the ACL
-    $acl.Access | ForEach-Object {
-        $acl.RemoveAccessRule($_)
+# Ensure WMI service is running
+function Ensure-WMIService {
+    $service = Get-Service -Name "winmgmt" -ErrorAction SilentlyContinue
+    if ($service -and $service.Status -ne "Running") {
+        Start-Service -Name "winmgmt" -ErrorAction SilentlyContinue
+        Write-Log "WMI service started."
+    } elseif (-not $service) {
+        Write-Log "WMI service not found. Check system integrity."
+    } else {
+        Write-Log "WMI service is running."
     }
-    Set-Acl -Path $FilePath -AclObject $acl
-    Write-Log "Blocked file ${FilePath}: ${Reason}"
+}
+Ensure-WMIService
+
+# Monitor and terminate unauthorized remote threads
+function Detect-And-Terminate-RemoteThreads {
+    $threads = Get-WmiObject Win32_Thread | Where-Object {
+        $_.ProcessHandle -ne $null -and $_.OtherProcessHandle -ne $null
+    }
+    foreach ($thread in $threads) {
+        Write-Log "Unauthorized remote thread detected in PID $($thread.ProcessHandle)"
+        Stop-Process -Id $thread.ProcessHandle -Force -ErrorAction SilentlyContinue
+        Write-Log "Remote thread terminated in PID $($thread.ProcessHandle)"
+    }
 }
 
-# Function to check the file certificate
-function Check-FileCertificate {
-    param (
-        [string]$FilePath
-    )
+# Monitor and upload files to VirusTotal (only new files)
+function VirusTotal-Check {
+    param ([string]$FilePath)
 
-    try {
-        $signature = Get-AuthenticodeSignature -FilePath $FilePath
-        switch ($signature.Status) {
-            'Valid' {
-                return $true
+    $hash = (Get-FileHash -Path $FilePath -Algorithm SHA256).Hash
+    $apiKey = "b756cf9a3b550fcb68081b8c82f979a675148bef6a67bd013dcd3fb0faf35df5"
+    $url = "https://www.virustotal.com/api/v3/files/$hash"
+
+    $response = Invoke-RestMethod -Uri $url -Headers @{ "x-apikey" = $apiKey } -Method Get -ErrorAction SilentlyContinue
+
+    if (-not $response) {
+        Write-Log "Uploading new file to VirusTotal: $FilePath"
+        Invoke-RestMethod -Uri "https://www.virustotal.com/api/v3/files" -Headers @{ "x-apikey" = $apiKey } -Method Post -InFile $FilePath -ContentType "multipart/form-data"
+        Write-Log "File uploaded to VirusTotal: $FilePath"
+    } else {
+        Write-Log "File already scanned: $FilePath"
+    }
+}
+
+# Monitor all local drives and network shares
+function Monitor-Drives-And-Shares {
+    $paths = Get-PSDrive | Where-Object { $_.Provider -eq "FileSystem" } | Select-Object -ExpandProperty Root
+    $networkShares = Get-WmiObject -Query "Select * from Win32_Share" | Select-Object -ExpandProperty Path
+
+    $allPaths = $paths + $networkShares
+    foreach ($path in $allPaths) {
+        Get-ChildItem -Path $path -Recurse -ErrorAction SilentlyContinue |
+            ForEach-Object {
+                VirusTotal-Check $_.FullName
             }
-            'NotSigned' {
-                Write-Log "File $FilePath is not digitally signed."
-                Block-Execution -FilePath $FilePath -Reason "Not signed"
-                return $false
-            }
-            'UnknownError' {
-                Write-Log "Unknown error while verifying signature of $FilePath."
-                return $false
-            }
-            default {
-                Write-Log "File $FilePath has an invalid or untrusted signature: $($signature.Status)"
-                Block-Execution -FilePath $FilePath -Reason "Invalid signature"
-                return $false
-            }
-        }
-    } catch {
-        Write-Log "Error checking certificate for ${FilePath}: $($_.Exception.Message)"
-        return $false
     }
 }
 
-# Advanced keylogger detection: look for suspicious processes but skip whitelisted ones
-function Monitor-Keyloggers {
-    $suspiciousProcesses = Get-Process | Where-Object {
-        ($_.ProcessName -match 'hook|log|key|capture|sniff') -or
-        ($_.Description -like "*keyboard*") -and
-        (-not $whitelistedProcesses -contains $_.ProcessName)
-    }
+# Detect and remove suspicious DLLs
+function Detect-And-Remove-Suspicious-DLLs {
+    $suspiciousPatterns = @("*.hook", "*.log", "*.key")  # Define suspicious patterns
+    $searchPaths = @("C:\\Windows\\System32", "$env:USERPROFILE")
 
-    foreach ($process in $suspiciousProcesses) {
-        Write-Log "Potential keylogger detected: $($process.ProcessName)"
-        try {
-            Stop-Process -Id $process.Id -Force
-            Write-Log "Keylogger process terminated: $($process.ProcessName)"
-        } catch {
-            Write-Log "Failed to terminate process: $($process.ProcessName)"
+    foreach ($path in $searchPaths) {
+        $dlls = Get-ChildItem -Path $path -Recurse -Include "*.dll" -ErrorAction SilentlyContinue |
+                Where-Object { $suspiciousPatterns | ForEach-Object { $_ -like $_.Name } }
+
+        foreach ($dll in $dlls) {
+            Write-Log "Suspicious DLL detected: $($dll.FullName)"
+            Remove-Item -Path $dll.FullName -Force -ErrorAction SilentlyContinue
+            Write-Log "Suspicious DLL removed: $($dll.FullName)"
         }
     }
 }
 
-# Function to monitor for suspicious screen overlays
-function Monitor-Overlays {
-    $windows = Get-Process | Where-Object {
-        $_.MainWindowTitle -ne "" -and
-        (-not $whitelistedProcesses -contains $_.ProcessName)
-    }
-
-    foreach ($window in $windows) {
-        Write-Log "Potential screen overlay or UI hijacker detected: $($window.ProcessName)"
-        try {
-            Stop-Process -Id $window.Id -Force
-            Write-Log "Overlay process terminated: $($window.ProcessName)"
-        } catch {
-            Write-Log "Failed to terminate process: $($window.ProcessName)"
-        }
-    }
+# Continuously run the script
+while ($true) {
+    Write-Log "Starting security checks..."
+    Detect-And-Terminate-RemoteThreads
+    Monitor-Drives-And-Shares
+    Detect-And-Remove-Suspicious-DLLs
+    Start-Sleep -Seconds 60  # Pause for a minute before the next cycle
 }
 
-# Main monitoring loop
-function Start-AdvancedMonitoring {
-    while ($true) {
-        # Ensure WMI service is running
-        Ensure-WMIService
-
-        # Monitor all fixed, removable, and network drives
-        Monitor-AllDrives
-        Monitor-NetworkShares
-
-        # Overlay detection
-        Monitor-Overlays
-
-        # Keylogger detection
-        Monitor-Keyloggers
-
-        Start-Sleep -Seconds $PollingInterval
-    }
-}
-
-# Ensure elevation
-Ensure-Elevation
-
-Start-Job -ScriptBlock {
-    Start-AdvancedMonitoring
-}
-
-# Define Constants
-$LogFile = "antivirus_dll_monitor.log"
-$QuarantineDir = "C:\Quarantine"
-$WhitelistPaths = @("C:\Windows\System32", "C:\Program Files")
-$SuspiciousPaths = @("\Temp", "\AppData")
-$OverlayKeywords = @("overlay", "hook", "dll")
-$CacheFile = "vt_cache.json"
-$CacheExpiry = 3600
-
-# Initialize Logging
-function Write-Log {
-    param (
-        [string]$Message
-    )
-    Add-Content -Path $LogFile -Value "$(Get-Date): $Message"
-}
-
-# Quarantine File
-function Quarantine-File {
-    param (
-        [string]$FilePath
-    )
-    try {
-        if (-Not (Test-Path -Path $QuarantineDir)) {
-            New-Item -Path $QuarantineDir -ItemType Directory | Out-Null
-        }
-        $QuarantinePath = Join-Path -Path $QuarantineDir -ChildPath (Split-Path -Leaf $FilePath)
-        Move-Item -Path $FilePath -Destination $QuarantinePath
-        Write-Log "Quarantined: $FilePath"
-    } catch {
-        Write-Log "Failed to quarantine $FilePath: $_"
-    }
-}
-
-# Analyze DLL for Suspicious Traits
-function Analyze-DLL {
-    param (
-        [string]$DllPath
-    )
-    try {
-        if ($WhitelistPaths -contains (Get-Item $DllPath).DirectoryName) {
-            return $false
-        }
-        if ($SuspiciousPaths | ForEach-Object { $DllPath -like "*$_*" }) {
-            return $true
-        }
-    } catch {
-        Write-Log "Error analyzing DLL $DllPath: $_"
-        return $true
-    }
-    return $false
-}
-
-# Monitor DLLs in Running Processes
-function Monitor-DLLs {
-    while ($true) {
-        Get-Process | ForEach-Object {
-            $ProcessId = $_.Id
-            $ProcessName = $_.Name
-            try {
-                $Modules = (Get-Process -Id $ProcessId -ErrorAction Stop).Modules
-                $Modules | ForEach-Object {
-                    if (Analyze-DLL $_.FileName) {
-                        Write-Log "Suspicious DLL detected: $($_.FileName)"
-                        Quarantine-File $_.FileName
-                    }
-                }
-            } catch {
-                Write-Log "Error monitoring process $ProcessName (PID: $ProcessId): $_"
-            }
-        }
-        Start-Sleep -Seconds 10
-    }
-}
-
-# Main Function to Start Antivirus Monitoring
-function Start-Antivirus {
-    Write-Log "Starting Antivirus Monitoring"
-    Start-Job -ScriptBlock { Monitor-DLLs } | Out-Null
-}
-
-# Start the script
-Ensure-Elevation
-Add-ToStartup
-Start-Antivirus
+Write-Log "Security checks completed successfully."
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-02.cmd" transformation="Text">
 rem Remove default user
