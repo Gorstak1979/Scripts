@@ -57,13 +57,26 @@ function Validate-ApiKey {
 
 # Check if the API key is already stored
 $APIKey = Get-ApiKey
+
+# If API key doesn't exist or is invalid, prompt for new key
 if (-Not $APIKey) {
     Write-Host "No API key found. Please paste your VirusTotal API key."
     
     # Halt the script execution until the user pastes the API key
     $APIKey = Read-Host "Enter VirusTotal API key"
     
-    # Save the key securely
+    # Validate the key
+    if (-not (Validate-ApiKey -APIKey $APIKey)) {
+        Write-Host "API key is invalid. Please paste a valid key."
+        $APIKey = Read-Host "Enter VirusTotal API key"
+        # Validate again after retry
+        while (-not (Validate-ApiKey -APIKey $APIKey)) {
+            Write-Host "Invalid API key. Please try again."
+            $APIKey = Read-Host "Enter VirusTotal API key"
+        }
+    }
+
+    # Save the key securely after validation
     Save-ApiKey -APIKey $APIKey
 } else {
     Write-Host "API key found. Validating..."
@@ -72,6 +85,13 @@ if (-Not $APIKey) {
     if (-not (Validate-ApiKey -APIKey $APIKey)) {
         Write-Host "API key is invalid. Please paste a valid key."
         $APIKey = Read-Host "Enter VirusTotal API key"
+        # Validate again after retry
+        while (-not (Validate-ApiKey -APIKey $APIKey)) {
+            Write-Host "Invalid API key. Please try again."
+            $APIKey = Read-Host "Enter VirusTotal API key"
+        }
+
+        # Save the new key securely
         Save-ApiKey -APIKey $APIKey
     }
 }
