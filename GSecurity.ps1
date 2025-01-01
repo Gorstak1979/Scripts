@@ -8,8 +8,44 @@
     License: Free for personal use
 #>
 
+# Function to hide the script window
+function Start-Invisible {
+    $scriptPath = $MyInvocation.MyCommand.Definition
+    Start-Process -FilePath "powershell.exe" -ArgumentList "-WindowStyle Hidden -File `"$scriptPath`"" -WindowStyle Hidden
+    exit
+}
+
 # Path to store the encrypted API key
 $apiKeyFilePath = "$env:USERPROFILE\Documents\GSecurity_ApiKey.xml"
+
+# Check if API key is already stored
+if (-Not (Test-Path $ApiKeyFile)) {
+    # Ensure the directory exists
+    $dir = Split-Path $ApiKeyFile
+    if (-Not (Test-Path $dir)) {
+        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    }
+
+    # Prompt user for the API key
+    $APIKey = Read-Host "Enter your API key"
+    
+    # Save the API key to the file securely
+    $EncryptedKey = ConvertTo-SecureString -String $APIKey -AsPlainText -Force | ConvertFrom-SecureString
+    Set-Content -Path $ApiKeyFile -Value $EncryptedKey
+}
+
+# Retrieve the API key
+$EncryptedKey = Get-Content $ApiKeyFile
+$APIKey = ConvertTo-SecureString -String $EncryptedKey | ConvertFrom-SecureString -AsPlainText
+
+# Run invisibly if the API key is set
+if ($PSCmdlet.MyInvocation.InvocationName -ne "powershell.exe") {
+    Start-Invisible
+} elseif (-Not (Test-Path $apiKeyFilePath)) {
+    Write-Host "Please provide your VirusTotal API key"
+    $APIKey = Read-Host "Enter VirusTotal API key"
+    Save-ApiKey -ApiKey $APIKey
+}
 
 # Function to securely save the VirusTotal API key
 function Save-ApiKey {
