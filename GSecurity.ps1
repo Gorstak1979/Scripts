@@ -4,32 +4,77 @@
     Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files. 
                  Monitors all local drives and network shares, ensures critical services are running, and uploads files to VirusTotal if they haven't been scanned.
                  Protects critical system processes and specific trusted drivers from termination. Runs invisibly without disrupting the calling batch file.
-    Version: 2.2
+    Version: 2.3
     License: Free for personal use
 #>
 
 # Path to store the encrypted API key
 $apiKeyFilePath = "$env:USERPROFILE\Documents\GSecurity_ApiKey.xml"
 
-# Check if API key is already stored
-if (-Not (Test-Path $ApiKeyFile)) {
-    # Ensure the directory exists
-    $dir = Split-Path $ApiKeyFile
-    if (-Not (Test-Path $dir)) {
-        New-Item -ItemType Directory -Path $dir -Force | Out-Null
-    }
+# Function to encrypt and store the API key
+function Save-ApiKey {
+    param (
+        [string]$APIKey
+    )
 
-    # Prompt user for the API key
-    $APIKey = Read-Host "Enter your API key"
-    
-    # Save the API key to the file securely
+    # Encrypt the API key and save it to a file
     $EncryptedKey = ConvertTo-SecureString -String $APIKey -AsPlainText -Force | ConvertFrom-SecureString
-    Set-Content -Path $ApiKeyFile -Value $EncryptedKey
+    Set-Content -Path $apiKeyFilePath -Value $EncryptedKey
+    Write-Host "API key saved securely."
 }
 
-# Retrieve the API key
-$EncryptedKey = Get-Content $ApiKeyFile
-$APIKey = ConvertTo-SecureString -String $EncryptedKey | ConvertFrom-SecureString -AsPlainText
+# Function to retrieve and decrypt the API key
+function Get-ApiKey {
+    if (Test-Path $apiKeyFilePath) {
+        $EncryptedKey = Get-Content $apiKeyFilePath
+        $APIKey = ConvertTo-SecureString -String $EncryptedKey | ConvertFrom-SecureString -AsPlainText
+        return $APIKey
+    }
+    return $null
+}
+
+# Function to validate the API key by making a test call to VirusTotal
+function Validate-ApiKey {
+    param (
+        [string]$APIKey
+    )
+    
+    $url = "https://www.virustotal.com/api/v3/files/0"
+    $headers = @{
+        "x-apikey" = $APIKey
+    }
+    try {
+        $response = Invoke-RestMethod -Uri $url -Headers $headers -Method Get -ErrorAction Stop
+        if ($response.data) {
+            Write-Host "API key is valid and working."
+            return $true
+        }
+    } catch {
+        Write-Host "Invalid API key or network error."
+        return $false
+    }
+}
+
+# Check if the API key is already stored
+$APIKey = Get-ApiKey
+if (-Not $APIKey) {
+    Write-Host "No API key found. Please paste your VirusTotal API key."
+    
+    # Halt the script execution until the user pastes the API key
+    $APIKey = Read-Host "Enter VirusTotal API key"
+    
+    # Save the key securely
+    Save-ApiKey -APIKey $APIKey
+} else {
+    Write-Host "API key found. Validating..."
+
+    # Validate the stored API key
+    if (-not (Validate-ApiKey -APIKey $APIKey)) {
+        Write-Host "API key is invalid. Please paste a valid key."
+        $APIKey = Read-Host "Enter VirusTotal API key"
+        Save-ApiKey -APIKey $APIKey
+    }
+}
 
 # Run invisibly if the API key is set
 if ($PSCmdlet.MyInvocation.InvocationName -ne "powershell.exe") {
