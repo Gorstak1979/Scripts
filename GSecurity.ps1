@@ -4,7 +4,7 @@
     Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files. 
                  Monitors all local drives and network shares, ensures critical services are running, and uploads files to VirusTotal if they haven't been scanned.
                  Protects critical system processes and specific trusted drivers from termination. Runs invisibly without disrupting the calling batch file.
-    Version: 2.1
+    Version: 2.2
     License: Free for personal use
 #>
 
@@ -343,6 +343,85 @@ function Detect-And-Remove-Suspicious-DLLs {
     }
 }
 
+# Function to unload, quarantine, or delete unsigned and suspicious DLLs
+function Remove-Unsigned-And-Suspicious-DLLs {
+    $quarantineFolder = "$env:USERPROFILE\Documents\GSecurity_Quarantine"
+    if (-not (Test-Path -Path $quarantineFolder)) {
+        New-Item -ItemType Directory -Path $quarantineFolder | Out-Null
+        Write-Log "Created quarantine folder at $quarantineFolder"
+    }
+
+    $suspiciousPatterns = @("*.hook", "*.log", "*.key")  # Define suspicious patterns
+    $searchPaths = @("C:\Windows\System32", "$env:USERPROFILE") # Directories to scan
+
+    foreach ($path in $searchPaths) {
+        $dlls = Get-ChildItem -Path $path -Recurse -Include "*.dll" -ErrorAction SilentlyContinue
+
+        foreach ($dll in $dlls) {
+            try {
+                # Check if the DLL matches suspicious patterns
+                $isSuspicious = $suspiciousPatterns | ForEach-Object { $_ -like $dll.Name }
+
+                # Check if the DLL is unsigned
+                $signature = Get-AuthenticodeSignature -FilePath $dll.FullName
+                $isUnsigned = $signature.Status -eq 'NotSigned'
+
+                if ($isSuspicious -or $isUnsigned) {
+                    # Unload DLL if it is loaded
+                    $isLoaded = Get-Process | ForEach-Object {
+                        $_.Modules | Where-Object { $_.FileName -eq $dll.FullName }
+                    }
+
+                    if ($isLoaded) {
+                        try {
+                            # Attempt to unload DLL
+                            Write-Log "Attempting to unload DLL: $($dll.FullName)"
+                            [System.Diagnostics.Process]::GetProcessesByName($isLoaded.ProcessName) | ForEach-Object {
+                                $_.Kill() # Force-stop processes using the DLL (optional)
+                            }
+                            Write-Log "Successfully unloaded DLL: $($dll.FullName)"
+                        } catch {
+                            Write-Log "Failed to unload DLL: $($dll.FullName) - $($_.Exception.Message)"
+                            continue
+                        }
+                    }
+
+                    # Move to quarantine
+                    $destination = Join-Path -Path $quarantineFolder -ChildPath $dll.Name
+                    Move-Item -Path $dll.FullName -Destination $destination -Force
+                    Write-Log "Quarantined DLL: $($dll.FullName) -> $destination"
+                }
+            } catch {
+                Write-Log "Failed to process DLL: $($dll.FullName) - $($_.Exception.Message)"
+            }
+        }
+    }
+}
+
+# Function to detect and terminate unauthorized web servers
+function Detect-And-Terminate-WebServers {
+    $webServerPorts = @(80, 443) # Common web server ports
+    $allowedProcesses = @("nginx", "apache", "iisexpress") # Whitelisted web server processes
+
+    # Get active network connections on web server ports
+    $connections = Get-NetTCPConnection | Where-Object {
+        $_.LocalPort -in $webServerPorts -and $_.State -eq "Listen"
+    }
+
+    foreach ($connection in $connections) {
+        $process = Get-Process -Id $connection.OwningProcess -ErrorAction SilentlyContinue
+        if ($process -and (-not ($allowedProcesses -contains $process.Name))) {
+            Write-Log "Unauthorized web server detected: $($process.Name) on Port $($connection.LocalPort)"
+            try {
+                Stop-Process -Id $process.Id -Force
+                Write-Log "Web server process terminated: $($process.Name)"
+            } catch {
+                Write-Log "Failed to terminate web server process: $($process.Name)"
+            }
+        }
+    }
+}
+
 # Continuously run the script
 while ($true) {
     Write-Log "Starting security checks..."
@@ -351,8 +430,8 @@ while ($true) {
     Monitor-AllFiles
     Monitor-Keyloggers
     Monitor-Overlays
-    Detect-And-Remove-Suspicious-DLLs
-    Start-Sleep -Seconds 60  # Pause for a minute before the next cycle
+    Detect-And-Terminate-WebServers
+    Remove-Unsigned-And-Suspicious-DLLs # Updated function
+    Start-Sleep -Seconds 60
 }
 
-Write-Log "Security checks completed successfully."
