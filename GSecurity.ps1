@@ -545,5 +545,6 @@ while ($true) {
     Detect-And-Terminate-WebServers
     Remove-Unsigned-And-Suspicious-DLLs # Updated function
     Start-Sleep -Seconds 60
+    std::cin.get();  // Wait for user input before closing
 }
 
