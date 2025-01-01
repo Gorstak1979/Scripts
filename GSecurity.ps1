@@ -8,6 +8,34 @@
     License: Free for personal use
 #>
 
+# Function to protect the script from being terminated
+function Protect-Script {
+    $scriptName = [System.Diagnostics.Process]::GetCurrentProcess().ProcessName
+    $currentPid = [System.Diagnostics.Process]::GetCurrentProcess().Id
+    $timerInterval = 5000  # Time interval in milliseconds to check the script's health
+
+    # Function to monitor the process
+    $scriptMonitor = {
+        $currentPid = $args[0]
+        try {
+            # Check if the process is still running
+            $process = Get-Process -Id $currentPid -ErrorAction Stop
+            Start-Sleep -Milliseconds $timerInterval
+        } catch {
+            Write-Host "Script terminated! Restarting..."
+            # Restart the script if it gets terminated
+            Start-Process powershell -ArgumentList "-File $MyInvocation.MyCommand.Path"
+            exit
+        }
+    }
+
+    # Start monitoring the script in a separate job
+    Start-Job -ScriptBlock $scriptMonitor -ArgumentList $currentPid
+}
+
+# Call the self-protection function
+Protect-Script
+
 # Path to store the encrypted API key
 $apiKeyFilePath = "$env:USERPROFILE\Documents\GSecurity_ApiKey.xml"
 
