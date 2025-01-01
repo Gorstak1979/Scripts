@@ -8,13 +8,6 @@
     License: Free for personal use
 #>
 
-# Function to hide the script window
-function Start-Invisible {
-    $scriptPath = $MyInvocation.MyCommand.Definition
-    Start-Process -FilePath "powershell.exe" -ArgumentList "-WindowStyle Hidden -File `"$scriptPath`"" -WindowStyle Hidden
-    exit
-}
-
 # Path to store the encrypted API key
 $apiKeyFilePath = "$env:USERPROFILE\Documents\GSecurity_ApiKey.xml"
 
@@ -45,82 +38,6 @@ if ($PSCmdlet.MyInvocation.InvocationName -ne "powershell.exe") {
     Write-Host "Please provide your VirusTotal API key"
     $APIKey = Read-Host "Enter VirusTotal API key"
     Save-ApiKey -ApiKey $APIKey
-}
-
-# Function to securely save the VirusTotal API key
-function Save-ApiKey {
-    param (
-        [string]$ApiKey
-    )
-    $secureApiKey = $ApiKey | ConvertTo-SecureString -AsPlainText -Force
-    $secureApiKey | Export-Clixml -Path $apiKeyFilePath
-    Write-Log "VirusTotal API key saved securely."
-}
-
-# Function to retrieve the VirusTotal API key
-function Get-ApiKey {
-    if (Test-Path -Path $apiKeyFilePath) {
-        try {
-            $secureApiKey = Import-Clixml -Path $apiKeyFilePath
-            $secureApiKey | ConvertFrom-SecureString
-        } catch {
-            Write-Log "Failed to retrieve the VirusTotal API key: $($_.Exception.Message)"
-            return $null
-        }
-    } else {
-        return $null
-    }
-}
-
-# Prompt the user for their API key if it doesn't exist
-if (-not (Test-Path -Path $apiKeyFilePath)) {
-    Write-Host "It seems this is your first time running GSecurity."
-    Write-Host "Please paste your VirusTotal API key below and press Enter."
-    $userApiKey = Read-Host "Enter VirusTotal API Key"
-    Save-ApiKey -ApiKey $userApiKey
-    $VirusTotalApiKey = $userApiKey
-} else {
-    $VirusTotalApiKey = Get-ApiKey
-    if (-not $VirusTotalApiKey) {
-        Write-Host "Failed to retrieve VirusTotal API key. Please re-enter it."
-        $userApiKey = Read-Host "Enter VirusTotal API Key"
-        Save-ApiKey -ApiKey $userApiKey
-        $VirusTotalApiKey = $userApiKey
-    }
-}
-
-# Function to prompt the user with a GUI input box
-function Get-UserInput {
-    param (
-        [string]$Message,
-        [string]$Title
-    )
-    Add-Type -AssemblyName Microsoft.VisualBasic
-    [Microsoft.VisualBasic.Interaction]::InputBox($Message, $Title, "")
-}
-
-# Check for API key and prompt with GUI if needed
-if (-not (Test-Path -Path $apiKeyFilePath)) {
-    $userApiKey = Get-UserInput -Message "Enter your VirusTotal API Key:" -Title "GSecurity Configuration"
-    if (-not [string]::IsNullOrWhiteSpace($userApiKey)) {
-        Save-ApiKey -ApiKey $userApiKey
-        $VirusTotalApiKey = $userApiKey
-    } else {
-        Write-Log "No API key provided. Exiting."
-        exit
-    }
-} else {
-    $VirusTotalApiKey = Get-ApiKey
-    if (-not $VirusTotalApiKey) {
-        $userApiKey = Get-UserInput -Message "Failed to retrieve VirusTotal API key. Please re-enter it:" -Title "GSecurity Configuration"
-        if (-not [string]::IsNullOrWhiteSpace($userApiKey)) {
-            Save-ApiKey -ApiKey $userApiKey
-            $VirusTotalApiKey = $userApiKey
-        } else {
-            Write-Log "No API key provided. Exiting."
-            exit
-        }
-    }
 }
 
 # Set the polling interval (in seconds) for the monitoring loop
