@@ -15901,7 +15901,7 @@ Windows Registry Editor Version 5.00
 "Type"=dword:00000001
 
 [HKEY_CURRENT_USER\System\GameConfigStore\Children\cdb5dd72-1006-46eb-8e29-80803047d4f4]
-"ExeParentDirectory"="DRAGON QUEST HEROES}  II"
+"ExeParentDirectory"="DRAGON QUEST HEROES} II"
 "Flags"=dword:00000231
 "GameDVR_GameGUID"="3e2b01f2-e8ea-487c-88de-367befa71d31"
 "Parent"=hex:01,00,00,00,d0,8c,9d,df,01,15,d1,11,8c,7a,00,c0,4f,c2,97,eb,01,00,\
