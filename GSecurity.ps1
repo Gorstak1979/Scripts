@@ -1,137 +1,12 @@
 <#
     Script Name: GSecurity
     Author: Gorstak
-    Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files. 
-                 Monitors all local drives and network shares, ensures critical services are running, and uploads files to VirusTotal if they haven't been scanned.
-                 Protects critical system processes and specific trusted drivers from termination. Runs invisibly without disrupting the calling batch file.
-    Version: 2.3
+    Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files.
+                 Monitors all local drives and network shares, ensures critical services are running, and protects critical system processes and specific trusted drivers from termination.
+                 Runs invisibly without disrupting the calling batch file.
+    Version: 2.4
     License: Free for personal use
 #>
-
-# Function to protect the script from being terminated
-function Protect-Script {
-    $scriptName = [System.Diagnostics.Process]::GetCurrentProcess().ProcessName
-    $currentPid = [System.Diagnostics.Process]::GetCurrentProcess().Id
-    $timerInterval = 5000  # Time interval in milliseconds to check the script's health
-
-    # Function to monitor the process
-    $scriptMonitor = {
-        $currentPid = $args[0]
-        try {
-            # Check if the process is still running
-            $process = Get-Process -Id $currentPid -ErrorAction Stop
-            Start-Sleep -Milliseconds $timerInterval
-        } catch {
-            Write-Host "Script terminated! Restarting..."
-            # Restart the script if it gets terminated
-            Start-Process powershell -ArgumentList "-File $MyInvocation.MyCommand.Path"
-            exit
-        }
-    }
-
-    # Start monitoring the script in a separate job
-    Start-Job -ScriptBlock $scriptMonitor -ArgumentList $currentPid
-}
-
-# Call the self-protection function
-Protect-Script
-
-# Path to store the encrypted API key
-$apiKeyFilePath = "$env:USERPROFILE\Documents\GSecurity_ApiKey.xml"
-
-# Function to encrypt and store the API key
-function Save-ApiKey {
-    param (
-        [string]$APIKey
-    )
-
-    # Encrypt the API key and save it to a file
-    $EncryptedKey = ConvertTo-SecureString -String $APIKey -AsPlainText -Force | ConvertFrom-SecureString
-    Set-Content -Path $apiKeyFilePath -Value $EncryptedKey
-    Write-Host "API key saved securely."
-}
-
-# Function to retrieve and decrypt the API key
-function Get-ApiKey {
-    if (Test-Path $apiKeyFilePath) {
-        $EncryptedKey = Get-Content $apiKeyFilePath
-        $APIKey = ConvertTo-SecureString -String $EncryptedKey | ConvertFrom-SecureString -AsPlainText
-        return $APIKey
-    }
-    return $null
-}
-
-# Function to validate the API key by making a test call to VirusTotal
-function Validate-ApiKey {
-    param (
-        [string]$APIKey
-    )
-    
-    $url = "https://www.virustotal.com/api/v3/files/0"
-    $headers = @{
-        "x-apikey" = $APIKey
-    }
-    try {
-        $response = Invoke-RestMethod -Uri $url -Headers $headers -Method Get -ErrorAction Stop
-        if ($response.data) {
-            Write-Host "API key is valid and working."
-            return $true
-        }
-    } catch {
-        Write-Host "Invalid API key or network error."
-        return $false
-    }
-}
-
-# Check if the API key is already stored
-$APIKey = Get-ApiKey
-
-# If API key doesn't exist or is invalid, prompt for new key
-if (-Not $APIKey) {
-    Write-Host "No API key found. Please paste your VirusTotal API key."
-    
-    # Halt the script execution until the user pastes the API key
-    $APIKey = Read-Host "Enter VirusTotal API key"
-    
-    # Validate the key
-    if (-not (Validate-ApiKey -APIKey $APIKey)) {
-        Write-Host "API key is invalid. Please paste a valid key."
-        $APIKey = Read-Host "Enter VirusTotal API key"
-        # Validate again after retry
-        while (-not (Validate-ApiKey -APIKey $APIKey)) {
-            Write-Host "Invalid API key. Please try again."
-            $APIKey = Read-Host "Enter VirusTotal API key"
-        }
-    }
-
-    # Save the key securely after validation
-    Save-ApiKey -APIKey $APIKey
-} else {
-    Write-Host "API key found. Validating..."
-
-    # Validate the stored API key
-    if (-not (Validate-ApiKey -APIKey $APIKey)) {
-        Write-Host "API key is invalid. Please paste a valid key."
-        $APIKey = Read-Host "Enter VirusTotal API key"
-        # Validate again after retry
-        while (-not (Validate-ApiKey -APIKey $APIKey)) {
-            Write-Host "Invalid API key. Please try again."
-            $APIKey = Read-Host "Enter VirusTotal API key"
-        }
-
-        # Save the new key securely
-        Save-ApiKey -APIKey $APIKey
-    }
-}
-
-# Run invisibly if the API key is set
-if ($PSCmdlet.MyInvocation.InvocationName -ne "powershell.exe") {
-    Start-Invisible
-} elseif (-Not (Test-Path $apiKeyFilePath)) {
-    Write-Host "Please provide your VirusTotal API key"
-    $APIKey = Read-Host "Enter VirusTotal API key"
-    Save-ApiKey -ApiKey $APIKey
-}
 
 # Set the polling interval (in seconds) for the monitoring loop
 $PollingInterval = 300  # Adjusted to reduce CPU usage
@@ -168,12 +43,6 @@ if ($MyInvocation.InvocationName -notlike "powershell.exe -windowstyle hidden") 
     Start-Process -FilePath "powershell.exe" -ArgumentList "-windowstyle hidden -File '$PSCommandPath'" -NoNewWindow
     exit
 }
-
-# Set the polling interval (in seconds) for the monitoring loop
-$PollingInterval = 300  # Adjusted to reduce CPU usage
-
-# Dictionary to cache scanned file hashes (with clean results)
-$scannedFiles = @{}
 
 # Trusted driver vendors to exclude from termination
 $trustedDriverVendors = @(
@@ -235,9 +104,6 @@ function Monitor-AllFiles {
                 Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
                 return
             }
-
-            # Check with VirusTotal
-            VirusTotal-Check -FilePath $filePath
         } | Out-Null
 
         # Monitor modified files
@@ -250,9 +116,6 @@ function Monitor-AllFiles {
                 Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
                 return
             }
-
-            # Check with VirusTotal
-            VirusTotal-Check -FilePath $filePath
         } | Out-Null
     }
 }
@@ -269,11 +132,6 @@ function Monitor-Path {
         Write-Log "New file created: $filePath"
         if (-not (Check-FileCertificate -FilePath $filePath)) {
             Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
-        } else {
-            $scanResults = Get-VirusTotalScan -FilePath $filePath
-            if ($scanResults -and $scanResults.data.attributes.last_analysis_stats.malicious -gt 0) {
-                Block-Execution -FilePath $filePath -Reason "File detected as malware on VirusTotal"
-            }
         }
     } | Out-Null
     Register-ObjectEvent $fileWatcher "Changed" -Action {
@@ -283,61 +141,6 @@ function Monitor-Path {
 }
 
 # Function to check if the file has already been scanned and is clean
-function Check-FileInVirusTotalCache {
-    param (
-        [string]$fileHash
-    )
-    if ($scannedFiles.ContainsKey($fileHash)) {
-        Write-Log "File hash $fileHash found in cache (clean)."
-        return $true
-    } else {
-        return $false
-    }
-}
-
-# Function to send the file to VirusTotal if it's not in cache and check scan results
-function Get-VirusTotalScan {
-    param (
-        [string]$FilePath
-    )
-    # Calculate the file hash
-    $fileHash = Get-FileHash -Algorithm SHA256 -Path $FilePath
-    if (Check-FileInVirusTotalCache -fileHash $fileHash.Hash) {
-        return $null
-    }
-    # Query VirusTotal to see if the file was already uploaded and analyzed
-    $url = "https://www.virustotal.com/api/v3/files/$($fileHash.Hash)"
-    $headers = @{"x-apikey" = $VirusTotalApiKey}
-    $response = Invoke-RestMethod -Uri $url -Headers $headers -Method Get -ErrorAction SilentlyContinue
-    if ($response -and $response.data.attributes.last_analysis_stats.malicious -eq 0) {
-        Write-Log "File $FilePath is clean, already scanned."
-        $scannedFiles[$fileHash.Hash] = $true
-        return $response
-    } elseif ($response) {
-        return $response
-    } else {
-        Write-Log "VirusTotal did not return any results for $FilePath. It may not have been uploaded yet."
-        return $null
-    }
-}
-
-# Function to block execution of a file
-function Block-Execution {
-    param (
-        [string]$FilePath,
-        [string]$Reason
-    )
-    # Remove all permissions from the file
-    $acl = Get-Acl -Path $FilePath
-    $acl.SetAccessRuleProtection($true, $false) # Protect the ACL
-    $acl.Access | ForEach-Object {
-        $acl.RemoveAccessRule($_)
-    }
-    Set-Acl -Path $FilePath -AclObject $acl
-    Write-Log "Blocked file ${FilePath}: ${Reason}"
-}
-
-# Function to check the file certificate
 function Check-FileCertificate {
     param (
         [string]$FilePath
@@ -427,41 +230,6 @@ function Detect-And-Terminate-RemoteThreads {
         Write-Log "Unauthorized remote thread detected in PID $($thread.ProcessHandle)"
         Stop-Process -Id $thread.ProcessHandle -Force -ErrorAction SilentlyContinue
         Write-Log "Remote thread terminated in PID $($thread.ProcessHandle)"
-    }
-}
-
-# Monitor and upload files to VirusTotal (only new files)
-function VirusTotal-Check {
-    param ([string]$FilePath)
-
-    $hash = (Get-FileHash -Path $FilePath -Algorithm SHA256).Hash
-    $url = "https://www.virustotal.com/api/v3/files/$hash"
-
-    $response = Invoke-RestMethod -Uri $url -Headers @{ "x-apikey" = $apiKey } -Method Get -ErrorAction SilentlyContinue
-
-    if (-not $response) {
-        Write-Log "Uploading new file to VirusTotal: $FilePath"
-        Invoke-RestMethod -Uri "https://www.virustotal.com/api/v3/files" -Headers @{ "x-apikey" = $apiKey } -Method Post -InFile $FilePath -ContentType "multipart/form-data"
-        Write-Log "File uploaded to VirusTotal: $FilePath"
-    } else {
-        Write-Log "File already scanned: $FilePath"
-    }
-}
-
-# Detect and remove suspicious DLLs
-function Detect-And-Remove-Suspicious-DLLs {
-    $suspiciousPatterns = @("*.hook", "*.log", "*.key")  # Define suspicious patterns
-    $searchPaths = @("C:\\Windows\\System32", "$env:USERPROFILE")
-
-    foreach ($path in $searchPaths) {
-        $dlls = Get-ChildItem -Path $path -Recurse -Include "*.dll" -ErrorAction SilentlyContinue |
-                Where-Object { $suspiciousPatterns | ForEach-Object { $_ -like $_.Name } }
-
-        foreach ($dll in $dlls) {
-            Write-Log "Suspicious DLL detected: $($dll.FullName)"
-            Remove-Item -Path $dll.FullName -Force -ErrorAction SilentlyContinue
-            Write-Log "Suspicious DLL removed: $($dll.FullName)"
-        }
     }
 }
 
@@ -556,4 +324,3 @@ while ($true) {
     Remove-Unsigned-And-Suspicious-DLLs # Updated function
     Start-Sleep -Seconds 60
 }
-
