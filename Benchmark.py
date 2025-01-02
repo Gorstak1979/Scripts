@@ -3,69 +3,59 @@ import json
 import time
 import numpy as np
 import os
+import tempfile
 import pyopencl as cl
 import pyopencl.array as cl_array
 from tkinter import Tk, Frame, Label, Button
 import pyautogui
-from PIL import Image, ImageTk
+import speedtest
 
 # CPU Benchmark using matrix multiplication
 def cpu_benchmark():
     print("CPU Benchmark")
     print("-------------")
-    
-    # Matrix multiplication parameters (smaller matrix for realistic scores)
-    N = 200  # Reduced matrix size (200x200 matrix for realistic testing)
+    N = 200
     A = np.random.rand(N, N)
     B = np.random.rand(N, N)
-    
-    # Perform matrix multiplication multiple times for more accurate results
+
     start_time = time.time()
-    for _ in range(5):  # Repeat for more accuracy
-        C = np.dot(A, B)  # Matrix multiplication
+    for _ in range(5):
+        C = np.dot(A, B)
     elapsed_time = time.time() - start_time
-    
-    # Calculate GFLOPS (2 * N^3 operations per matrix multiplication)
-    gflops = (2 * N**3 / 1e9) * 5 / elapsed_time  # 5 iterations for averaging
+
+    gflops = (2 * N**3 / 1e9) * 5 / elapsed_time
     print(f"CPU Performance: {gflops:.2f} GFLOPS")
     return gflops
 
-# Network Benchmark using subprocess and speedtest-cli
+# Network Benchmark using speedtest module
 def network_benchmark():
     print("\nNetwork Benchmark")
     print("-----------------")
     try:
-        result = subprocess.run(["speedtest-cli", "--json"], capture_output=True, text=True)
-        
-        if result.returncode != 0:
-            raise Exception("Speedtest failed.")
-        
-        output = json.loads(result.stdout)
-        # Convert download/upload from bits per second to Mbit/s (divide by 1e6, then by 8 for bits to bytes)
-        download_speed = output['download'] / 1e6  # Convert from bits/s to Mbit/s
-        upload_speed = output['upload'] / 1e6  # Convert from bits/s to Mbit/s
-        
-        print(f"Download Speed: {download_speed:.2f} Mbit/s")
-        print(f"Upload Speed: {upload_speed:.2f} Mbit/s")
-        
-        return {"Download Mbit/s": download_speed, "Upload Mbit/s": upload_speed}
-    
+        st = speedtest.Speedtest()
+        st.get_best_server()
+        download_speed = st.download() / 1e6  # Convert from bps to Mbps
+        upload_speed = st.upload() / 1e6  # Convert from bps to Mbps
+
+        print(f"Download Speed: {download_speed:.2f} Mbps")
+        print(f"Upload Speed: {upload_speed:.2f} Mbps")
+
+        return {"Download Mbps": download_speed, "Upload Mbps": upload_speed}
     except Exception as e:
         print(f"Error during network benchmark: {e}")
         return None
 
-# GPU Benchmark in GFLOPS (using more complex task)
+# GPU Benchmark using OpenCL
 def gpu_benchmark():
     print("\nGPU Benchmark")
     print("-------------")
     try:
         platforms = cl.get_platforms()
-        device = platforms[0].get_devices()[0]  # Use first GPU device
+        device = platforms[0].get_devices()[0]
         ctx = cl.Context([device])
         queue = cl.CommandQueue(ctx)
 
-        # Use a more complex GPU operation (e.g., matrix multiplication)
-        N = 200  # Reduced matrix size for realistic benchmarks (200x200 matrix)
+        N = 200
         A = np.random.rand(N, N).astype(np.float32)
         B = np.random.rand(N, N).astype(np.float32)
         C = np.empty_like(A)
@@ -91,7 +81,7 @@ def gpu_benchmark():
         prg.matmul(queue, (N, N), None, a_gpu.data, b_gpu.data, c_gpu.data, np.int32(N))
         queue.finish()
         elapsed_time = time.time() - start
-        gflops = (2 * N**3 / 1e9) / elapsed_time  # Adjust for matrix multiplication (2 * N^3 ops)
+        gflops = (2 * N**3 / 1e9) / elapsed_time
         print(f"GPU Performance: {gflops:.2f} GFLOPS")
         return gflops
 
@@ -99,32 +89,47 @@ def gpu_benchmark():
         print(f"Error during GPU benchmark: {e}")
         return None
 
-# Drive Benchmark in MB/s
+# Drive Benchmark using tempfile
 def drive_benchmark():
     print("\nDrive Benchmark")
     print("---------------")
-    file_size_mb = 500  # 500 MB file
-    file_path = "C:/temp/temp_drive_test.dat"
+    file_size_mb = 500
     data = os.urandom(file_size_mb * 1024 * 1024)
 
-    # Write speed
-    start_time = time.time()
-    with open(file_path, "wb") as f:
-        f.write(data)
-    write_time = time.time() - start_time
-    write_speed = file_size_mb / write_time
+    with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+        temp_file_path = temp_file.name
 
-    # Read speed
+        start_time = time.time()
+        temp_file.write(data)
+        write_time = time.time() - start_time
+        write_speed = file_size_mb / write_time
+
     start_time = time.time()
-    with open(file_path, "rb") as f:
+    with open(temp_file_path, "rb") as f:
         f.read()
     read_time = time.time() - start_time
     read_speed = file_size_mb / read_time
 
-    os.remove(file_path)
+    os.remove(temp_file_path)
     print(f"Write Speed: {write_speed:.2f} MB/s")
     print(f"Read Speed: {read_speed:.2f} MB/s")
     return {"Write MB/s": write_speed, "Read MB/s": read_speed}
+
+# RAM Benchmark using memory-intensive operations
+def ram_benchmark():
+    print("\nRAM Benchmark")
+    print("-------------")
+    try:
+        size = 500 * 1024 * 1024  # 500 MB
+        start_time = time.time()
+        data = bytearray(size)
+        elapsed_time = time.time() - start_time
+        bandwidth = size / elapsed_time / 1e9  # Convert to GB/s
+        print(f"RAM Speed: {bandwidth:.2f} GB/s")
+        return bandwidth
+    except Exception as e:
+        print(f"Error during RAM benchmark: {e}")
+        return 0
 
 # Overall Score Calculation
 def calculate_overall_score(cpu_score, gpu_score, ram_score, drive_scores, network_scores):
@@ -132,32 +137,30 @@ def calculate_overall_score(cpu_score, gpu_score, ram_score, drive_scores, netwo
     if gpu_score is not None:
         scores.append(gpu_score)
     if network_scores:
-        scores.append((network_scores["Download Mbit/s"] + network_scores["Upload Mbit/s"]) / 2)
+        scores.append((network_scores["Download Mbps"] + network_scores["Upload Mbps"]) / 2)
     scores.append((drive_scores["Write MB/s"] + drive_scores["Read MB/s"]) / 2)
     overall_score = round(sum(scores) / len(scores), 2)
     print("\nOverall Score:", overall_score)
     return overall_score
 
-# Function to simulate Windows Key + Print Screen (take a screenshot)
+# Function to take a screenshot
 def take_screenshot():
     pyautogui.hotkey('win', 'prtscr')
     print("Screenshot taken!")
 
-# Main function for testing the updated benchmark
+# Main function for testing
 def main():
-    cpu_score = cpu_benchmark()  # Perform CPU benchmark
-    gpu_score = gpu_benchmark()  # Perform GPU benchmark
-    ram_score = 30  # Placeholder for actual RAM benchmark result
-    drive_scores = {"Write MB/s": 150, "Read MB/s": 200}  # Placeholder for actual drive test result
-    network_scores = network_benchmark()  # Perform Network benchmark
-    
-    # Adjust if network data is missing
+    cpu_score = cpu_benchmark()
+    gpu_score = gpu_benchmark()
+    ram_score = ram_benchmark()
+    drive_scores = drive_benchmark()
+    network_scores = network_benchmark()
+
     if not network_scores:
-        network_scores = {"Download Mbit/s": 0, "Upload Mbit/s": 0}
-    
+        network_scores = {"Download Mbps": 0, "Upload Mbps": 0}
+
     overall_score = calculate_overall_score(cpu_score, gpu_score, ram_score, drive_scores, network_scores)
 
-    # Create GUI to display results
     root = Tk()
     root.title("System Benchmark Results")
     root.geometry("600x400")
@@ -165,23 +168,19 @@ def main():
     frame = Frame(root, padx=20, pady=20)
     frame.pack(expand=True)
 
-    # Display Results
     Label(frame, text=f"CPU: {cpu_score:.2f} GFLOPS").pack()
     Label(frame, text=f"GPU: {gpu_score:.2f} GFLOPS" if gpu_score else "GPU: N/A").pack()
     Label(frame, text=f"RAM Speed: {ram_score:.2f} GB/s").pack()
     Label(frame, text=f"Drive Write: {drive_scores['Write MB/s']:.2f} MB/s").pack()
     Label(frame, text=f"Drive Read: {drive_scores['Read MB/s']:.2f} MB/s").pack()
-    if network_scores:
-        Label(frame, text=f"Download: {network_scores['Download Mbit/s']:.2f} Mbit/s").pack()
-        Label(frame, text=f"Upload: {network_scores['Upload Mbit/s']:.2f} Mbit/s").pack()
+    Label(frame, text=f"Download: {network_scores['Download Mbps']:.2f} Mbps").pack()
+    Label(frame, text=f"Upload: {network_scores['Upload Mbps']:.2f} Mbps").pack()
     Label(frame, text=f"Overall Score: {overall_score:.2f}").pack()
 
-    # Add Camera Icon Button to take screenshot
-    camera_button = Button(root, text="\ud83d\udcf7", font=("Arial", 16), command=take_screenshot, borderwidth=0)
-    camera_button.place(x=550, y=10)  # Position the button in the top-right corner
+    screenshot_button = Button(root, text="Take Screenshot", command=take_screenshot)
+    screenshot_button.pack(pady=10)
 
     root.mainloop()
 
-# Running main
 if __name__ == "__main__":
     main()
