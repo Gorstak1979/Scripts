@@ -364,9 +364,6 @@ $selectors = @(
 	'Language.Speech';
 	'Language.TextToSpeech';
 	'App.StepsRecorder';
-	'Hello.Face.18967';
-	'Hello.Face.Migration.18967';
-	'Hello.Face.20134';
 	'Media.WindowsMediaPlayer';
 	'Microsoft.Windows.WordPad';
 );
