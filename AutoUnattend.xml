@@ -451,7 +451,6 @@ $selectors = @(
 	'Microsoft.MicrosoftOfficeHub';
 	'Microsoft.Office.OneNote';
 	'Microsoft.OutlookForWindows';
-	'Microsoft.MSPaint';
 	'Microsoft.People';
 	'Microsoft.Windows.Photos';
 	'Microsoft.PowerAutomateDesktop';
