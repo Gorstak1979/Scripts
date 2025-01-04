@@ -262,6 +262,6 @@ function Run-Monitoring {
 }
 
 # Continuously run the script
-while ($true) {
+Start-Job -ScriptBlock {
     Run-Monitoring
 }
