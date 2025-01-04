@@ -245,6 +245,17 @@ function RetaliateAgainstIntruder {
     }
 }
 
+# Monitor and terminate unauthorized remote threads
+function Detect-And-Terminate-RemoteThreads {
+    $threads = Get-WmiObject Win32_Thread | Where-Object {
+        $_.ProcessHandle -ne $null -and $_.OtherProcessHandle -ne $null
+    }
+    foreach ($thread in $threads) {
+        Write-Log "Unauthorized remote thread detected in PID $($thread.ProcessHandle)"
+        Stop-Process -Id $thread.ProcessHandle -Force -ErrorAction SilentlyContinue
+        Write-Log "Remote thread terminated in PID $($thread.ProcessHandle)"
+    }
+}
 # Main logic to run all detection functions
 function Run-Monitoring {
     Write-Log "Starting security checks..."
@@ -254,6 +265,7 @@ function Run-Monitoring {
     Monitor-Overlays
     Remove-Unsigned-And-Suspicious-DLLs
     RetaliateAgainstIntruder
+    Detect-And-Terminate-RemoteThreads
     Start-Sleep $PollingInterval
 }
 
