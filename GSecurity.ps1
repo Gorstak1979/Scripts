@@ -4,7 +4,7 @@
     Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files.
                  Monitors all local drives and network shares, ensures critical services are running, and protects critical system processes and specific trusted drivers from termination.
                  Runs invisibly without disrupting the calling batch file.
-    Version: 2.5
+    Version: 2.6
     License: Free for personal use
 #>
 
@@ -51,135 +51,96 @@ function Create-ScheduledTask {
 # Call the function to create the task
 Create-ScheduledTask
 
-# Trusted driver vendors to exclude from termination
-$trustedDriverVendors = @(
-    "*Microsoft*", "*NVIDIA*", "*Intel*", "*AMD*", "*Realtek*"
-)
-
-# Whitelist of critical processes (system-related)
-$whitelistedProcesses = @(
-    "explorer",    # File Explorer and Desktop
-    "winlogon",    # Windows Logon Process
-    "taskhostw",   # Task Host Window
-    "csrss",       # Client/Server Runtime
-    "services",    # Windows Services
-    "lsass",       # Local Security Authority
-    "dwm",         # Desktop Window Manager
-    "svchost",     # Generic Host Process for Services
-    "smss",        # Session Manager Subsystem
-    "wininit",     # Windows Initialization Process
-    "System",      # System Process
-    "conhost",     # Console Window Host
-    "cmd",         # Command Prompt
-    "powershell"   # PowerShell itself
-)
-
-# Function to ensure WMI (Winmgmt) service is running and set to Automatic
-function Ensure-WMIService {
-    $wmiService = Get-Service -Name "winmgmt"
-    if ($wmiService.Status -ne 'Running') {
-        Write-Log "Starting WMI (winmgmt) service..."
-        Set-Service -Name "winmgmt" -StartupType Automatic
-        Start-Service -Name "winmgmt"
-        Write-Log "WMI (winmgmt) service started."
-    }
-}
-
-# Consolidated Monitor-AllFiles Function
-function Monitor-AllFiles {
-    # Define the drives to monitor
-    $drives = Get-PSDrive -PSProvider FileSystem | Where-Object { 
-        $_.DriveType -in @('Fixed', 'Removable', 'Network') 
-    }
-
-    foreach ($drive in $drives) {
-        $path = $drive.Root
-        Write-Log "Starting to monitor: $path"
-
-        $fileWatcher = New-Object System.IO.FileSystemWatcher
-        $fileWatcher.Path = $path
-        $fileWatcher.IncludeSubdirectories = $true
-        $fileWatcher.EnableRaisingEvents = $true
-
-        # Monitor created files
-        Register-ObjectEvent $fileWatcher "Created" -Action {
-            $filePath = $Event.SourceEventArgs.FullPath
-            Write-Log "File created: $filePath"
-
-            # Check file certificate
-            if (-not (Check-FileCertificate -FilePath $filePath)) {
-                Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
-                return
-            }
-        } | Out-Null
-
-        # Monitor modified files
-        Register-ObjectEvent $fileWatcher "Changed" -Action {
-            $filePath = $Event.SourceEventArgs.FullPath
-            Write-Log "File modified: $filePath"
-
-            # Check file certificate
-            if (-not (Check-FileCertificate -FilePath $filePath)) {
-                Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
-                return
-            }
-        } | Out-Null
-    }
-}
-
-# Function to monitor file changes
-function Monitor-Path {
-    param ([string]$Path)
-    $fileWatcher = New-Object System.IO.FileSystemWatcher
-    $fileWatcher.Path = $Path
-    $fileWatcher.IncludeSubdirectories = $true
-    $fileWatcher.EnableRaisingEvents = $true
-    Register-ObjectEvent $fileWatcher "Created" -Action {
-        $filePath = $Event.SourceEventArgs.FullPath
-        Write-Log "New file created: $filePath"
-        if (-not (Check-FileCertificate -FilePath $filePath)) {
-            Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
-        }
-    } | Out-Null
-    Register-ObjectEvent $fileWatcher "Changed" -Action {
-        $filePath = $Event.SourceEventArgs.FullPath
-        Write-Log "File modified: $filePath"
-    } | Out-Null
-}
-
-# Function to check if the file has already been scanned and is clean
-function Check-FileCertificate {
+# Function to log messages to a file
+function Write-Log {
     param (
-        [string]$FilePath
+        [string]$Message
     )
+    $logPath = "C:\Logs\activity.log"
+    Add-Content -Path $logPath -Value "$(Get-Date) - $Message"
+}
+
+# Function to terminate a process and its parent
+function Terminate-ProcessWithParent {
+    param (
+        [int]$ProcessId
+    )
+
     try {
-        $signature = Get-AuthenticodeSignature -FilePath $FilePath
-        switch ($signature.Status) {
-            'Valid' {
-                return $true
-            }
-            'NotSigned' {
-                Write-Log "File $FilePath is not digitally signed."
-                Block-Execution -FilePath $FilePath -Reason "Not signed"
-                return $false
-            }
-            'UnknownError' {
-                Write-Log "Unknown error while verifying signature of $FilePath."
-                return $false
-            }
-            default {
-                Write-Log "File $FilePath has an invalid or untrusted signature: $($signature.Status)"
-                Block-Execution -FilePath $FilePath -Reason "Invalid signature"
-                return $false
+        $process = Get-Process -Id $ProcessId
+        if ($process) {
+            Stop-Process -Id $ProcessId -Force
+            Write-Log "Terminated process: $($process.ProcessName) (PID: $ProcessId)"
+        }
+
+        # Attempt to terminate the parent process if available
+        $parentProcessId = (Get-CimInstance -ClassName Win32_Process -Filter "ProcessId=$ProcessId").ParentProcessId
+        if ($parentProcessId) {
+            $parentProcess = Get-Process -Id $parentProcessId -ErrorAction SilentlyContinue
+            if ($parentProcess) {
+                Stop-Process -Id $parentProcessId -Force
+                Write-Log "Terminated parent process: $($parentProcess.ProcessName) (PID: $parentProcessId)"
             }
         }
     } catch {
-        Write-Log "Error checking certificate for ${FilePath}: $($_.Exception.Message)"
-        return $false
+        Write-Log "Error terminating process: $($_.Exception.Message)"
     }
 }
 
-# Advanced keylogger detection: look for suspicious processes but skip whitelisted ones
+# Function to gather process and parent details, then terminate the process and its parent
+function Get-ProcessDetailsAndTerminate {
+    param (
+        [int]$ProcessId
+    )
+
+    try {
+        # Get process details, including parent process and executable path
+        $processDetails = @{
+            Name        = (Get-Process -Id $ProcessId).ProcessName
+            ID          = $ProcessId
+            StartTime   = (Get-Process -Id $ProcessId).StartTime
+            Path        = (Get-CimInstance -ClassName Win32_Process -Filter "ProcessId=$ProcessId").ExecutablePath
+            ParentID    = (Get-CimInstance -ClassName Win32_Process -Filter "ProcessId=$ProcessId").ParentProcessId
+        }
+
+        # Get the parent process details
+        $parentProcess = Get-Process -Id $processDetails.ParentID -ErrorAction SilentlyContinue
+
+        if ($parentProcess) {
+            $processDetails["ParentName"] = $parentProcess.ProcessName
+        } else {
+            $processDetails["ParentName"] = "Unknown"
+        }
+
+        # Log detailed information about the process and its parent
+        Write-Log "Process details: $(ConvertTo-Json $processDetails -Depth 3)"
+
+        # Terminate the suspicious process and its parent
+        Terminate-ProcessWithParent -ProcessId $ProcessId
+        Terminate-RemoteThread -ProcessId $ProcessId
+
+    } catch {
+        Write-Log "Error processing process details: $($_.Exception.Message)"
+    }
+}
+
+# Function to monitor for suspicious screen overlays and trace their sources
+function Monitor-Overlays {
+    # Get a list of processes with visible windows, excluding whitelisted processes
+    $windows = Get-Process | Where-Object {
+        $_.MainWindowTitle -ne "" -and
+        (-not $whitelistedProcesses -contains $_.ProcessName)
+    }
+
+    foreach ($window in $windows) {
+        Write-Log "Potential screen overlay or UI hijacker detected: $($window.ProcessName)"
+
+        # Call the new function to get process details and terminate the process and parent
+        Get-ProcessDetailsAndTerminate -ProcessId $window.Id
+    }
+}
+
+# Function to detect and terminate keyloggers
 function Monitor-Keyloggers {
     $suspiciousProcesses = Get-Process | Where-Object {
         ($_.ProcessName -match 'hook|log|key|capture|sniff') -or
@@ -188,29 +149,9 @@ function Monitor-Keyloggers {
     }
     foreach ($process in $suspiciousProcesses) {
         Write-Log "Potential keylogger detected: $($process.ProcessName)"
-        try {
-            Stop-Process -Id $process.Id -Force
-            Write-Log "Keylogger process terminated: $($process.ProcessName)"
-        } catch {
-            Write-Log "Failed to terminate process: $($process.ProcessName)"
-        }
-    }
-}
-
-# Function to monitor for suspicious screen overlays
-function Monitor-Overlays {
-    $windows = Get-Process | Where-Object {
-        $_.MainWindowTitle -ne "" -and
-        (-not $whitelistedProcesses -contains $_.ProcessName)
-    }
-    foreach ($window in $windows) {
-        Write-Log "Potential screen overlay or UI hijacker detected: $($window.ProcessName)"
-        try {
-            Stop-Process -Id $window.Id -Force
-            Write-Log "Overlay process terminated: $($window.ProcessName)"
-        } catch {
-            Write-Log "Failed to terminate process: $($window.ProcessName)"
-        }
+        
+        # Call the new function to get process details and terminate the process and parent
+        Get-ProcessDetailsAndTerminate -ProcessId $process.Id
     }
 }
 
@@ -237,6 +178,25 @@ function Detect-And-Terminate-RemoteThreads {
         Write-Log "Unauthorized remote thread detected in PID $($thread.ProcessHandle)"
         Stop-Process -Id $thread.ProcessHandle -Force -ErrorAction SilentlyContinue
         Write-Log "Remote thread terminated in PID $($thread.ProcessHandle)"
+    }
+}
+
+# Function to terminate remote threads
+function Terminate-RemoteThread {
+    param (
+        [int]$ProcessId
+    )
+
+    try {
+        $remoteThreads = (Get-WmiObject Win32_Thread | Where-Object { $_.ProcessHandle -eq $ProcessId })
+
+        foreach ($thread in $remoteThreads) {
+            # Terminate the remote thread
+            Write-Log "Terminating remote thread (ThreadID: $($thread.ThreadID)) for process $ProcessId"
+            Stop-Process -Id $thread.ProcessHandle -Force
+        }
+    } catch {
+        Write-Log "Error terminating remote thread: $($_.Exception.Message)"
     }
 }
 
@@ -298,7 +258,6 @@ function Remove-Unsigned-And-Suspicious-DLLs {
 # Function to detect and terminate unauthorized web servers
 function Detect-And-Terminate-WebServers {
     $webServerPorts = @(80, 443) # Common web server ports
-    $allowedProcesses = @("nginx", "apache", "iisexpress") # Whitelisted web server processes
 
     # Get active network connections on web server ports
     $connections = Get-NetTCPConnection | Where-Object {
@@ -309,18 +268,65 @@ function Detect-And-Terminate-WebServers {
         $process = Get-Process -Id $connection.OwningProcess -ErrorAction SilentlyContinue
         if ($process -and (-not ($allowedProcesses -contains $process.Name))) {
             Write-Log "Unauthorized web server detected: $($process.Name) on Port $($connection.LocalPort)"
-            try {
-                Stop-Process -Id $process.Id -Force
-                Write-Log "Web server process terminated: $($process.Name)"
-            } catch {
-                Write-Log "Failed to terminate web server process: $($process.Name)"
-            }
+
+            # Call the new function to get process details and terminate the process and parent
+            Get-ProcessDetailsAndTerminate -ProcessId $process.Id
         }
     }
 }
 
-# Continuously run the script
-Start-Job -ScriptBlock {
+# Function to monitor file changes
+function Monitor-Path {
+    param ([string]$Path)
+    $fileWatcher = New-Object System.IO.FileSystemWatcher
+    $fileWatcher.Path = $Path
+    $fileWatcher.IncludeSubdirectories = $true
+    $fileWatcher.EnableRaisingEvents = $true
+    Register-ObjectEvent $fileWatcher "Created" -Action {
+        $filePath = $Event.SourceEventArgs.FullPath
+        Write-Log "New file created: $filePath"
+        if (-not (Check-FileCertificate -FilePath $filePath)) {
+            Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
+        }
+    } | Out-Null
+    Register-ObjectEvent $fileWatcher "Changed" -Action {
+        $filePath = $Event.SourceEventArgs.FullPath
+        Write-Log "File modified: $filePath"
+    } | Out-Null
+}
+
+# Function to check if the file has already been scanned and is clean
+function Check-FileCertificate {
+    param (
+        [string]$FilePath
+    )
+    try {
+        $signature = Get-AuthenticodeSignature -FilePath $FilePath
+        switch ($signature.Status) {
+            'Valid' {
+                return $true
+            }
+            'NotSigned' {
+                return $true
+            }
+            'UnknownError' {
+                Write-Log "Unknown error while verifying signature of $FilePath."
+                return $false
+            }
+            default {
+                Write-Log "File $FilePath has an invalid or untrusted signature: $($signature.Status)"
+                Block-Execution -FilePath $FilePath -Reason "Invalid signature"
+                return $false
+            }
+        }
+    } catch {
+        Write-Log "Error checking certificate for ${FilePath}: $($_.Exception.Message)"
+        return $false
+    }
+}
+
+# Main logic to run all detection functions
+function Run-Monitoring {
     Write-Log "Starting security checks..."
     Ensure-WMIService
     Detect-And-Terminate-RemoteThreads
@@ -329,5 +335,11 @@ Start-Job -ScriptBlock {
     Monitor-Overlays
     Detect-And-Terminate-WebServers
     Remove-Unsigned-And-Suspicious-DLLs # Updated function
+    Monitor-SuspiciousDLLs
     Start-Sleep $PollingInterval
+}
+
+# Continuously run the script
+Start-Job -ScriptBlock {
+    Run-Monitoring
 }
