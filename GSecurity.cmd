@@ -8,9 +8,7 @@ net user defaultuser100000 /delete
 mkdir C:\Windows\GShield
 copy emptystandbylist.exe C:\Windows\GShield\emptystandbylist.exe
 copy RamCleaner.bat C:\Windows\GShield\RamCleaner.bat
-copy GSecurity.exe C:\Windows\GShield\GSecurity.exe
 schtasks /create /tn "RamCleaner" /xml StartRamCleanerOnLogon.xml /ru "SYSTEM"
-schtasks /create /tn "GSecurity" /xml StartGSecurityOnLogon.xml /ru "SYSTEM"
 
 takeown /f "%SystemDrive%\Users\Public\Desktop" /r /d y
 icacls "%SystemDrive%\Users\Public\Desktop" /inheritance:d /T /C
@@ -225,7 +223,3 @@ for /f "tokens=*" %%A in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSe
     )
 )
 echo PXE boot disabled for all network adapters.
-
-%windir%\System32\bcdedit /delete "{3512665e-b493-11ef-95ec-806e6f6e6963}"
-%windir%\System32\bcdedit /delete "{3512665f-b493-11ef-95ec-806e6f6e6963}"
-%windir%\System32\bcdedit /delete "{35126660-b493-11ef-95ec-806e6f6e6963}"
