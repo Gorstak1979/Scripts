@@ -9,7 +9,7 @@
 #>
 
 # Set the polling interval (in seconds) for the monitoring loop
-$PollingInterval = 300  # Adjusted to reduce CPU usage
+$PollingInterval = 60  # Adjusted to reduce CPU usage
 
 # Dictionary to cache scanned file hashes (with clean results)
 $scannedFiles = @{}
@@ -25,24 +25,31 @@ function Write-Log {
     Add-Content -Path $logFile -Value $logEntry
 }
 
-# Ensure the script runs as administrator
-if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Log "Script not running as administrator. Restarting with elevated privileges."
-    Start-Process -FilePath "powershell" -ArgumentList "-File '$PSCommandPath'" -Verb RunAs
-    exit
+# Create a scheduled task to run under the SYSTEM account
+function Create-ScheduledTask {
+    param (
+        [string]$TaskName = "GSecurity",
+        [string]$ScriptPath = [System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
+    )
+
+    # Check if the task already exists
+    if (Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue) {
+        Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
+        Write-Log "Existing task '$TaskName' removed."
+    }
+
+    # Define the action and trigger for the task
+    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-WindowStyle Hidden -ExecutionPolicy Bypass -File `"$ScriptPath`""
+    $trigger = New-ScheduledTaskTrigger -AtStartup
+    $principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount
+
+    # Register the task
+    Register-ScheduledTask -TaskName $TaskName -Action $action -Trigger $trigger -Principal $principal
+    Write-Log "Scheduled task '$TaskName' created to run under SYSTEM account."
 }
 
-# Add the script to startup
-$scriptPath = [System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
-$startupTask = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
-Set-ItemProperty -Path $startupTask -Name "GSecurity" -Value "$scriptPath"
-Write-Log "Script added to startup."
-
-# Run invisibly
-if ($MyInvocation.InvocationName -notlike "powershell.exe -windowstyle hidden") {
-    Start-Process -FilePath "powershell.exe" -ArgumentList "-windowstyle hidden -File '$PSCommandPath'" -NoNewWindow
-    exit
-}
+# Call the function to create the task
+Create-ScheduledTask
 
 # Trusted driver vendors to exclude from termination
 $trustedDriverVendors = @(
@@ -313,7 +320,7 @@ function Detect-And-Terminate-WebServers {
 }
 
 # Continuously run the script
-while ($true) {
+Start-Job -ScriptBlock {
     Write-Log "Starting security checks..."
     Ensure-WMIService
     Detect-And-Terminate-RemoteThreads
@@ -322,5 +329,5 @@ while ($true) {
     Monitor-Overlays
     Detect-And-Terminate-WebServers
     Remove-Unsigned-And-Suspicious-DLLs # Updated function
-    Start-Sleep -Seconds 60
+    Start-Sleep $PollingInterval
 }
