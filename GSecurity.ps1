@@ -4,7 +4,7 @@
     Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files.
                  Monitors all local drives and network shares, ensures critical services are running, and protects critical system processes and specific trusted drivers from termination.
                  Runs invisibly without disrupting the calling batch file.
-    Version: 2.4
+    Version: 2.5
     License: Free for personal use
 #>
 
