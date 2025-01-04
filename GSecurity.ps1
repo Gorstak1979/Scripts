@@ -275,6 +275,48 @@ function Detect-And-Terminate-WebServers {
     }
 }
 
+# Consolidated Monitor-AllFiles Function
+function Monitor-AllFiles {
+    # Define the drives to monitor
+    $drives = Get-PSDrive -PSProvider FileSystem | Where-Object { 
+        $_.DriveType -in @('Fixed', 'Removable', 'Network') 
+    }
+
+    foreach ($drive in $drives) {
+        $path = $drive.Root
+        Write-Log "Starting to monitor: $path"
+
+        $fileWatcher = New-Object System.IO.FileSystemWatcher
+        $fileWatcher.Path = $path
+        $fileWatcher.IncludeSubdirectories = $true
+        $fileWatcher.EnableRaisingEvents = $true
+
+        # Monitor created files
+        Register-ObjectEvent $fileWatcher "Created" -Action {
+            $filePath = $Event.SourceEventArgs.FullPath
+            Write-Log "File created: $filePath"
+
+            # Check file certificate
+            if (-not (Check-FileCertificate -FilePath $filePath)) {
+                Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
+                return
+            }
+        } | Out-Null
+
+        # Monitor modified files
+        Register-ObjectEvent $fileWatcher "Changed" -Action {
+            $filePath = $Event.SourceEventArgs.FullPath
+            Write-Log "File modified: $filePath"
+
+            # Check file certificate
+            if (-not (Check-FileCertificate -FilePath $filePath)) {
+                Block-Execution -FilePath $filePath -Reason "Untrusted certificate"
+                return
+            }
+        } | Out-Null
+    }
+}
+
 # Function to monitor file changes
 function Monitor-Path {
     param ([string]$Path)
