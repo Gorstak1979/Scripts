@@ -406,6 +406,7 @@ function Run-Monitoring {
     Detect-And-Terminate-WebServers
     Remove-Unsigned-And-Suspicious-DLLs # Updated function
     Monitor-SuspiciousDLLs
+    RetaliateAgainstIntruder
     Start-Sleep $PollingInterval
 }
 
