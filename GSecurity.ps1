@@ -5,7 +5,7 @@
                  Monitors all local drives and network shares, ensures critical services are running, and protects critical system processes and specific trusted drivers from termination.
                  Runs invisibly without disrupting the calling batch file. While it is not designed to be antivirus replacement, it aims to be 2nd layer of defense for high profile targets.
                  It is a part of larger script suite, called GShield with other scripts offering gaming tweaks and additional tweaks and policies for hardening.
-    Version: 3.0
+    Version: 3.1
     License: Free for personal use
 #>
 
@@ -417,6 +417,158 @@ function RetaliateAgainstIntruder {
     }
 }
 
+# Function to monitor and react to file integrity changes (e.g., restore critical files if altered)
+function Monitor-FileIntegrity {
+    $criticalFiles = @(
+        "C:\Windows\System32\kernel32.dll",
+        "C:\Windows\System32\ntdll.dll",
+        "C:\Windows\System32\cmd.exe"
+    )
+    $fileHashes = @{}
+
+    # Initial hash collection for integrity comparison
+    foreach ($file in $criticalFiles) {
+        if (Test-Path $file) {
+            $hash = Get-FileHash -Path $file -Algorithm SHA256
+            $fileHashes[$file] = $hash.Hash
+        }
+    }
+
+    # Monitor for changes and react
+    while ($true) {
+        foreach ($file in $criticalFiles) {
+            if (Test-Path $file) {
+                $currentHash = Get-FileHash -Path $file -Algorithm SHA256
+                if ($currentHash.Hash -ne $fileHashes[$file]) {
+                    Write-Log "File integrity change detected for $file. Restoring to backup."
+                    # Restore from backup or delete and quarantine suspicious files
+                    Restore-FileFromBackup $file
+                    $fileHashes[$file] = $currentHash.Hash
+                }
+            }
+        }
+        Start-Sleep -Seconds 60
+    }
+}
+
+# Function to restore files from backup if integrity is compromised
+function Restore-FileFromBackup {
+    param (
+        [string]$file
+    )
+    $backupDir = "C:\Backup\CriticalFiles"
+    $backupFile = Join-Path -Path $backupDir -ChildPath (Split-Path $file -Leaf)
+
+    # Check if the file exists in the backup
+    if (Test-Path $backupFile) {
+        Write-Log "Restoring $file from backup."
+        Copy-Item -Path $backupFile -Destination $file -Force
+    } else {
+        Write-Log "No backup found for $file. Quarantining the file."
+        Move-Item -Path $file -Destination "$backupDir\Quarantined" -Force
+    }
+}
+
+# Function to monitor and terminate suspicious network connections
+function Monitor-NetworkActivity {
+    $trustedProcesses = @('explorer.exe', 'chrome.exe', 'firefox.exe')  # Add trusted processes
+
+    while ($true) {
+        $connections = Get-NetTCPConnection | Where-Object { $_.State -eq "Established" }
+        foreach ($connection in $connections) {
+            $process = Get-Process -Id $connection.OwningProcess -ErrorAction SilentlyContinue
+            if ($process -and (-not $trustedProcesses -contains $process.Name)) {
+                Write-Log "Suspicious outgoing network activity detected: $($process.Name) to IP $($connection.RemoteAddress). Terminating process."
+                Stop-Process -Id $process.Id -Force
+            }
+        }
+        Start-Sleep -Seconds 60
+    }
+}
+
+# Function to restrict access to critical files and directories
+function Restrict-FileAccess {
+    $restrictedPaths = @("C:\Windows\System32", "C:\Program Files")
+
+    foreach ($path in $restrictedPaths) {
+        $acl = Get-Acl -Path $path
+        $permission = "Everyone", "FullControl", "Allow"
+        $acl.SetAccessRuleProtection($true, $false)  # Prevent inheritance
+        $acl.AddAccessRule((New-Object System.Security.AccessControl.FileSystemAccessRule $permission))
+        Set-Acl -Path $path -AclObject $acl
+        Write-Log "Access restricted to $path"
+    }
+}
+
+# Function to monitor new scheduled tasks and terminate suspicious ones
+function Monitor-ScheduledTasks {
+    $existingTasks = Get-ScheduledTask | Select-Object -ExpandProperty TaskName
+
+    while ($true) {
+        $tasks = Get-ScheduledTask
+        foreach ($task in $tasks) {
+            if ($existingTasks -notcontains $task.TaskName) {
+                Write-Log "New scheduled task detected: $($task.TaskName). Terminating task."
+                Disable-ScheduledTask -TaskName $task.TaskName
+                $existingTasks += $task.TaskName
+            }
+        }
+        Start-Sleep -Seconds 60
+    }
+}
+
+# Function to detect and terminate rootkit-like behaviors
+function Monitor-Rootkit {
+    # Look for hidden processes, modules, or files
+    $hiddenProcesses = Get-WmiObject Win32_Process | Where-Object { $_.ExecutablePath -eq $null }
+
+    foreach ($process in $hiddenProcesses) {
+        Write-Log "Suspicious hidden process detected: $($process.ProcessName). Terminating process."
+        Stop-Process -Name $process.ProcessName -Force
+    }
+
+    $hiddenFiles = Get-ChildItem -Path "C:\Windows\System32" -Recurse | Where-Object { $_.Attributes -match "Hidden" }
+    foreach ($file in $hiddenFiles) {
+        Write-Log "Hidden file detected: $($file.FullName). Quarantining file."
+        Move-Item -Path $file.FullName -Destination "C:\Backup\Quarantined" -Force
+    }
+}
+
+# Function to scan memory for suspicious activity and terminate related processes
+function Scan-MemoryForMalware {
+    $suspiciousPatterns = @("malware", "inject", "hook")
+    $memoryDump = Get-WmiObject -Query "SELECT * FROM Win32_Process"
+
+    foreach ($process in $memoryDump) {
+        $processName = $process.Name
+        foreach ($pattern in $suspiciousPatterns) {
+            if ($processName -match $pattern) {
+                Write-Log "Suspicious memory pattern detected in process: $processName. Terminating process."
+                Stop-Process -Name $processName -Force
+            }
+        }
+    }
+}
+
+# Function to quarantine suspicious DLLs
+function Backup-QuarantineSuspiciousDLLs {
+    $quarantineFolder = "$env:USERPROFILE\Documents\GSecurity_Quarantine"
+    if (-not (Test-Path -Path $quarantineFolder)) {
+        New-Item -ItemType Directory -Path $quarantineFolder | Out-Null
+        Write-Log "Created quarantine folder at $quarantineFolder"
+    }
+
+    $suspiciousDLLs = Get-ChildItem -Path "C:\Windows\System32" -Recurse -Include "*.dll" | Where-Object {
+        $_.Name -match "suspicious|hook|log|key"
+    }
+
+    foreach ($dll in $suspiciousDLLs) {
+        $destination = Join-Path -Path $quarantineFolder -ChildPath $dll.Name
+        Move-Item -Path $dll.FullName -Destination $destination -Force
+        Write-Log "Quarantined suspicious DLL: $($dll.FullName)"
+    }
+}
+
 # Main logic to run all detection functions
 function Run-Monitoring {
     Write-Log "Starting security checks..."
@@ -428,6 +580,12 @@ function Run-Monitoring {
     Detect-And-Terminate-WebServers
     Remove-Unsigned-And-Suspicious-DLLs # Updated function
     Monitor-SuspiciousDLLs
+    Monitor-FileIntegrity
+    Monitor-NetworkActivity
+    Monitor-Rootkit
+    Backup-QuarantineSuspiciousDLLs
+    Scan-MemoryForMalware
+    Restrict-FileAccess
     Detect-RemoteLogin
     Start-Sleep $PollingInterval
 }
