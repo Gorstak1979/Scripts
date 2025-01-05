@@ -380,15 +380,13 @@ function Detect-RemoteLogin {
             $message = $event.Message
             $ipAddress = ($message -match "Source Network Address:\s*(\S+)") ? $matches[1] : "Unknown IP"
             $userName = ($message -match "New Logon:\s*.*?Account Name:\s*(\S+)") ? $matches[1] : "Unknown User"
-            
-            # Log the detected remote login activity
-            Write-Log "Remote login detected: User '$userName' from IP '$ipAddress'"
         }
     } catch {
         Write-Log "Error detecting remote login: $($_.Exception.Message)"
     }
 }
 
+# Function to retaliate against intruder
 function RetaliateAgainstIntruder {
     param (
         [string]$ipAddress    # The IP of the suspicious connection
