@@ -156,19 +156,32 @@ function Monitor-Keyloggers {
     }
 }
 
-# Ensure WMI service is running
-function Ensure-WMIService {
-    $service = Get-Service -Name "winmgmt" -ErrorAction SilentlyContinue
-    if ($service -and $service.Status -ne "Running") {
+# Ensure WMI and SharedAccess services are running
+function Ensure-ServicesRunning {
+    # Ensure WMI service is running
+    $wmiService = Get-Service -Name "winmgmt" -ErrorAction SilentlyContinue
+    if ($wmiService -and $wmiService.Status -ne "Running") {
         Start-Service -Name "winmgmt" -ErrorAction SilentlyContinue
         Write-Log "WMI service started."
-    } elseif (-not $service) {
+    } elseif (-not $wmiService) {
         Write-Log "WMI service not found. Check system integrity."
     } else {
         Write-Log "WMI service is running."
     }
+
+    # Ensure SharedAccess (Windows Firewall) service is running
+    $sharedAccessService = Get-Service -Name "sharedaccess" -ErrorAction SilentlyContinue
+    if ($sharedAccessService -and $sharedAccessService.Status -ne "Running") {
+        Start-Service -Name "sharedaccess" -ErrorAction SilentlyContinue
+        Write-Log "SharedAccess (Windows Firewall) service started."
+    } elseif (-not $sharedAccessService) {
+        Write-Log "SharedAccess service not found. Check system integrity."
+    } else {
+        Write-Log "SharedAccess service is running."
+    }
 }
-Ensure-WMIService
+
+Ensure-ServicesRunning
 
 # Monitor and terminate unauthorized remote threads
 function Detect-And-Terminate-RemoteThreads {
@@ -573,6 +586,7 @@ function Backup-QuarantineSuspiciousDLLs {
 function Run-Monitoring {
     Write-Log "Starting security checks..."
     Ensure-WMIService
+    Terminate-RemoteThreads
     Detect-And-Terminate-RemoteThreads
     Monitor-AllFiles
     Monitor-Keyloggers
