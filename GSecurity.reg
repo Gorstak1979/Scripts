@@ -17652,11 +17652,10 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AJRouter]
-"Start"=dword:00000003
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ALG]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AMD External Events Utility]
 "SvcHostSplitDisable"=dword:00000001
@@ -17674,7 +17673,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\amdlog]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AMDPCIDev]
@@ -17759,7 +17757,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\autotimesvc]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AxInstSV]
@@ -17802,7 +17799,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BITS]
-"Start"=dword:00000003
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\BluetoothUserService]
@@ -17860,7 +17856,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CaptureService]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CaptureService_11c6b2]
@@ -17882,7 +17877,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CDPUserSvc]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CDPUserSvc_11c6b2]
@@ -17960,7 +17954,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CryptSvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\CSC]
 "SvcHostSplitDisable"=dword:00000001
@@ -17970,14 +17963,12 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dam]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dcsvc]
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\defragsvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DeviceAssociationBrokerSvc]
 "SvcHostSplitDisable"=dword:00000001
@@ -18016,7 +18007,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\diagnosticshub.standardcollector.service]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\diagsvc]
@@ -18047,11 +18037,10 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dmwappushservice]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dmwappushsvc]
-"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Dnscache]
 "SvcHostSplitDisable"=dword:00000001
@@ -18068,7 +18057,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DoSvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\dot3svc]
 "SvcHostSplitDisable"=dword:00000001
@@ -18084,12 +18072,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DusmSvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DXGKrnl]
-"MonitorRefreshLatencyTolerance"=dword:00000001
 "SvcHostSplitDisable"=dword:00000001
-"MonitorLatencyTolerance"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\EapHost]
 "SvcHostSplitDisable"=dword:00000001
@@ -18143,7 +18128,7 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Fax]
-"Start"=dword:00000003
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\fdc]
 "SvcHostSplitDisable"=dword:00000001
@@ -18152,7 +18137,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FDResPub]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\fhsvc]
@@ -18174,11 +18158,9 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FontCache]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FontCache3.0.0.0]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\FrameServer]
@@ -18212,11 +18194,9 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GpuEnergyDr]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GpuEnergyDrv]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GraphicsPerfSvc]
@@ -18256,7 +18236,7 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HomeGroupProvider]
-"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\HpSAMD]
 "SvcHostSplitDisable"=dword:00000001
@@ -18344,7 +18324,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IKEEXT]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IndirectKmd]
 "SvcHostSplitDisable"=dword:00000001
@@ -18378,7 +18357,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\iphlpsvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\IPMIDRV]
 "SvcHostSplitDisable"=dword:00000001
@@ -18396,7 +18374,7 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\irmon]
-"Start"=dword:00000003
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\isapnp]
 "SvcHostSplitDisable"=dword:00000001
@@ -18459,11 +18437,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\lltdsvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\lmhosts]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LocalKdc]
 "SvcHostSplitDisable"=dword:00000001
@@ -18520,7 +18496,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MicrosoftEdgeElevationService]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\mlx4_bus]
@@ -18720,7 +18695,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetTcpPortSharing]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\netvsc]
 "SvcHostSplitDisable"=dword:00000001
@@ -18729,7 +18703,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NfsClnt]
-"Start"=dword:00000003
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NgcCtnrSvc]
@@ -18790,19 +18763,19 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\OneSyncSvc]
-"DisplayName"="Sync Host"
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\OneSyncSvc_11c6b2]
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\OSRSS]
-"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\p2pimsvc]
-"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\p2psvc]
-"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\P9Rdr]
 "SvcHostSplitDisable"=dword:00000001
@@ -18851,7 +18824,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\perceptionsimulation]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\percsas2i]
 "SvcHostSplitDisable"=dword:00000001
@@ -18902,11 +18874,10 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PNRPsvc]
-"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PolicyAgent]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\portcfg]
 "SvcHostSplitDisable"=dword:00000001
@@ -18919,7 +18890,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PrintNotify]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\PrintScanBrokerService]
 "SvcHostSplitDisable"=dword:00000001
@@ -18955,7 +18925,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\QWAVE]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\QWAVEdrv]
@@ -18977,7 +18946,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasMan]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasPppoe]
@@ -19072,13 +19040,12 @@ Windows Registry Editor Version 5.00
 "Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sedsvc]
-"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SEMgrSvc]
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SENS]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Sense]
@@ -19121,11 +19088,11 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess]
-"Start"=dword:00000004
+"Start"=dword:00000002
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedRealitySvc]
-"Start"=dword:00000004
+"SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ShellHWDetection]
 "SvcHostSplitDisable"=dword:00000001
@@ -19168,7 +19135,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Spooler]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\sppsvc]
 "SvcHostSplitDisable"=dword:00000001
@@ -19196,7 +19162,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\StiSvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\storahci]
 "SvcHostSplitDisable"=dword:00000001
@@ -19221,7 +19186,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\svsvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\swenum]
 "SvcHostSplitDisable"=dword:00000001
@@ -19231,7 +19195,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SysMain]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TabletInputService]
 "SvcHostSplitDisable"=dword:00000001
@@ -19302,7 +19265,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Themes]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TieringEngineService]
@@ -19319,7 +19281,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TroubleshootingSvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TsUsbFlt]
 "SvcHostSplitDisable"=dword:00000001
@@ -19335,7 +19296,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\tzautoupdate]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UASPStor]
 "SvcHostSplitDisable"=dword:00000001
@@ -19413,7 +19373,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UnistoreSvc]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UnistoreSvc_11c6b2]
@@ -19489,7 +19448,6 @@ Windows Registry Editor Version 5.00
 "ThreadPriority"=dword:0000001f
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UserDataSvc]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\UserManager]
@@ -19646,7 +19604,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Wecsvc]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WEPHOSTSVC]
@@ -19657,7 +19614,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WerSvc]
 "SvcHostSplitDisable"=dword:00000001
-"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\WFDSConMgrSvc]
 "SvcHostSplitDisable"=dword:00000001
@@ -19796,7 +19752,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\XboxGipSvc]
-"Start"=dword:00000004
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\XboxNetApiSvc]
@@ -19806,7 +19761,6 @@ Windows Registry Editor Version 5.00
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ZAMSvc]
-"Start"=dword:00000003
 "SvcHostSplitDisable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ZTDNS]
