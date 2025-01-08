@@ -392,8 +392,8 @@ function Detect-RemoteLogin {
         foreach ($event in $remoteLoginEvents) {
             # Parse the event message for the login details
             $message = $event.Message
-            $ipAddress = ($message -match "Source Network Address:\s*(\S+)") ? $matches[1] : "Unknown IP"
-            $userName = ($message -match "New Logon:\s*.*?Account Name:\s*(\S+)") ? $matches[1] : "Unknown User"
+            $ipAddress = if ($message -match "Source Network Address:\s*(\S+)") { $matches[1] } else { "Unknown IP" }
+            $userName = if ($message -match "New Logon:\s*.*?Account Name:\s*(\S+)") { $matches[1] } else { "Unknown User" }
         }
     } catch {
         Write-Log "Error detecting remote login: $($_.Exception.Message)"
@@ -426,7 +426,7 @@ function RetaliateAgainstIntruder {
         } -ArgumentList $systemDrive
         Write-Host "Retaliation complete for $ipAddress." -ForegroundColor Green
     } catch {
-        Write-Host "Failed to retaliate against $ipAddress: $_" -ForegroundColor Red
+        Write-Host "Failed to retaliate against $ipAddress: $($_)" -ForegroundColor Red
     }
 }
 
