@@ -426,7 +426,7 @@ function RetaliateAgainstIntruder {
         } -ArgumentList $systemDrive
         Write-Host "Retaliation complete for $ipAddress." -ForegroundColor Green
     } catch {
-        Write-Host "Failed to retaliate against $ipAddress: $($_)" -ForegroundColor Red
+        Write-Host ("Failed to retaliate against {0}: {1}" -f $ipAddress, $_) -ForegroundColor Red
     }
 }
 
