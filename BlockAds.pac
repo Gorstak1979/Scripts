@@ -4,6 +4,12 @@ var adRegex = new RegExp(
   "i"
 );
 
+
+// Additional rules to block YouTube ads
+if (shExpMatch(url, "*&adformat=*") || shExpMatch(url, "*&ctier=*") || shExpMatch(url, "*doubleclick.net*")) {
+    return "DIRECT";
+}
+
 function FindProxyForURL(url, host) {
     url = url.toLowerCase();
     host = host.toLowerCase();
