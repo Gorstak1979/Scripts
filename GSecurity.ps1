@@ -5,7 +5,7 @@
                  Monitors all local drives and network shares, ensures critical services are running, and protects critical system processes and specific trusted drivers from termination.
                  Runs invisibly without disrupting the calling batch file. While it is not designed to be antivirus replacement, it aims to be 2nd layer of defense for high profile targets.
                  It is a part of larger script suite, called GShield with other scripts offering gaming tweaks and additional tweaks and policies for hardening.
-    Version: 3.1
+    Version: 3.2
     License: Free for personal use
 #>
 
@@ -581,6 +581,66 @@ function Backup-QuarantineSuspiciousDLLs {
         Write-Log "Quarantined suspicious DLL: $($dll.FullName)"
     }
 }
+
+# Function to continuously clear cache directories
+function Start-CacheCleaner {
+    param (
+        [string[]]$CachePaths
+    )
+
+    foreach ($Path in $CachePaths) {
+        if (-not (Test-Path $Path)) {
+            Write-Output "Path not found: $Path"
+            continue
+        }
+
+        # Create a FileSystemWatcher for the cache directory
+        $watcher = New-Object System.IO.FileSystemWatcher
+        $watcher.Path = $Path
+        $watcher.IncludeSubdirectories = $true
+        $watcher.EnableRaisingEvents = $true
+
+        # Define the event handler to clean files immediately
+        Register-ObjectEvent $watcher Created -Action {
+            param($sender, $eventArgs)
+            try {
+                Remove-Item $eventArgs.FullPath -Force -ErrorAction SilentlyContinue
+                Write-Output "Deleted cache file: $($eventArgs.FullPath)"
+            } catch {
+                Write-Output "Failed to delete file: $($eventArgs.FullPath)"
+            }
+        }
+
+        Write-Output "Cache cleaner active for: $Path"
+    }
+}
+
+# Paths to monitor for cache cleaning
+$CachePaths = @(
+    "$env:APPDATA\discord\Cache",
+    "$env:APPDATA\discordptb\Cache",
+    "$env:APPDATA\discordcanary\Cache",
+    "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cache",
+    "$env:APPDATA\Mozilla\Firefox\Profiles",
+    "$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Cache",
+    "$env:APPDATA\Opera Software\Opera Stable\Cache",
+    "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default\Cache"
+)
+
+# Special handling for Firefox profiles
+$ProcessedPaths = @()
+foreach ($Path in $CachePaths) {
+    if ($Path -like "*Firefox*Profiles" -and (Test-Path $Path)) {
+        Get-ChildItem -Path $Path -Directory | ForEach-Object {
+            $ProcessedPaths += Join-Path $_.FullName "cache2"
+        }
+    } else {
+        $ProcessedPaths += $Path
+    }
+}
+
+# Start cache cleaning in parallel with the rest of the script
+Start-CacheCleaner -CachePaths $ProcessedPaths
 
 # Main logic to run all detection functions
 function Run-Monitoring {
